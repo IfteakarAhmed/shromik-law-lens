@@ -13,6 +13,7 @@ import { Badge } from "@/components/Badge";
 import { Button } from "@/components/Button";
 import { GlassCard } from "@/components/GlassCard";
 import { Textarea } from "@/components/ui/textarea";
+import { recordedSampleContract } from "@/mocks/security-guard-review";
 
 export type ReviewSide = "worker" | "employer";
 
@@ -26,9 +27,6 @@ interface AppUploadScreenProps {
   onTextChange: (text: string) => void;
   onAnalyze: () => void;
 }
-
-export const securityGuardSampleText =
-  "সিকিউরিটি গার্ড নিয়োগ: সপ্তাহে ছয় দিন, প্রতিদিন ১২ ঘণ্টা শিফট। অতিরিক্ত সময়ের জন্য আলাদা ভাতা নেই। ইউনিফর্মের খরচ মজুরি থেকে কাটা হবে। প্রথম নয় মাস শিক্ষানবিশকাল এবং মূল বেতনের ৭০% প্রদান করা হবে। মালিক কোনো নোটিশ ছাড়াই চাকরি শেষ করতে পারবেন।";
 
 export function AppUploadScreen({
   file,
@@ -94,7 +92,10 @@ export function AppUploadScreen({
               type="file"
               accept="application/pdf,image/*,text/plain,.md,.markdown"
               aria-label={t("mockReview.upload.browse")}
-              onChange={(event) => pickFile(event.currentTarget.files?.item(0) ?? undefined)}
+              onChange={(event) => {
+                pickFile(event.currentTarget.files?.item(0) ?? undefined);
+                event.currentTarget.value = "";
+              }}
             />
             <input
               ref={cameraInputRef}
@@ -103,7 +104,10 @@ export function AppUploadScreen({
               accept="image/*"
               capture="environment"
               aria-label={t("mockReview.upload.camera")}
-              onChange={(event) => pickFile(event.currentTarget.files?.item(0) ?? undefined)}
+              onChange={(event) => {
+                pickFile(event.currentTarget.files?.item(0) ?? undefined);
+                event.currentTarget.value = "";
+              }}
             />
             {file ? (
               <div className="flex flex-wrap items-center gap-4">
@@ -181,7 +185,7 @@ export function AppUploadScreen({
               type="button"
               variant="ghost"
               className="mt-2 px-2 text-sm text-muted-foreground"
-              onClick={() => onTextChange(securityGuardSampleText)}
+              onClick={() => onTextChange(recordedSampleContract)}
             >
               {t("mockReview.upload.useSample")}
             </Button>
