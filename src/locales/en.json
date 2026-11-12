@@ -464,6 +464,7 @@
     "eyebrow": "Same contract · two outcomes",
     "title": "Citation verification comparison",
     "description": "Claims from a plain AI are checked against the same sample security-guard contract and shown alongside ShromikAI results.",
+    "prototypeNote": "Both columns are fixed sample examples; no live AI is running here.",
     "sample": "Sample data (recorded)",
     "plain": "Plain AI",
     "verified": "ShromikAI",
@@ -473,6 +474,7 @@
     "verifiedTitle": "Verified findings",
     "sourceLabel": "Official source",
     "tabsLabel": "Choose a comparison",
+    "open": "Compare citations",
     "noInvented": "No rejected claims in this sample.",
     "claims": {
       "hours": "A 12-hour shift is legal under section 999.",
