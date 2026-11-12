@@ -1,6 +1,15 @@
 import { Canvas, useFrame, type ThreeEvent } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
-import { Component, Suspense, useEffect, useRef, useState, type ErrorInfo, type ReactNode } from "react";
+import {
+  Component,
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+  type ErrorInfo,
+  type ReactNode,
+  type Ref,
+} from "react";
 import * as THREE from "three";
 
 import { ScenePoster } from "@/components/scene/ScenePoster";
@@ -74,6 +83,12 @@ function readScenePalette(): ScenePalette {
 
 export function ContractScene({ alt, isActive, onReady, onFailure }: ContractSceneProps) {
   const [palette, setPalette] = useState<ScenePalette | null>(null);
+  const [sceneReady, setSceneReady] = useState(false);
+
+  function markReady() {
+    setSceneReady(true);
+    onReady();
+  }
 
   useEffect(() => {
     setPalette(readScenePalette());
@@ -82,12 +97,12 @@ export function ContractScene({ alt, isActive, onReady, onFailure }: ContractSce
   return (
     <div
       className="relative size-full overflow-hidden rounded-2xl border border-border/70 bg-background/40 shadow-glass-panel"
-      aria-busy={isActive && palette !== null}
-      data-scene-ready={isActive && palette !== null ? "true" : undefined}
+      aria-busy={isActive && !sceneReady}
+      data-scene-ready={sceneReady ? "true" : undefined}
     >
       <ScenePoster
         alt={alt}
-        className={`absolute inset-0 size-full object-cover transition-opacity duration-500 ${isActive && palette !== null ? "opacity-0" : "opacity-100"}`}
+        className={`absolute inset-0 size-full object-cover transition-opacity duration-500 ${sceneReady ? "opacity-0" : "opacity-100"}`}
       />
       {isActive && palette !== null && (
         <SceneErrorBoundary onFailure={onFailure}>
@@ -97,7 +112,6 @@ export function ContractScene({ alt, isActive, onReady, onFailure }: ContractSce
             gl={{ alpha: true, antialias: true, powerPreference: "low-power" }}
             onCreated={({ gl }) => {
               gl.setClearColor(palette.ink, 0);
-              onReady();
             }}
             fallback={<ScenePoster alt={alt} className="size-full object-cover" />}
             aria-hidden="true"
@@ -109,7 +123,7 @@ export function ContractScene({ alt, isActive, onReady, onFailure }: ContractSce
               <directionalLight position={[-4, 5, 6]} intensity={2.5} color={palette.paper} />
               <pointLight position={[3, 1, 2]} intensity={8} distance={9} color={palette.verified} />
               <pointLight position={[-3, -3, 1]} intensity={3} distance={7} color={palette.uncertain} />
-              <ContractArrangement palette={palette} />
+              <ContractArrangement palette={palette} onFirstFrame={markReady} />
             </Suspense>
           </Canvas>
         </SceneErrorBoundary>
@@ -122,17 +136,39 @@ export function ContractScene({ alt, isActive, onReady, onFailure }: ContractSce
   );
 }
 
-function ContractArrangement({ palette }: { palette: ScenePalette }) {
+function ContractArrangement({
+  palette,
+  onFirstFrame,
+}: {
+  palette: ScenePalette;
+  onFirstFrame: () => void;
+}) {
   const rig = useRef<THREE.Group>(null);
   const beam = useRef<THREE.Mesh>(null);
   const brokenCitation = useRef<THREE.Group>(null);
+  const firstFrameReported = useRef(false);
 
   useFrame(({ clock, pointer }, delta) => {
+    if (!firstFrameReported.current) {
+      firstFrameReported.current = true;
+      onFirstFrame();
+    }
+
     const group = rig.current;
     if (group) {
       const ease = 1 - Math.exp(-3 * Math.min(delta, 0.05));
-      group.rotation.y = THREE.MathUtils.damp(group.rotation.y, pointer.x * 0.12, 3, delta);
-      group.rotation.x = THREE.MathUtils.damp(group.rotation.x, -pointer.y * 0.07, 3, delta);
+      group.rotation.y = THREE.MathUtils.damp(
+        group.rotation.y,
+        pointer.x * 0.12 + Math.sin(clock.elapsedTime * 0.22) * 0.012,
+        3,
+        delta,
+      );
+      group.rotation.x = THREE.MathUtils.damp(
+        group.rotation.x,
+        -pointer.y * 0.07 + Math.sin(clock.elapsedTime * 0.31) * 0.009,
+        3,
+        delta,
+      );
       group.position.y = Math.sin(clock.elapsedTime * 0.45) * 0.045;
       group.rotation.x += Math.sin(clock.elapsedTime * 0.35) * 0.004 * ease;
     }
@@ -145,10 +181,7 @@ function ContractArrangement({ palette }: { palette: ScenePalette }) {
       }
     }
 
-    if (brokenCitation.current) {
-      brokenCitation.current.position.y += delta * 0.025;
-      brokenCitation.current.rotation.z = Math.sin(clock.elapsedTime * 0.35) * 0.025;
-    }
+    if (brokenCitation.current) brokenCitation.current.rotation.z = Math.sin(clock.elapsedTime * 0.35) * 0.025;
   });
 
   const stopPointerEvent = (event: ThreeEvent<PointerEvent>) => event.stopPropagation();
@@ -188,7 +221,7 @@ function ContractArrangement({ palette }: { palette: ScenePalette }) {
         <ClauseCard position={[-1.25, -1.03, 0.54]} rotation={0.055} color={palette.uncertain} />
       </Float>
       <VerificationSeal position={[-0.15, 0.08, 1.03]} color={palette.verified} />
-      <BrokenCitation ref={brokenCitation} palette={palette} />
+      <BrokenCitation palette={palette} groupRef={brokenCitation} />
     </group>
   );
 }
@@ -287,53 +320,39 @@ function VerificationSeal({ position, color }: { position: [number, number, numb
   );
 }
 
-const BrokenCitation = ({ palette }: { palette: ScenePalette }) => (
-  <BrokenCitationGroup palette={palette} />
-);
-
-const BrokenCitationGroup = ({
+function BrokenCitation({
   palette,
   groupRef,
 }: {
   palette: ScenePalette;
-  groupRef?: React.Ref<THREE.Group>;
-}) => (
-  <group ref={groupRef} position={[2.12, 1.18, 0.36]} rotation={[0, -0.06, 0.09]}>
-    <mesh position={[0, 0.1, -0.025]}>
-      <boxGeometry args={[1.22, 0.63, 0.034]} />
-      <meshPhysicalMaterial color={palette.rejected} transparent opacity={0.17} roughness={0.22} />
-    </mesh>
-    <mesh position={[0, 0.18, 0.004]} rotation={[0, 0, 0.12]}>
-      <boxGeometry args={[0.73, 0.028, 0.012]} />
-      <meshBasicMaterial color={palette.rejected} transparent opacity={0.78} />
-    </mesh>
-    <mesh position={[-0.09, 0.11, 0.008]} rotation={[0, 0, -0.83]}>
-      <boxGeometry args={[0.045, 0.31, 0.016]} />
-      <meshBasicMaterial color={palette.rejected} />
-    </mesh>
-    <mesh position={[0.05, -0.08, 0.008]} rotation={[0, 0, 0.7]}>
-      <boxGeometry args={[0.045, 0.39, 0.016]} />
-      <meshBasicMaterial color={palette.rejected} />
-    </mesh>
-    <mesh position={[-0.7, 0.55, 0.01]} rotation={[0, 0, 0.22]}>
-      <boxGeometry args={[0.2, 0.16, 0.035]} />
-      <meshPhysicalMaterial color={palette.rejected} transparent opacity={0.2} roughness={0.2} />
-    </mesh>
-    <mesh position={[0.73, -0.28, 0.01]} rotation={[0, 0, -0.28]}>
-      <boxGeometry args={[0.17, 0.2, 0.035]} />
-      <meshPhysicalMaterial color={palette.rejected} transparent opacity={0.2} roughness={0.2} />
-    </mesh>
-  </group>
-);
-
-function BrokenCitation({ palette }: { palette: ScenePalette }) {
-  const fragment = useRef<THREE.Group>(null);
-
-  useFrame((_, delta) => {
-    if (!fragment.current) return;
-    fragment.current.position.y += delta * 0.025;
-    fragment.current.rotation.z += delta * 0.01;
-  });
-
-  return <BrokenCitationGroup palette={palette} groupRef={fragment} />;
+  groupRef: Ref<THREE.Group>;
+}) {
+  return (
+    <group ref={groupRef} position={[2.12, 1.18, 0.36]} rotation={[0, -0.06, 0.09]}>
+      <mesh position={[0, 0.1, -0.025]}>
+        <boxGeometry args={[1.22, 0.63, 0.034]} />
+        <meshPhysicalMaterial color={palette.rejected} transparent opacity={0.17} roughness={0.22} />
+      </mesh>
+      <mesh position={[0, 0.18, 0.004]} rotation={[0, 0, 0.12]}>
+        <boxGeometry args={[0.73, 0.028, 0.012]} />
+        <meshBasicMaterial color={palette.rejected} transparent opacity={0.78} />
+      </mesh>
+      <mesh position={[-0.09, 0.11, 0.008]} rotation={[0, 0, -0.83]}>
+        <boxGeometry args={[0.045, 0.31, 0.016]} />
+        <meshBasicMaterial color={palette.rejected} />
+      </mesh>
+      <mesh position={[0.05, -0.08, 0.008]} rotation={[0, 0, 0.7]}>
+        <boxGeometry args={[0.045, 0.39, 0.016]} />
+        <meshBasicMaterial color={palette.rejected} />
+      </mesh>
+      <mesh position={[-0.7, 0.55, 0.01]} rotation={[0, 0, 0.22]}>
+        <boxGeometry args={[0.2, 0.16, 0.035]} />
+        <meshPhysicalMaterial color={palette.rejected} transparent opacity={0.2} roughness={0.2} />
+      </mesh>
+      <mesh position={[0.73, -0.28, 0.01]} rotation={[0, 0, -0.28]}>
+        <boxGeometry args={[0.17, 0.2, 0.035]} />
+        <meshPhysicalMaterial color={palette.rejected} transparent opacity={0.2} roughness={0.2} />
+      </mesh>
+    </group>
+  );
 }
