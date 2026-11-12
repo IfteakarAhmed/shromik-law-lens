@@ -66,6 +66,10 @@
     "switchToBangla": "বাংলায় দেখুন",
     "switchToEnglish": "ইংরেজিতে দেখুন"
   },
+  "theme": {
+    "switchToLight": "হালকা থিম চালু করুন",
+    "switchToDark": "গাঢ় থিম চালু করুন"
+  },
   "common": {
     "disclaimer": "এটা আইনি পরামর্শ নয় / This is not legal advice",
     "footerNote": "চূড়ান্ত সিদ্ধান্তের আগে সরকারি আইন এবং যোগ্য আইনজীবীর পরামর্শ যাচাই করুন।",

@@ -66,6 +66,10 @@
     "switchToBangla": "Switch to Bangla",
     "switchToEnglish": "Switch to English"
   },
+  "theme": {
+    "switchToLight": "Switch to light theme",
+    "switchToDark": "Switch to dark theme"
+  },
   "common": {
     "disclaimer": "এটা আইনি পরামর্শ নয় / This is not legal advice",
     "footerNote": "Before making a decision, check the official law and consult a qualified lawyer.",
