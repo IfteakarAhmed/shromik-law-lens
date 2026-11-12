@@ -190,7 +190,9 @@ export function AppUploadScreen({
               role="alert"
               className="rounded-md border border-rejected/25 bg-rejected/5 px-4 py-3 text-sm text-rejected"
             >
-              {t(`mockReview.upload.${error === "tooLarge" ? "errorTooLarge" : error === "unsupportedType" ? "errorUnsupported" : "invalidText"}`)}
+              {t(
+                `mockReview.upload.${error === "tooLarge" ? "errorTooLarge" : error === "unsupportedType" ? "errorUnsupported" : "invalidText"}`,
+              )}
             </p>
           ) : null}
 
