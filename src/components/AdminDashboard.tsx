@@ -601,10 +601,18 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
                 />
                 <div className="grid gap-4 xl:grid-cols-2">
                   <GlassCard className="space-y-3 p-4 sm:p-5">
-                    <h3 className="font-semibold text-foreground">
-                      {t("admin.usage.chartReviews")}
-                    </h3>
-                    <ChartContainer config={usageChartConfig} className="h-[260px] w-full">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <h3 className="font-semibold text-foreground">
+                        {t("admin.usage.chartReviews")}
+                      </h3>
+                      <Badge tone="neutral">{t("admin.sample")}</Badge>
+                    </div>
+                    <ChartContainer
+                      config={usageChartConfig}
+                      className="h-[260px] w-full"
+                      role="img"
+                      aria-label={t("admin.usage.chartReviews")}
+                    >
                       <BarChart
                         accessibilityLayer
                         data={sampleUsageData.map((row) => ({ ...row }))}
@@ -631,8 +639,18 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
                     </ChartContainer>
                   </GlassCard>
                   <GlassCard className="space-y-3 p-4 sm:p-5">
-                    <h3 className="font-semibold text-foreground">{t("admin.usage.chartCost")}</h3>
-                    <ChartContainer config={costChartConfig} className="h-[260px] w-full">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <h3 className="font-semibold text-foreground">
+                        {t("admin.usage.chartCost")}
+                      </h3>
+                      <Badge tone="neutral">{t("admin.sample")}</Badge>
+                    </div>
+                    <ChartContainer
+                      config={costChartConfig}
+                      className="h-[260px] w-full"
+                      role="img"
+                      aria-label={t("admin.usage.chartCost")}
+                    >
                       <LineChart
                         accessibilityLayer
                         data={sampleUsageData.map((row) => ({ ...row }))}
@@ -710,7 +728,7 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
                         </div>
                         <span className="inline-flex items-center gap-1 whitespace-nowrap text-xs tabular-nums text-muted-foreground">
                           <Clock3 aria-hidden="true" className="size-3.5" />
-                {t("admin.trace.milliseconds", { count: stage.duration })}
+                          {t("admin.trace.milliseconds", { count: stage.duration })}
                         </span>
                       </li>
                     ))}
