@@ -71,7 +71,7 @@ export function ComparePage() {
     <div className="min-h-screen">
       <header className="mx-auto flex max-w-7xl items-center justify-between px-gutter py-4 sm:py-6">
         <Button asChild variant="ghost" className="px-2 text-muted-foreground">
-          <Link to="/app"><ArrowLeft aria-hidden="true" />{t("navigation.backHome")}</Link>
+          <Link to="/app" search={{ role: "worker" }}><ArrowLeft aria-hidden="true" />{t("navigation.backHome")}</Link>
         </Button>
         <span className="inline-flex items-center gap-2 text-sm font-semibold text-verified"><ShieldCheck aria-hidden="true" className="size-4" />{t("app.name")}{t("app.ai")}</span>
       </header>
@@ -110,7 +110,7 @@ export function ComparePage() {
           </div>
         </Tabs>
         <footer className="mt-10 flex justify-end">
-          <Button asChild variant="outline"><Link to="/app">{t("comparisonPage.backToDemo")}<ArrowUpRight aria-hidden="true" /></Link></Button>
+          <Button asChild variant="outline"><Link to="/app" search={{ role: "worker" }}>{t("comparisonPage.backToDemo")}<ArrowUpRight aria-hidden="true" /></Link></Button>
         </footer>
       </main>
     </div>
