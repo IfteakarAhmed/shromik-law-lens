@@ -53,12 +53,20 @@ describe("security guard recorded sample", () => {
   it("highlights text contained in every complete official section excerpt", () => {
     for (const section of Object.values(recordedLawSections)) {
       for (const dictionary of [bn, en]) {
+        expect(readTranslation(dictionary, section.titleKey)).toEqual(expect.any(String));
         const text = readTranslation(dictionary, section.textKey);
         const highlight = readTranslation(dictionary, section.highlightKey);
         expect(typeof text).toBe("string");
         expect(typeof highlight).toBe("string");
         expect((text as string).includes(highlight as string)).toBe(true);
       }
+    }
+  });
+
+  it("keeps all displayed model labels translated in both languages", () => {
+    for (const finding of [...recordedFindings, uncertainFinding]) {
+      expect(readTranslation(bn, finding.modelKey)).toEqual(expect.any(String));
+      expect(readTranslation(en, finding.modelKey)).toEqual(expect.any(String));
     }
   });
 
