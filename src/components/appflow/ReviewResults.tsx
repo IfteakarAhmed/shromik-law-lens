@@ -101,10 +101,6 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
       <header className="mb-7 flex flex-col gap-4 border-b border-border/70 pb-6 sm:flex-row sm:items-end sm:justify-between">
         <div className="min-w-0">
           <div className="mb-3 flex flex-wrap items-center gap-3">
-            <Badge tone="verified">
-              <span className="size-1.5 rounded-full bg-verified" aria-hidden="true" />
-              {t("mockReview.topline")}
-            </Badge>
             <Badge tone="neutral">{t("mockReview.memo.generated")}</Badge>
             <span className="text-xs text-muted-foreground">{t("mockReview.report.eyebrow")}</span>
           </div>
@@ -130,35 +126,44 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
         <p className="text-sm leading-7 text-muted-foreground">
           {t("mockReview.report.reviewScope")}
         </p>
-        <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-5">
+        <div className="mt-4 grid grid-cols-6 gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-5">
           <SummaryCell
             label={t("mockReview.report.criticalCount")}
             count={verifiedCounts.critical}
             tone="critical"
+            className="col-span-2 sm:col-span-1"
           />
           <SummaryCell
             label={t("mockReview.report.highCount")}
             count={verifiedCounts.high}
             tone="high"
+            className="col-span-2 sm:col-span-1"
           />
           <SummaryCell
             label={t("mockReview.report.mediumCount")}
             count={verifiedCounts.medium}
             tone="medium"
+            className="col-span-2 sm:col-span-1"
           />
           <SummaryCell
             label={t("mockReview.report.verifiedCount")}
             count={allFindings.length}
             tone="verified"
+            className="col-span-3 sm:col-span-1"
           />
-          <SummaryCell label={t("mockReview.report.uncertainCount")} count={1} tone="uncertain" />
+          <SummaryCell
+            label={t("mockReview.report.uncertainCount")}
+            count={1}
+            tone="uncertain"
+            className="col-span-3 sm:col-span-1"
+          />
         </div>
       </GlassCard>
 
       <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as ReviewTab)}>
         <TabsList
           aria-label={t("mockReview.tabs.risks")}
-          className="sticky top-0 z-20 flex h-auto w-full justify-start gap-1 overflow-x-auto rounded-none border-y border-border bg-background/95 p-1 backdrop-blur-md sm:static sm:justify-center sm:rounded-md sm:border"
+          className="sticky top-0 z-20 flex h-auto w-full justify-start gap-1 overflow-x-auto rounded-none border-y border-border bg-background/95 p-1 backdrop-blur-md print:hidden sm:static sm:justify-center sm:rounded-md sm:border"
         >
           {tabIds.map((tab) => (
             <TabsTrigger
@@ -271,11 +276,14 @@ function SummaryCell({
   label,
   count,
   tone,
+  className,
 }: {
   label: string;
   count: number;
   tone: "critical" | "high" | "medium" | "verified" | "uncertain";
+  className: string;
 }) {
+  const { i18n } = useTranslation();
   const color =
     tone === "verified"
       ? "text-verified"
@@ -283,8 +291,10 @@ function SummaryCell({
         ? "text-uncertain"
         : "text-rejected";
   return (
-    <div className="min-w-0 bg-background/90 px-3 py-3 sm:px-4">
-      <p className="font-display text-2xl font-semibold leading-none text-foreground">{count}</p>
+    <div className={`min-w-0 bg-background/90 px-3 py-3 sm:px-4 ${className}`}>
+      <p className="font-display text-2xl font-semibold leading-none text-foreground">
+        {new Intl.NumberFormat(i18n.resolvedLanguage ?? "bn-BD").format(count)}
+      </p>
       <p className={`mt-2 text-xs leading-5 ${color}`}>{label}</p>
     </div>
   );
@@ -628,12 +638,15 @@ function MemoPanel({
 }
 
 function MemoMetric({ label, value, count }: { label: string; value: string; count: number | "" }) {
+  const { i18n } = useTranslation();
   return (
     <div className="rounded-md border border-border bg-card/40 p-4">
       <p className="text-xs text-muted-foreground">{label}</p>
       <p className="mt-1 font-medium text-foreground">
         {value}
-        {count ? ` · ${count}` : ""}
+        {count !== ""
+          ? ` · ${new Intl.NumberFormat(i18n.resolvedLanguage ?? "bn-BD").format(count)}`
+          : ""}
       </p>
     </div>
   );

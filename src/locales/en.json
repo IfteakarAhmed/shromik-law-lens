@@ -209,8 +209,8 @@
       "analyze": "Analyze",
       "analyzing": "Running sample review…",
       "privacyTitle": "Personal information protection",
-      "privacyNote": "Names, NIDs, and phone numbers are removed on your device",
-      "privacyDetail": "This fixed sample does not read, redact, or send your file or text; results come from a separate recorded sample.",
+      "privacyNote": "Intended privacy policy: names, NIDs, and phone numbers are removed on your device",
+      "privacyDetail": "This fixed sample does not read files or text or remove personal information; results come from a separate recorded sample. Nothing is sent or stored.",
       "errorTooLarge": "This file is over 10 MB. Choose a smaller file.",
       "errorUnsupported": "This file type is not supported. Choose a PDF, image, or TXT file.",
       "errorRead": "We could not read this file. Please choose it again.",
@@ -255,13 +255,13 @@
       "modelLabel": "Check method",
       "recordedModel": "Sample rules matcher & citation checker · recorded",
       "backToUpload": "Start a new sample",
-      "reviewScope": "The sample contract states six 12-hour shifts per week. These results are not based on text you provided."
+      "reviewScope": "This fixed sample contract states six 12-hour shifts per week. Results are not based on your text. Applicability depends on the work and establishment type."
     },
     "finding": {
       "weeklyHours": {
         "title": "Weekly working hours may exceed the limit",
         "clause": "Six days a week, 12 hours per shift.",
-        "explanation": "This schedule totals 72 hours a week. The usual statutory limit is 48 hours; even with conditional overtime, weekly work must not exceed 60 hours.",
+        "explanation": "This schedule totals 72 hours a week. The usual statutory limit is 48 hours, with conditional provisions allowing up to 60 hours in a week.",
         "model": "Schedule rule checker"
       },
       "dailyHours": {
@@ -273,13 +273,13 @@
       "unpaidOvertime": {
         "title": "No additional overtime allowance",
         "clause": "No separate allowance applies to additional hours.",
-        "explanation": "Section 108 sets the applicable overtime allowance at twice the ordinary rate. This clause says that allowance will not be paid.",
+        "explanation": "Section 108 sets applicable overtime allowance at twice the ordinary rate. Which hours count as overtime should be checked under section 102 and the applicable worker category.",
         "model": "Wage clause checker"
       },
       "uniformDeposit": {
         "title": "Uniform cost deducted from wages",
         "clause": "A fixed amount for uniforms is deducted from wages each month.",
-        "explanation": "Section 125 limits wage deductions to specified authorized grounds. This term gives no basis for an automatic monthly uniform deduction.",
+        "explanation": "Section 125 lists authorized grounds for wage deductions. This clause does not state a clear basis for an automatic monthly uniform deduction; the deduction and circumstances need review.",
         "model": "Wage deduction rule checker"
       },
       "probationDuration": {
@@ -303,31 +303,31 @@
       "noWeeklyRest": {
         "title": "Weekly rest day may be cancelled",
         "clause": "Weekly rest may be cancelled when work requires it.",
-        "explanation": "Section 103 provides weekly holidays according to establishment type. An unrestricted cancellation term does not clearly preserve that entitlement.",
+        "explanation": "Section 103 sets weekly holidays by establishment type. Which rule applies to a security establishment should be checked before defining limits on cancelling rest.",
         "model": "Leave clause checker"
       },
       "missingAppointmentLetter": {
         "title": "No separate appointment or identity card",
         "clause": "These duty terms are final; no separate appointment letter or identity card will be provided.",
-        "explanation": "Section 5 says a worker may not be employed without an appointment letter and must receive a photo identity card. This clause directly denies both.",
+        "explanation": "Section 5 provides for an appointment letter and photo identity card. The sample wording denies both.",
         "model": "Hiring documents rule checker"
       },
       "unconditionalUniformReplacement": {
         "title": "Worker pays for every uniform replacement",
         "clause": "The cost of a new uniform is deducted from wages when it wears out or is replaced.",
-        "explanation": "Wage deductions may only be made on grounds authorized by law. Section 125 does not authorize charging the worker the full cost of replacement for ordinary wear.",
+        "explanation": "Section 125(c) connects deductions for damage or loss to the worker’s neglect or default. A full-price deduction without assessing cause and responsibility needs review.",
         "model": "Deduction clause checker"
       }
     },
     "uncertain": {
       "title": "70% pay during probation",
       "clause": "During the nine-month probation period, 70% of the basic wage will be paid.",
-      "explanation": "Applicable minimum wages can depend on industry, role, and wage structure. This sample does not provide enough information to assess the rate; no legal conclusion is given.",
+      "explanation": "This sample does not specify the worker category, applicable sector minimum wage, or wage structure. The 70% rate cannot be verified from these facts; no legal conclusion is given.",
       "model": "Sample information sufficiency checker"
     },
     "law": {
       "act": "Bangladesh Labour Act, 2006",
-      "version": "Text shown in the official law repository · Act No. 42 of 2006",
+      "version": "Text displayed in the official laws repository · Bangladesh Labour Act, 2006 (Act No. 42 of 2006)",
       "sourceLink": "View official source",
       "openInNewTab": "Opens in a new tab",
       "section4": {
@@ -394,7 +394,8 @@
       "section": "Section {{number}}",
       "version": "Text details",
       "quotedText": "Text of the official section",
-      "close": "Close"
+      "close": "Close",
+      "languageNote": "Original Bengali text from the official laws repository; not a translation."
     },
     "proposals": {
       "eyebrow": "Draft edits",
@@ -441,7 +442,7 @@
     },
     "memo": {
       "title": "Contract review memo",
-      "description": "Recorded sample review of a security-guard contract",
+      "description": "Recorded review of a sample security-guard contract",
       "generated": "Sample data (recorded)",
       "download": "Download PDF",
       "printHint": "Save as PDF in the print window",

@@ -350,9 +350,13 @@
       visibility: hidden !important;
     }
 
-    .memo-print,
-    .memo-print * {
+    body .memo-print,
+    body .memo-print * {
       visibility: visible !important;
+    }
+
+    body .memo-print .print\:hidden {
+      display: none !important;
     }
 
     .memo-print {
