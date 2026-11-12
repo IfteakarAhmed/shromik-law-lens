@@ -59,7 +59,9 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
   }, []);
 
   useEffect(() => {
-    const activePanel = document.querySelector<HTMLElement>("[role='tabpanel'][data-state='active']");
+    const activePanel = document.querySelector<HTMLElement>(
+      "[role='tabpanel'][data-state='active']",
+    );
     if (!activePanel) return;
     let startX: number | null = null;
     let startY: number | null = null;
@@ -309,7 +311,7 @@ function FindingCard({
           </Badge>
         ) : null}
         <span className="ml-auto">
-            <VerificationBadge status="verified" />
+          <VerificationBadge status="verified" />
         </span>
       </div>
       <h3 className="mt-4 font-display text-xl font-semibold leading-8 text-foreground">
