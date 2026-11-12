@@ -50,11 +50,14 @@ function Index() {
           aria-label={`${t("app.name")} ${t("app.ai")}`}
         >
           <span className="flex size-11 items-center justify-center rounded-xl border border-verified/25 bg-verified/10 text-verified shadow-glass-panel transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
-            <span className="font-display text-xl font-bold" lang="bn">শ</span>
+            <span className="font-display text-xl font-bold" lang="bn">
+              শ
+            </span>
           </span>
           <span className="flex flex-col leading-tight">
             <span className="font-display text-lg font-bold tracking-normal text-foreground">
-              {t("app.name")}<span className="text-verified">{t("app.ai")}</span>
+              {t("app.name")}
+              <span className="text-verified">{t("app.ai")}</span>
             </span>
             <span className="text-xs text-muted-foreground">{t("app.tagline")}</span>
           </span>
@@ -71,7 +74,10 @@ function Index() {
       </header>
 
       <div id="top" className="mx-auto max-w-7xl px-gutter pb-14 pt-10 sm:pb-20 sm:pt-16 lg:pt-20">
-        <section aria-labelledby="page-title" className="grid gap-10 lg:grid-cols-[1.18fr_0.82fr] lg:items-end lg:gap-16">
+        <section
+          aria-labelledby="page-title"
+          className="grid gap-10 lg:grid-cols-[1.18fr_0.82fr] lg:items-end lg:gap-16"
+        >
           <div className="max-w-3xl">
             <div className="mb-5 inline-flex min-h-8 items-center gap-2 rounded-full border border-verified/20 bg-verified/5 px-3 text-sm font-medium text-verified">
               <span className="size-1.5 rounded-full bg-verified" aria-hidden="true" />
@@ -90,7 +96,10 @@ function Index() {
               <Button asChild size="lg" className="group rounded-lg px-5 font-semibold">
                 <a href="#report">
                   {t("review.viewReport")}
-                  <ArrowDown aria-hidden="true" className="transition-transform duration-300 group-hover:translate-y-0.5" />
+                  <ArrowDown
+                    aria-hidden="true"
+                    className="transition-transform duration-300 group-hover:translate-y-0.5"
+                  />
                 </a>
               </Button>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -131,7 +140,10 @@ function Index() {
                 <FileText aria-hidden="true" className="size-4" />
                 <span>{t("review.sectionTitle")}</span>
               </div>
-              <h2 id="review-title" className="mt-1 font-display text-2xl font-semibold text-foreground sm:text-3xl">
+              <h2
+                id="review-title"
+                className="mt-1 font-display text-2xl font-semibold text-foreground sm:text-3xl"
+              >
                 {t("review.findingsTitle")}
               </h2>
             </div>
@@ -166,7 +178,9 @@ function Index() {
                           <SeverityTag severity={finding.severity} />
                         </div>
                         <p className="mt-1.5 text-sm leading-7 text-muted-foreground">
-                          <span className="font-medium text-foreground">{t("review.clauseLabel")}: </span>
+                          <span className="font-medium text-foreground">
+                            {t("review.clauseLabel")}:{" "}
+                          </span>
                           {t(finding.excerptKey)}
                         </p>
                       </div>
@@ -198,9 +212,16 @@ function Index() {
               ))}
             </div>
 
-            <GlassCard as="aside" aria-labelledby="summary-title" className="p-5 sm:p-6 lg:sticky lg:top-6">
+            <GlassCard
+              as="aside"
+              aria-labelledby="summary-title"
+              className="p-5 sm:p-6 lg:sticky lg:top-6"
+            >
               <div className="flex items-center justify-between gap-3">
-                <h3 id="summary-title" className="font-display text-lg font-semibold text-foreground">
+                <h3
+                  id="summary-title"
+                  className="font-display text-lg font-semibold text-foreground"
+                >
                   {t("review.summaryTitle")}
                 </h3>
                 <span className="flex size-9 items-center justify-center rounded-lg border border-verified/20 bg-verified/10 text-verified">
@@ -209,13 +230,24 @@ function Index() {
               </div>
               <p className="mt-1 text-sm text-muted-foreground">
                 {t("review.sampleDocument")}
-                <span className="ml-2 text-xs text-muted-foreground/80">· {t("review.sampleLabel")}</span>
+                <span className="ml-2 text-xs text-muted-foreground/80">
+                  · {t("review.sampleLabel")}
+                </span>
               </p>
 
               <div className="my-5 grid grid-cols-3 gap-2 border-y border-border/70 py-4">
-                <SummaryStat label={t("review.clausesReviewed")} value={contractReview.clausesReviewed} />
-                <SummaryStat label={t("review.verifiedFindings")} value={contractReview.verifiedSources} />
-                <SummaryStat label={t("review.needsReview")} value={contractReview.needsMoreInformation} />
+                <SummaryStat
+                  label={t("review.clausesReviewed")}
+                  value={contractReview.clausesReviewed}
+                />
+                <SummaryStat
+                  label={t("review.verifiedFindings")}
+                  value={contractReview.verifiedSources}
+                />
+                <SummaryStat
+                  label={t("review.needsReview")}
+                  value={contractReview.needsMoreInformation}
+                />
               </div>
 
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -223,7 +255,10 @@ function Index() {
                 <span>{t("stats.checkedAt")}</span>
               </div>
               <div className="mt-4 flex items-start gap-2 rounded-lg border border-rejected/20 bg-rejected/5 px-3 py-2.5 text-sm text-foreground">
-                <span className="mt-1 size-2 shrink-0 rounded-full bg-rejected" aria-hidden="true" />
+                <span
+                  className="mt-1 size-2 shrink-0 rounded-full bg-rejected"
+                  aria-hidden="true"
+                />
                 <span>{t("stats.foundIssues")}</span>
               </div>
               <p className="mt-4 border-t border-border/70 pt-3 text-xs leading-6 text-muted-foreground">

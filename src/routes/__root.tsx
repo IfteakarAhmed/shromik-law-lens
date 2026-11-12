@@ -22,9 +22,7 @@ function NotFoundComponent() {
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">{t("errors.notFoundTitle")}</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {t("errors.notFoundDescription")}
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">{t("errors.notFoundDescription")}</p>
         <div className="mt-6">
           <Link
             to="/"
@@ -52,9 +50,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           {t("errors.pageDidNotLoad")}
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {t("errors.tryAgainDescription")}
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">{t("errors.tryAgainDescription")}</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {

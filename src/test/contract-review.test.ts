@@ -11,7 +11,9 @@ describe("contract review mock citations", () => {
     const citations = reviewFindings.flatMap((finding) => finding.citations);
 
     expect(citations.length).toBeGreaterThan(0);
-    expect(citations.every((citation) => new URL(citation.href).hostname === "bdlaws.minlaw.gov.bd")).toBe(true);
+    expect(
+      citations.every((citation) => new URL(citation.href).hostname === "bdlaws.minlaw.gov.bd"),
+    ).toBe(true);
   });
 
   it("does not show a legal citation for an uncertain finding", () => {
