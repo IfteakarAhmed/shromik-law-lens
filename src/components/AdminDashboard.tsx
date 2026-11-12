@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import {
   Activity,
   ArrowLeft,
@@ -71,10 +71,6 @@ const usageChartConfig = {
 const costChartConfig = {
   cost: { label: "Cost index", color: "var(--color-uncertain)" },
 } satisfies ChartConfig;
-
-export const Route = createFileRoute("/admin")({
-  component: AdminDashboard,
-});
 
 export function AdminDashboard() {
   const { t, i18n } = useTranslation();
