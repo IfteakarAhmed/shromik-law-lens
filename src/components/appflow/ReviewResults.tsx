@@ -2,7 +2,6 @@ import {
   ArrowDownToLine,
   ArrowLeft,
   ArrowUpRight,
-  BadgeCheck,
   Check,
   ClipboardCheck,
   FileText,
@@ -10,7 +9,7 @@ import {
   Printer,
   ShieldCheck,
 } from "lucide-react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Badge } from "@/components/Badge";
@@ -125,7 +124,7 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
       </Tabs>
 
       <div className="mt-7 print:hidden"><Disclaimer /></div>
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-background/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-lg sm:hidden print:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-background/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-lg sm:hidden print:hidden">
         <div className="mx-auto flex max-w-6xl gap-2">
           <Button type="button" variant="outline" onClick={onBackToUpload} className="min-w-0 flex-1 px-2 text-xs">
             <ArrowLeft aria-hidden="true" />{t("mockReview.report.backToUpload")}
@@ -272,8 +271,8 @@ function DutyColumn({ title, items, keyPrefix }: { title: string; items: string[
 
 function MemoPanel({ side, onOpenCitation }: { side: ReviewSide; onOpenCitation: (sectionId: RecordedLawSectionId) => void }) {
   const { t } = useTranslation();
-  const memoRef = useRef<HTMLElement>(null);
   const sourceIds = [...new Set(recordedFindings.flatMap((finding) => finding.sectionIds))];
+  const printSourceIds = sourceIds;
   return <section>
     <div className="mb-4 flex flex-wrap items-center justify-between gap-3 print:hidden">
       <div>
@@ -282,7 +281,7 @@ function MemoPanel({ side, onOpenCitation }: { side: ReviewSide; onOpenCitation:
       </div>
       <Button type="button" onClick={() => window.print()}><ArrowDownToLine aria-hidden="true" />{t("mockReview.memo.download")}</Button>
     </div>
-    <article ref={memoRef} className="memo-print rounded-lg border border-border bg-background p-5 sm:p-8">
+    <article className="memo-print rounded-lg border border-border bg-background p-5 sm:p-8">
       <div className="flex flex-wrap items-start justify-between gap-4 border-b border-border pb-5">
         <div>
           <div className="flex items-center gap-2 text-verified"><FileText aria-hidden="true" className="size-5" /><span className="text-xs font-semibold">ShromikAI</span></div>
@@ -315,9 +314,15 @@ function MemoPanel({ side, onOpenCitation }: { side: ReviewSide; onOpenCitation:
             </Button>;
           })}
         </div>
+        <ol className="mt-2 hidden list-decimal space-y-1 pl-5 text-xs leading-5 text-muted-foreground print:block">
+          {printSourceIds.map((sourceId) => {
+            const source = recordedLawSections[sourceId];
+            return <li key={sourceId}>{t("mockReview.citation.section", { number: source.section })} · {t("mockReview.law.act")} · {t(source.titleKey)} · {source.href}</li>;
+          })}
+        </ol>
       </div>
       <p className="mt-6 border-t border-border pt-4 text-xs leading-6 text-muted-foreground">{t("mockReview.memo.notReal")}</p>
-      <div className="mt-5 print:block hidden"><Disclaimer /></div>
+      <div className="mt-5 hidden print:block"><Disclaimer /></div>
     </article>
   </section>;
 }

@@ -328,4 +328,54 @@
       transform: none;
     }
   }
+
+  @media print {
+    @page {
+      margin: 14mm;
+    }
+
+    html,
+    body {
+      color-scheme: light;
+      background: white !important;
+      color: black !important;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    body * {
+      visibility: hidden !important;
+    }
+
+    .memo-print,
+    .memo-print * {
+      visibility: visible !important;
+    }
+
+    .memo-print {
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      border: 0 !important;
+      background: white !important;
+      color: black !important;
+      box-shadow: none !important;
+    }
+
+    .memo-print * {
+      break-inside: avoid;
+      color: black !important;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .memo-print mark {
+      background: transparent !important;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .memo-print .hidden.print\:block {
+      display: block !important;
+    }
+  }
 }
