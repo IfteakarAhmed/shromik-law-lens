@@ -85,14 +85,14 @@ export default function ContractScene({ alt, isActive, onReady, onFailure }: Con
   const [palette, setPalette] = useState<ScenePalette | null>(null);
   const [sceneReady, setSceneReady] = useState(false);
 
-  function markReady() {
-    setSceneReady(true);
-    onReady();
-  }
-
   useEffect(() => {
     setPalette(readScenePalette());
   }, []);
+
+  const markReady = () => {
+    setSceneReady(true);
+    onReady();
+  };
 
   return (
     <div
