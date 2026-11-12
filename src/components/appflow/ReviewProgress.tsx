@@ -49,9 +49,7 @@ export function ReviewProgress({ onComplete }: ReviewProgressProps) {
       aria-busy={activeStage < stages.length}
     >
       <div className="mb-7 flex flex-wrap items-center gap-3">
-        <Badge tone="verified">{t("mockReview.progress.eyebrow")}</Badge>
         <Badge tone="neutral">{t("mockReview.memo.generated")}</Badge>
-        <span className="text-xs text-muted-foreground">{t("mockReview.topline")}</span>
       </div>
       <h1 className="font-display text-3xl font-semibold leading-[1.35] text-foreground sm:text-4xl">
         {t("mockReview.progress.title")}

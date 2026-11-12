@@ -101,10 +101,6 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
       <header className="mb-7 flex flex-col gap-4 border-b border-border/70 pb-6 sm:flex-row sm:items-end sm:justify-between">
         <div className="min-w-0">
           <div className="mb-3 flex flex-wrap items-center gap-3">
-            <Badge tone="verified">
-              <span className="size-1.5 rounded-full bg-verified" aria-hidden="true" />
-              {t("mockReview.topline")}
-            </Badge>
             <Badge tone="neutral">{t("mockReview.memo.generated")}</Badge>
             <span className="text-xs text-muted-foreground">{t("mockReview.report.eyebrow")}</span>
           </div>
@@ -130,7 +126,7 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
         <p className="text-sm leading-7 text-muted-foreground">
           {t("mockReview.report.reviewScope")}
         </p>
-        <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-5">
+        <div className="mt-4 grid grid-cols-3 gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-5">
           <SummaryCell
             label={t("mockReview.report.criticalCount")}
             count={verifiedCounts.critical}

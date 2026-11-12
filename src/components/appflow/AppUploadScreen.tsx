@@ -51,12 +51,7 @@ export function AppUploadScreen({
     <section className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12">
       <div className="min-w-0">
         <div className="mb-7 flex flex-wrap items-center gap-3">
-          <Badge tone="verified">
-            <span className="size-1.5 rounded-full bg-verified" aria-hidden="true" />
-            {t("mockReview.upload.eyebrow")}
-          </Badge>
           <Badge tone="neutral">{t("mockReview.memo.generated")}</Badge>
-          <span className="text-xs text-muted-foreground">{t("mockReview.topline")}</span>
         </div>
         <h1 className="font-display text-3xl font-semibold leading-[1.35] text-foreground sm:text-4xl">
           {t("mockReview.upload.title")}

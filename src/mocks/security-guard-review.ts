@@ -111,13 +111,13 @@ export const recordedFindings = [
   },
   {
     id: "uniform-deduction",
-    titleKey: "mockReview.finding.uniformDeduction.title",
-    clauseKey: "mockReview.finding.uniformDeduction.clause",
-    explanationKey: "mockReview.finding.uniformDeduction.explanation",
+    titleKey: "mockReview.finding.uniformDeposit.title",
+    clauseKey: "mockReview.finding.uniformDeposit.clause",
+    explanationKey: "mockReview.finding.uniformDeposit.explanation",
     severity: "high",
     nonObvious: false,
     sectionIds: ["section125"],
-    modelKey: "mockReview.finding.uniformDeduction.model",
+    modelKey: "mockReview.finding.uniformDeposit.model",
   },
   {
     id: "probation-duration",
@@ -170,14 +170,14 @@ export const recordedFindings = [
     modelKey: "mockReview.finding.missingAppointmentLetter.model",
   },
   {
-    id: "unconditional-loss-deduction",
-    titleKey: "mockReview.finding.unconditionalLossDeduction.title",
-    clauseKey: "mockReview.finding.unconditionalLossDeduction.clause",
-    explanationKey: "mockReview.finding.unconditionalLossDeduction.explanation",
+    id: "unconditional-uniform-replacement",
+    titleKey: "mockReview.finding.unconditionalUniformReplacement.title",
+    clauseKey: "mockReview.finding.unconditionalUniformReplacement.clause",
+    explanationKey: "mockReview.finding.unconditionalUniformReplacement.explanation",
     severity: "medium",
     nonObvious: true,
     sectionIds: ["section125"],
-    modelKey: "mockReview.finding.unconditionalLossDeduction.model",
+    modelKey: "mockReview.finding.unconditionalUniformReplacement.model",
   },
 ] as const satisfies readonly RecordedFinding[];
 
