@@ -138,8 +138,7 @@ function Index() {
                   </Link>
                 </Button>
                 <Link
-                  to="/app"
-                  search={{ role: "worker" }}
+                  to="/demo-user"
                   className="inline-flex min-h-11 items-center gap-2 rounded-lg px-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {t("hero.workerDemo")}
@@ -148,8 +147,7 @@ function Index() {
               </div>
               <div className="mt-2 flex flex-wrap gap-2">
                 <Link
-                  to="/app"
-                  search={{ role: "hr" }}
+                  to="/demo-hr"
                   className="inline-flex min-h-11 items-center rounded-lg px-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {t("hero.hrDemo")}
@@ -158,8 +156,7 @@ function Index() {
                   ·
                 </span>
                 <Link
-                  to="/app"
-                  search={{ role: "admin" }}
+                  to="/demo-admin"
                   className="inline-flex min-h-11 items-center rounded-lg px-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {t("hero.adminDemo")}
