@@ -322,6 +322,12 @@ function Index() {
             <div className="mt-9 grid gap-4 md:grid-cols-3">
               {audiences.map((audience, index) => {
                 const Icon = audience.icon;
+                const demoPath =
+                  audience.role === "worker"
+                    ? "/demo-user"
+                    : audience.role === "hr"
+                      ? "/demo-hr"
+                      : "/demo-admin";
                 const demoKey =
                   audience.role === "worker"
                     ? "workerCta"
@@ -342,7 +348,7 @@ function Index() {
                         {t(`audience.${audience.key}Description`)}
                       </p>
                       <Button asChild variant="outline" className="mt-5 w-full rounded-lg">
-                        <Link to="/app" search={{ role: audience.role }}>
+                        <Link to={demoPath}>
                           {t(`audience.${demoKey}`)}
                           <ArrowUpRight aria-hidden="true" />
                         </Link>
