@@ -32,3 +32,4 @@ use the editor.
 ## Project rules
 
 - Keep ShromikAI frontend-only: static review examples belong in `src/mocks`, and user-facing translations belong in `src/locales` to honor the no-backend and no-persistence requirements.
+- Isolate the procedural Three.js scene behind a lazy-loaded component and retain its poster outside the canvas, so SSR, reduced-motion, WebGL failures, and low-bandwidth users always have a meaningful view.

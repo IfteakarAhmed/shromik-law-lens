@@ -7,13 +7,102 @@
   },
   "header": {
     "officialSources": "Bangladesh law · official sources",
-    "sampleReport": "Sample review"
+    "sampleReport": "Sample review",
+    "lowBandwidth": "Low bandwidth mode",
+    "lowBandwidthOn": "On",
+    "lowBandwidthOff": "Off"
   },
   "hero": {
-    "eyebrow": "Employment contracts, in your language",
-    "title": "Understand every term with confidence.",
-    "description": "Check your contract against Bangladesh labour law—with every legal source verified directly against government records.",
-    "scope": "No guesswork. No legal claims without a source."
+    "eyebrow": "Bangladesh employment contracts · verified law",
+    "title": "Your job contract, through the eyes of the law.",
+    "description": "Share your contract. In minutes, see where the risks are, which clauses work in your favour, and what to ask to change. Every legal citation is checked against an official source.",
+    "scope": "No guesswork. No legal claims without a source.",
+    "sceneAlt": "A floating glass contract sheet with an emerald seal on a verified clause and a broken red glass fragment.",
+    "sceneFallback": "Contract verification illustration",
+    "sampleButton": "Try a sample contract",
+    "workerDemo": "Demo as a worker",
+    "hrDemo": "Demo as HR",
+    "adminDemo": "Demo as admin"
+  },
+  "trust": {
+    "noInventedLaw": "Invented sections are never shown",
+    "privateOnDevice": "Your name and NID stay on your device",
+    "officialLink": "An official link for every citation"
+  },
+  "howItWorks": {
+    "eyebrow": "Four clear steps",
+    "title": "How it works",
+    "description": "From contract language to verified government sources—with clarity and privacy at every step.",
+    "upload": "Upload",
+    "privacy": "Privacy protection",
+    "review": "Find risks",
+    "verify": "Verify",
+    "stepNumber": "Step {{number}}"
+  },
+  "comparison": {
+    "eyebrow": "Why source checking matters",
+    "title": "Invented sections stop here.",
+    "description": "Every citation is checked against government law. When something cannot be verified, we say so.",
+    "plainAi": "A generic AI answer",
+    "plainCitation": "Bangladesh Labour Act, section 999",
+    "notFound": "Section not found",
+    "shromikAi": "ShromikAI verified source",
+    "verifiedQuote": "Where any worker in any establishment works on any day or week for more than the time fixed under this Act, the worker shall be entitled to an allowance for overtime at twice the ordinary rate of their basic wages and dearness allowance and any ad hoc or interim wages, if any.",
+    "translationLabel": "English translation for convenience",
+    "sourceLabel": "Official laws of Bangladesh · section 108",
+    "verifiedStatus": "Verified against an official source",
+    "sectionChip": "Section 108"
+  },
+  "roles": {
+    "worker": "Worker",
+    "hr": "HR",
+    "admin": "Admin"
+  },
+  "audience": {
+    "eyebrow": "Who ShromikAI is for",
+    "title": "For everyone in the employment relationship.",
+    "workers": "Workers",
+    "workersDescription": "Understand contract terms and find the law that supports your rights.",
+    "hr": "HR teams",
+    "hrDescription": "Review employment contract language and workplace policies.",
+    "ngo": "NGOs & lawyers",
+    "ngoDescription": "Connect people with reliable sources in official law.",
+    "workerCta": "Demo as a worker",
+    "hrCta": "Demo as HR",
+    "adminCta": "Demo as admin"
+  },
+  "limits": {
+    "eyebrow": "Clear boundaries",
+    "title": "We say what we know—and what we do not.",
+    "notAdvice": "This is not legal advice",
+    "uncertain": "If something is uncertain, we say so",
+    "description": "This tool helps explain contracts; it does not replace a lawyer. A claim that cannot be checked against an official source is never shown as certain."
+  },
+  "footer": {
+    "docs": "Documentation",
+    "app": "Sample review",
+    "copyright": "ShromikAI · for workers in Bangladesh"
+  },
+  "navigation": {
+    "backHome": "Back to home"
+  },
+  "docs": {
+    "title": "How verification works",
+    "description": "ShromikAI only shows sections found in the official laws of Bangladesh. If a source cannot be matched, the finding is clearly marked uncertain.",
+    "sourceTitle": "Official legal sources",
+    "sourceDescription": "Each section links directly to its relevant page in the Government of Bangladesh law repository.",
+    "limitsTitle": "Limits of this tool",
+    "limitsDescription": "Sample results are fictional. Understanding a real contract requires the complete document and advice from a qualified lawyer."
+  },
+  "demo": {
+    "eyebrow": "Fictional document · static example",
+    "title": "Sample contract review",
+    "description": "This is a fictional example to show the product concept. No contract is being uploaded or stored.",
+    "findingTitle": "Overtime pay clause",
+    "clause": "Overtime will be paid at 1.5 times the basic wage.",
+    "explanation": "Section 108 sets overtime pay at twice the ordinary rate of basic wages and other applicable wages. The full calculation is not clear in this contract sentence.",
+    "backHome": "Back to home",
+    "sampleLabel": "Not a real contract"
   },
   "review": {
     "sectionTitle": "Contract review",

@@ -1,4 +1,4 @@
-- [x] Define ShromikAI visual tokens, including dark default and light theme.
-- [x] Add Bangla-first i18n dictionaries and reusable accessible UI components.
-- [x] Replace the placeholder home screen with a responsive static contract-review mock.
-- [x] Run the app tests and verify the preview and build logs.
+- [ ] Rework the home-page hero to match the uploaded Bangla landing-page copy and procedural 3D contract scene.
+- [ ] Add the React-state low-bandwidth toggle, static poster fallback, and accessible reduced-motion/WebGL handling.
+- [ ] Build the four requested sections, trust strip, links, and responsive motion.
+- [ ] Verify scene and fallback states in the browser; rerun tests, typecheck, lint, and preview build checks.
