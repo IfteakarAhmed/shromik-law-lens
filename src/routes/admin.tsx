@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { AdminDashboard } from "@/components/AdminDashboard";
 
 import { AdminDashboard } from "@/components/AdminDashboard";
 
@@ -24,5 +25,10 @@ export const Route = createFileRoute("/admin")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: AdminDashboard,
+  component: AdminRoute,
 });
+
+function AdminRoute() {
+  const { section } = Route.useSearch();
+  return <AdminDashboard section={section} />;
+}

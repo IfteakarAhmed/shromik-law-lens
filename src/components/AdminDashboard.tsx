@@ -15,7 +15,7 @@ import {
   ShieldCheck,
   X,
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Bar,
@@ -33,7 +33,6 @@ import { Button } from "@/components/Button";
 import { EmptyState } from "@/components/EmptyState";
 import { GlassCard } from "@/components/GlassCard";
 import { ChartContainer, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart";
-import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -44,9 +43,14 @@ import {
   sampleUsageData,
 } from "@/mocks/demo-areas";
 
-type AdminSection = "queue" | "playbooks" | "keys" | "usage" | "trace";
+import type { AdminSection } from "@/routes/admin";
+
 type QueueDecision = "approved" | "rejected";
 type QueueStatus = "pending" | QueueDecision;
+
+interface AdminDashboardProps {
+  section: AdminSection;
+}
 
 interface DemoKey {
   readonly id: string;
@@ -72,9 +76,8 @@ const costChartConfig = {
   cost: { label: "Cost index", color: "var(--color-uncertain)" },
 } satisfies ChartConfig;
 
-export function AdminDashboard() {
-  const { t, i18n } = useTranslation();
-  const { section } = Route.useSearch();
+export function AdminDashboard({ section }: AdminDashboardProps) {
+  const { t } = useTranslation();
   const navigate = useNavigate({ from: "/admin" });
   const [selectedQueueId, setSelectedQueueId] = useState<string>(sampleReviewQueue[0]?.id ?? "");
   const [decisions, setDecisions] = useState<Record<string, QueueStatus>>({});
@@ -93,7 +96,6 @@ export function AdminDashboard() {
   const selectedQueue = sampleReviewQueue.find((item) => item.id === selectedQueueId) ?? null;
   const source = selectedQueue ? getQueueSource(selectedQueue.id) : null;
   const queuedStatus: QueueStatus = selectedQueue ? decisions[selectedQueue.id] ?? "pending" : "pending";
-  const queueItems = useMemo(() => sampleReviewQueue, []);
   const sectionLabel = (key: AdminSection) => t(`admin.${key === "queue" ? "reviewQueue" : key}`);
 
   const changeSection = (value: string) => {
@@ -195,7 +197,7 @@ export function AdminDashboard() {
                           </TableRow>
                         </TableHeader>
                         <TableBody>
-                          {queueItems.map((item) => {
+                          {sampleReviewQueue.map((item) => {
                             const status = decisions[item.id] ?? "pending";
                             const selected = selectedQueueId === item.id;
                             return (
@@ -282,7 +284,7 @@ export function AdminDashboard() {
                             <TableCell className="min-w-48 font-mono text-xs">{key.id === newKeyId && key.showOnce ? key.secret : "demo_sk_••••••••••••"}</TableCell>
                             <TableCell><Badge tone={key.status === "active" ? "verified" : "neutral"}>{key.status === "active" ? t("admin.keys.active") : t("admin.keys.revoked")}</Badge></TableCell>
                             <TableCell className="text-right">
-                              {key.status === "active" ? <Button type="button" variant="outline" size="sm" onClick={() => setKeys((current) => current.map((entry) => entry.id === key.id ? { ...entry, status: "revoked" } : entry))} aria-label={`${t("admin.keys.revoke")} ${key.name}`}>{t("admin.keys.revoke")}</Button> : null}
+                              {key.status === "active" ? <Button type="button" variant="outline" size="sm" onClick={() => setKeys((current) => current.map((entry) => entry.id === key.id ? { ...entry, status: "revoked", secret: "" } : entry))} aria-label={`${t("admin.keys.revoke")} ${key.name}`}>{t("admin.keys.revoke")}</Button> : null}
                             </TableCell>
                           </TableRow>
                         ))}
