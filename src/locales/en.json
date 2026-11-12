@@ -1,0 +1,79 @@
+{
+  "app": {
+    "name": "Shromik",
+    "ai": "AI",
+    "tagline": "Know your rights at work.",
+    "description": "Understand employment contracts against Bangladesh labour law—with verified government sources."
+  },
+  "header": {
+    "officialSources": "Bangladesh law · official sources",
+    "sampleReport": "Sample review"
+  },
+  "hero": {
+    "eyebrow": "Employment contracts, in your language",
+    "title": "Understand every term with confidence.",
+    "description": "Check your contract against Bangladesh labour law—with every legal source verified directly against government records.",
+    "scope": "No guesswork. No legal claims without a source."
+  },
+  "review": {
+    "sectionTitle": "Contract review",
+    "sampleDocument": "Sample employment contract",
+    "sampleLabel": "Fictional document",
+    "summaryTitle": "Review summary",
+    "clausesReviewed": "Clauses reviewed",
+    "verifiedFindings": "Verified sources",
+    "needsReview": "More information needed",
+    "findingsTitle": "Terms to review",
+    "findingsCount": "{{count}} findings",
+    "clauseLabel": "Contract term",
+    "analysisLabel": "Law check",
+    "noCitationNote": "There is not enough information to verify this against an official source.",
+    "allFindings": "All findings"
+  },
+  "finding": {
+    "dailyTitle": "Daily working hours",
+    "dailyExcerpt": "Work up to 10 hours per day.",
+    "dailyExplanation": "The usual daily limit is 8 hours; up to 10 hours may apply subject to the conditions in section 108.",
+    "overtimeTitle": "Overtime allowance",
+    "overtimeExcerpt": "Overtime will be paid at 1.5 times the basic wage.",
+    "overtimeExplanation": "Section 108 sets overtime pay at double the ordinary rate. The rate stated in this term is lower.",
+    "weeklyRestTitle": "Weekly rest day",
+    "weeklyRestExcerpt": "Rest days will be set according to the needs of the establishment.",
+    "weeklyRestExplanation": "This term does not specify the weekly rest day or its duration. A complete document is needed to assess it.
+  },
+  "citation": {
+    "labourAct": "Bangladesh Labour Act, 2006",
+    "section": "Section {{number}}",
+    "officialSource": "Official laws of Bangladesh",
+    "opensInNewTab": "Opens in a new tab"
+  },
+  "verification": {
+    "verified": "✓ Verified",
+    "uncertain": "? Uncertain",
+    "rejected": "✗ Rejected"
+  },
+  "severity": {
+    "critical": "Critical",
+    "high": "High risk",
+    "medium": "Review",
+    "low": "Low"
+  },
+  "language": {
+    "bangla": "বাংলা",
+    "english": "English",
+    "switchToBangla": "Switch to Bangla",
+    "switchToEnglish": "Switch to English"
+  },
+  "common": {
+    "disclaimer": "এটা আইনি পরামর্শ নয় / This is not legal advice",
+    "footerNote": "Before making a decision, check the official law and consult a qualified lawyer.",
+    "emptyTitle": "Nothing here yet",
+    "emptyDescription": "New information will appear here when available.",
+    "loading": "Loading",
+    "verifiedOnly": "Only law verified against official sources"
+  },
+  "stats": {
+    "foundIssues": "1 term needs revision",
+    "checkedAt": "Sample results"
+  }
+}

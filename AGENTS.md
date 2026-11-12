@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Keep ShromikAI frontend-only: static review examples belong in `src/mocks`, and user-facing translations belong in `src/locales` to honor the no-backend and no-persistence requirements.
