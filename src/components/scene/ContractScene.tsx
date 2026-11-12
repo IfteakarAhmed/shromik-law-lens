@@ -40,9 +40,9 @@ interface SceneErrorBoundaryState {
 }
 
 class SceneErrorBoundary extends Component<SceneErrorBoundaryProps, SceneErrorBoundaryState> {
-  state: SceneErrorBoundaryState = { hasError: false };
+  override state: SceneErrorBoundaryState = { hasError: false };
 
-  static override getDerivedStateFromError(): SceneErrorBoundaryState {
+  static getDerivedStateFromError(): SceneErrorBoundaryState {
     return { hasError: true };
   }
 

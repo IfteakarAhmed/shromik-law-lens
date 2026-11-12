@@ -79,7 +79,7 @@ function Index() {
             <ShieldCheck aria-hidden="true" className="size-4 text-verified" />
             <span>{t("header.officialSources")}</span>
           </div>
-          <ThemeToggle compact />
+          <ThemeToggle />
           <LanguageToggle />
         </div>
         <div className="col-span-2 row-start-2 flex items-center justify-end gap-2 lg:col-span-1 lg:col-start-2 lg:row-start-1">
@@ -153,7 +153,7 @@ function Index() {
                     </span>
                     <span className="truncate text-sm font-medium text-foreground">{t("comparison.verifiedStatus")}</span>
                   </div>
-                  <Badge tone="verified" className="shrink-0">✓ · ১০৮</Badge>
+                  <Badge tone="verified" className="shrink-0">{t("comparison.sectionChip")}</Badge>
                 </div>
               </div>
             </div>
@@ -181,7 +181,9 @@ function Index() {
                       <span className="relative z-10 flex size-11 items-center justify-center rounded-xl border border-verified/25 bg-background text-verified shadow-glass-panel">
                         <Icon aria-hidden="true" className="size-5" />
                       </span>
-                      <p className="mt-4 text-xs font-semibold text-muted-foreground">0{index + 1}</p>
+                      <p className="mt-4 text-xs font-semibold text-muted-foreground">
+                        {t("howItWorks.stepNumber", { number: index + 1 })}
+                      </p>
                       <h3 className="mt-1 font-display text-lg font-semibold text-foreground">
                         {t(`howItWorks.${step.key}`)}
                       </h3>

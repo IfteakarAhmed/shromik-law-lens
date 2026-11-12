@@ -36,7 +36,8 @@
     "upload": "Upload",
     "privacy": "Privacy protection",
     "review": "Find risks",
-    "verify": "Verify"
+    "verify": "Verify",
+    "stepNumber": "Step {{number}}"
   },
   "comparison": {
     "eyebrow": "Why source checking matters",
@@ -49,7 +50,8 @@
     "verifiedQuote": "Where any worker in any establishment works on any day or week for more than the time fixed under this Act, the worker shall be entitled to an allowance for overtime at twice the ordinary rate of their basic wages and dearness allowance and any ad hoc or interim wages, if any.",
     "translationLabel": "English translation for convenience",
     "sourceLabel": "Official laws of Bangladesh · section 108",
-    "verifiedStatus": "Verified against an official source"
+    "verifiedStatus": "Verified against an official source",
+    "sectionChip": "Section 108"
   },
   "roles": {
     "worker": "Worker",

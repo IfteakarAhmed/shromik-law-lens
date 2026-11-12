@@ -19,12 +19,6 @@ export interface ReviewFinding {
   readonly citations: readonly LawCitation[];
 }
 
-export const contractReview = {
-  clausesReviewed: 12,
-  verifiedSources: 2,
-  needsMoreInformation: 1,
-} as const;
-
 export const reviewFindings = [
   {
     id: "overtime-rate",
