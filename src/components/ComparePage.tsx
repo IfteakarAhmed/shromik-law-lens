@@ -7,6 +7,8 @@ import { Badge } from "@/components/Badge";
 import { Button } from "@/components/Button";
 import { CitationChip } from "@/components/CitationChip";
 import { GlassCard } from "@/components/GlassCard";
+import { LanguageToggle } from "@/components/LanguageToggle";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { comparisonFindings, plainAiClaims, summarizeClaimRejections } from "@/mocks/demo-areas";
 import { recordedLawSections } from "@/mocks/security-guard-review";
@@ -98,11 +100,15 @@ export function ComparePage() {
             {t("navigation.backHome")}
           </Link>
         </Button>
-        <span className="inline-flex items-center gap-2 text-sm font-semibold text-verified">
-          <ShieldCheck aria-hidden="true" className="size-4" />
-          {t("app.name")}
-          {t("app.ai")}
-        </span>
+        <div className="flex items-center gap-2">
+          <LanguageToggle />
+          <ThemeToggle />
+          <span className="inline-flex items-center gap-2 text-sm font-semibold text-verified">
+            <ShieldCheck aria-hidden="true" className="size-4" />
+            {t("app.name")}
+            {t("app.ai")}
+          </span>
+        </div>
       </header>
       <main className="mx-auto max-w-7xl px-gutter pb-16">
         <div className="mb-8 max-w-3xl space-y-3">

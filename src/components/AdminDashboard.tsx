@@ -82,9 +82,7 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
   const [decisions, setDecisions] = useState<Record<string, QueueStatus>>({});
   const [notes, setNotes] = useState("");
   const [queueMessage, setQueueMessage] = useState("");
-  const [playbookRules, setPlaybookRules] = useState<Record<string, string>>(() =>
-    Object.fromEntries(samplePlaybooks.map((playbook) => [playbook.id, t(playbook.rule)])),
-  );
+  const [playbookRules, setPlaybookRules] = useState<Record<string, string>>({});
   const [savedPlaybookId, setSavedPlaybookId] = useState<string | null>(null);
   const [keys, setKeys] = useState<DemoKey[]>([
     {
@@ -711,7 +709,7 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
                         </div>
                         <span className="inline-flex items-center gap-1 whitespace-nowrap text-xs tabular-nums text-muted-foreground">
                           <Clock3 aria-hidden="true" className="size-3.5" />
-                          {t("admin.trace.milliseconds", { count: stage.duration })}
+                {t("admin.trace.milliseconds", { count: stage.duration })}
                         </span>
                       </li>
                     ))}

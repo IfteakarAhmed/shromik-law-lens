@@ -55,7 +55,7 @@ export function summarizeClaimRejections(claims: readonly PlainAiClaim[]) {
   };
 }
 
-export const comparisonFindings = recordedFindings.slice(0, 4);
+export const comparisonFindings = recordedFindings;
 
 export const sampleReviewQueue = [
   {
