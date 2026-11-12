@@ -12,7 +12,7 @@ void i18n.use(initReactI18next).init({
   lng: "bn",
   fallbackLng: "bn",
   interpolation: { escapeValue: false },
-  initImmediate: false,
+  initAsync: false,
 });
 
 export default i18n;

@@ -3,7 +3,7 @@ import type { HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 interface GlassCardProps extends HTMLAttributes<HTMLElement> {
-  as?: "article" | "div" | "section";
+  as?: "article" | "aside" | "div" | "section";
   interactive?: boolean;
 }
 

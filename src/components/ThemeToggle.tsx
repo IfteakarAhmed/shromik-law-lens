@@ -9,7 +9,7 @@ export function ThemeToggle() {
   const { t } = useTranslation();
 
   useEffect(() => {
-    document.documentElement.dataset.theme = isLight ? "light" : "dark";
+    document.documentElement.dataset["theme"] = isLight ? "light" : "dark";
   }, [isLight]);
 
   return (
