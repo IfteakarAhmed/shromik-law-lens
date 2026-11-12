@@ -98,7 +98,7 @@ function ContractReviewApp() {
       </header>
 
       <main className="mx-auto max-w-7xl px-gutter pb-14 pt-7 sm:pb-20 sm:pt-10">
-        {screen === "upload" ? (
+          {screen === "upload" ? (
           <AppUploadScreen
             file={file}
             error={error}

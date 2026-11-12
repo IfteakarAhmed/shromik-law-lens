@@ -42,6 +42,7 @@ export function AppUploadScreen({
 }: AppUploadScreenProps) {
   const { t } = useTranslation();
   const inputRef = useRef<HTMLInputElement>(null);
+  const cameraInputRef = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
   const canAnalyze = file !== null || text.trim().length > 0;
 
@@ -96,6 +97,7 @@ export function AppUploadScreen({
               onChange={(event) => pickFile(event.currentTarget.files?.item(0) ?? undefined)}
             />
             <input
+              ref={cameraInputRef}
               className="sr-only"
               type="file"
               accept="image/*"
@@ -148,12 +150,7 @@ export function AppUploadScreen({
                   <Button
                     type="button"
                     variant="outline"
-                    onClick={() => {
-                      const camera = document.querySelector<HTMLInputElement>(
-                        'input[aria-label="' + t("mockReview.upload.camera") + '"]',
-                      );
-                      camera?.click();
-                    }}
+                  onClick={() => cameraInputRef.current?.click()}
                   >
                     <Camera aria-hidden="true" />
                     {t("mockReview.upload.camera")}

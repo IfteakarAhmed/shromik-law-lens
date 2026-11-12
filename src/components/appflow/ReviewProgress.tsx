@@ -16,18 +16,22 @@ export function ReviewProgress({ onComplete }: ReviewProgressProps) {
   const [activeStage, setActiveStage] = useState(0);
 
   useEffect(() => {
+    let completionTimer: number | undefined;
     const timer = window.setInterval(() => {
       setActiveStage((stage) => {
         if (stage >= stages.length - 1) {
           window.clearInterval(timer);
-          window.setTimeout(onComplete, 420);
+          completionTimer = window.setTimeout(onComplete, 420);
           return stages.length;
         }
         return stage + 1;
       });
     }, 680);
 
-    return () => window.clearInterval(timer);
+    return () => {
+      window.clearInterval(timer);
+      if (completionTimer !== undefined) window.clearTimeout(completionTimer);
+    };
   }, [onComplete, stages.length]);
 
   return (
