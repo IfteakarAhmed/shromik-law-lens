@@ -1,0 +1,4 @@
+- [x] Define ShromikAI visual tokens, including dark default and light theme.
+- [x] Add Bangla-first i18n dictionaries and reusable accessible UI components.
+- [x] Replace the placeholder home screen with a responsive static contract-review mock.
+- [x] Run the app tests and verify the preview and build logs.
