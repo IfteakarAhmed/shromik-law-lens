@@ -23,6 +23,8 @@ import { Badge } from "@/components/Badge";
 import { Button } from "@/components/Button";
 import { EmptyState } from "@/components/EmptyState";
 import { GlassCard } from "@/components/GlassCard";
+import { LanguageToggle } from "@/components/LanguageToggle";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { ChartContainer, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart";
 import {
   Table,
@@ -52,7 +54,8 @@ interface AdminDashboardProps {
 
 interface DemoKey {
   readonly id: string;
-  readonly name: string;
+  readonly nameKey: string;
+  readonly nameCount?: number;
   readonly secret: string;
   readonly status: "active" | "revoked";
   readonly showOnce: boolean;
@@ -86,14 +89,14 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
   const [keys, setKeys] = useState<DemoKey[]>([
     {
       id: "key-review",
-      name: t("admin.keys.reviewKey"),
+      nameKey: "admin.keys.reviewKey",
       secret: "demo_sk_sample_review_01",
       status: "active",
       showOnce: false,
     },
     {
       id: "key-reports",
-      name: t("admin.keys.reportsKey"),
+      nameKey: "admin.keys.reportsKey",
       secret: "demo_sk_sample_reports_02",
       status: "active",
       showOnce: false,
@@ -125,6 +128,14 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
       value === "usage" ||
       value === "trace"
     ) {
+      if (value !== "keys" && newKeyId) {
+        setKeys((current) =>
+          current.map((key) =>
+            key.id === newKeyId ? { ...key, secret: "", showOnce: false } : key,
+          ),
+        );
+        setNewKeyId(null);
+      }
       void navigate({ search: { section: value } });
     }
   };
@@ -144,7 +155,8 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
     const id = `demo-${keys.length + 1}`;
     const key: DemoKey = {
       id,
-      name: `${t("admin.keys.newKeyName")} ${keys.length + 1}`,
+      nameKey: "admin.keys.newKeyName",
+      nameCount: keys.length + 1,
       secret: `demo_sk_sample_${String(keys.length + 1).padStart(2, "0")}_not_live`,
       status: "active",
       showOnce: true,
@@ -174,11 +186,15 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
             {t("navigation.backHome")}
           </Link>
         </Button>
-        <span className="inline-flex items-center gap-2 text-sm font-semibold text-verified">
-          <ShieldCheck aria-hidden="true" className="size-4" />
-          {t("app.name")}
-          {t("app.ai")}
-        </span>
+        <div className="flex items-center gap-2">
+          <LanguageToggle />
+          <ThemeToggle />
+          <span className="inline-flex items-center gap-2 text-sm font-semibold text-verified">
+            <ShieldCheck aria-hidden="true" className="size-4" />
+            {t("app.name")}
+            {t("app.ai")}
+          </span>
+        </div>
       </header>
 
       <div className="mx-auto max-w-[1600px] px-gutter pb-12">
@@ -483,7 +499,9 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
                       <TableBody>
                         {keys.map((key) => (
                           <TableRow key={key.id}>
-                            <TableCell className="min-w-32 font-medium">{key.name}</TableCell>
+                            <TableCell className="min-w-32 font-medium">
+                              {t(key.nameKey, { count: key.nameCount })}
+                            </TableCell>
                             <TableCell className="min-w-48 font-mono text-xs">
                               {t("admin.keys.maskedValue")}
                             </TableCell>
@@ -515,7 +533,7 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
                                     );
                                     if (newKeyId === key.id) setNewKeyId(null);
                                   }}
-                                  aria-label={`${t("admin.keys.revoke")} ${key.name}`}
+                              aria-label={`${t("admin.keys.revoke")} ${t(key.nameKey, { count: key.nameCount })}`}
                                 >
                                   {t("admin.keys.revoke")}
                                 </Button>
