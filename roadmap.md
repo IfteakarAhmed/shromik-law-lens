@@ -1,4 +1,4 @@
-- [x] Rework the home-page hero to match the uploaded Bangla landing-page copy and procedural 3D contract scene.
-- [x] Add the React-state low-bandwidth toggle, static poster fallback, and accessible reduced-motion/WebGL handling.
-- [x] Build the four requested sections, trust strip, links, and responsive motion.
-- [x] Verify scene and fallback states in the browser; rerun tests, typecheck, lint, and preview build checks.
+- [ ] Build the client-only upload, validation, camera, role selection, and timed review flow.
+- [ ] Add static security-guard contract findings, citation details, reasoning sheets, proposed clauses, checklist, and printable memo.
+- [ ] Add Bangla and English text for the new flow and keep all user content in locale files.
+- [ ] Verify uploads, progress, all tabs/sheets, print behavior, and mobile layout; run tests, typecheck, lint, and preview checks.
