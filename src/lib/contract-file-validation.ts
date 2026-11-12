@@ -8,11 +8,13 @@ export function validateContractFile(
   if (file.size > MAX_CONTRACT_FILE_BYTES) return "tooLarge";
 
   const extension = file.name.split(".").pop()?.toLocaleLowerCase();
-  const supported =
+  const mimeSupported =
     file.type === "application/pdf" ||
     file.type.startsWith("image/") ||
     file.type === "text/plain" ||
-    ["pdf", "txt", "md", "markdown"].includes(extension ?? "");
+    file.type === "text/markdown";
+  const extensionSupported = ["pdf", "txt", "md", "markdown"].includes(extension ?? "");
+  const supported = mimeSupported || (file.type.length === 0 && extensionSupported);
 
   return supported ? null : "unsupportedType";
 }

@@ -280,12 +280,6 @@
         "explanation": "Section 125 limits wage deductions to specified authorized grounds. This term gives no basis for an automatic monthly uniform deduction.",
         "model": "Wage deduction rule checker"
       },
-      "uniformDamage": {
-        "title": "Uniform cost deducted without proof of loss",
-        "clause": "The full listed price is deducted if a uniform is not returned or is damaged.",
-        "explanation": "For a loss deduction, the law requires direct responsibility through the worker’s neglect or default. A full deduction without checking cause or responsibility is overly broad.",
-        "model": "Deduction terms checker"
-      },
       "probationDuration": {
         "title": "Nine-month probation period",
         "clause": "The first nine months after hiring count as a probation period.",
