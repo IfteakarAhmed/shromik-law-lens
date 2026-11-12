@@ -2,3 +2,6 @@
 - [x] Add static security-guard contract findings, citation details, reasoning sheets, proposed clauses, checklist, and printable memo.
 - [x] Add Bangla and English text for the new flow and keep all user content in locale files.
 - [x] Verify uploads, progress, all tabs/sheets, print behavior, mobile layout, tests, typecheck, lint, and production build.
+- [ ] Add a bilingual `/app/compare` view that computes rejected-claim totals from clearly labelled sample data and adapts to mobile tabs.
+- [ ] Add a bilingual `/admin` sample dashboard with local-only review, playbook, demo-key, usage-chart, and trace interactions.
+- [ ] Add `/demo-user`, `/demo-hr`, and `/demo-admin` navigation routes, focused tests, and verify the new screens.
