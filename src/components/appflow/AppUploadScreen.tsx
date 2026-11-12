@@ -55,6 +55,7 @@ export function AppUploadScreen({
             <span className="size-1.5 rounded-full bg-verified" aria-hidden="true" />
             {t("mockReview.upload.eyebrow")}
           </Badge>
+          <Badge tone="neutral">{t("mockReview.memo.generated")}</Badge>
           <span className="text-xs text-muted-foreground">{t("mockReview.topline")}</span>
         </div>
         <h1 className="font-display text-3xl font-semibold leading-[1.35] text-foreground sm:text-4xl">

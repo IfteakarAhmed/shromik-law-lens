@@ -101,6 +101,7 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
               <span className="size-1.5 rounded-full bg-verified" aria-hidden="true" />
               {t("mockReview.topline")}
             </Badge>
+          <Badge tone="neutral">{t("mockReview.memo.generated")}</Badge>
             <span className="text-xs text-muted-foreground">{t("mockReview.report.eyebrow")}</span>
           </div>
           <h1 className="font-display text-3xl font-semibold leading-[1.35] text-foreground sm:text-4xl">
@@ -310,13 +311,10 @@ function FindingCard({
               key={sectionId}
               citation={{
                 section: section.section,
-                titleKey: "mockReview.law.act",
+              titleKey: section.titleKey,
                 href: section.href,
               }}
-              onClick={(event) => {
-                event.preventDefault();
-                onOpenCitation(sectionId);
-              }}
+            onClick={() => onOpenCitation(sectionId)}
             />
           );
         })}

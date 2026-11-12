@@ -209,7 +209,7 @@
       "analyze": "Analyze",
       "analyzing": "Running sample review…",
       "privacyTitle": "Personal information protection",
-      "privacyNote": "Names, NIDs, and phone numbers are removed on your device",
+      "privacyNote": "Names, NIDs, and phone numbers are not read or sent in this sample",
       "privacyDetail": "This fixed demo does not read, redact, send, or store any file or pasted text.",
       "errorTooLarge": "This file is over 10 MB. Choose a smaller file.",
       "errorUnsupported": "This file type is not supported. Choose a PDF, image, or TXT file.",
@@ -220,22 +220,22 @@
       "eyebrow": "Sample review",
       "title": "Checking contract terms",
       "description": "This is sample progress; the text you added is not being analyzed.",
-      "stages": [
-        "Read",
-        "Remove personal details",
-        "Classify clauses",
-        "Find law",
-        "Analyze risks",
-        "Verify"
-      ],
-      "statuses": [
-        "Opening sample document",
-        "Masking identity details",
-        "Separating contract terms",
-        "Looking up official law",
-        "Comparing risk language",
-        "Checking sources and quotations"
-      ],
+      "stages": {
+        "reading": "Read",
+        "redacting": "Remove personal details",
+        "classifying": "Classify clauses",
+        "searching": "Find law",
+        "analyzing": "Analyze risks",
+        "verifying": "Verify"
+      },
+      "statuses": {
+        "reading": "Opening sample document",
+        "redacting": "Sample step: masking personal information",
+        "classifying": "Separating contract terms",
+        "searching": "Looking up official law",
+        "analyzing": "Comparing risk language",
+        "verifying": "Checking sources and quotations"
+      },
       "stageDone": "Done",
       "stageCurrent": "In progress",
       "stageWaiting": "Waiting"

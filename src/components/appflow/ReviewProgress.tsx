@@ -11,8 +11,9 @@ interface ReviewProgressProps {
 
 export function ReviewProgress({ onComplete }: ReviewProgressProps) {
   const { t } = useTranslation();
-  const stages = t("mockReview.progress.stages", { returnObjects: true }) as string[];
-  const statuses = t("mockReview.progress.statuses", { returnObjects: true }) as string[];
+  const stageKeys = ["reading", "redacting", "classifying", "searching", "analyzing", "verifying"] as const;
+  const stages = stageKeys.map((stage) => t(`mockReview.progress.stages.${stage}`));
+  const statuses = stageKeys.map((stage) => t(`mockReview.progress.statuses.${stage}`));
   const [activeStage, setActiveStage] = useState(0);
 
   useEffect(() => {
@@ -42,6 +43,7 @@ export function ReviewProgress({ onComplete }: ReviewProgressProps) {
     >
       <div className="mb-7 flex flex-wrap items-center gap-3">
         <Badge tone="verified">{t("mockReview.progress.eyebrow")}</Badge>
+        <Badge tone="neutral">{t("mockReview.memo.generated")}</Badge>
         <span className="text-xs text-muted-foreground">{t("mockReview.topline")}</span>
       </div>
       <h1 className="font-display text-3xl font-semibold leading-[1.35] text-foreground sm:text-4xl">
@@ -103,10 +105,10 @@ export function ReviewProgress({ onComplete }: ReviewProgressProps) {
           })}
         </ol>
         {activeStage >= stages.length ? (
-          <li className="flex items-center gap-3 border-t border-border px-3 py-4 text-sm font-medium text-verified sm:px-5">
+          <div className="flex items-center gap-3 border-t border-border px-3 py-4 text-sm font-medium text-verified sm:px-5">
             <ShieldCheck aria-hidden="true" className="size-5" />
             {t("mockReview.progress.stageDone")}
-          </li>
+          </div>
         ) : null}
       </GlassCard>
     </section>
