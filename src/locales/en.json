@@ -38,7 +38,7 @@
     "dailyExplanation": "The usual daily limit is 8 hours; up to 10 hours may apply subject to the conditions in section 108.",
     "overtimeTitle": "Overtime allowance",
     "overtimeExcerpt": "Overtime will be paid at 1.5 times the basic wage.",
-    "overtimeExplanation": "Section 108 sets overtime pay at double the ordinary rate. The rate stated in this term is lower.",
+    "overtimeExplanation": "Section 108 sets overtime pay at double the ordinary rate of basic wages, dearness allowance and any applicable ad hoc or interim wages. A term listing only 1.5 times basic wages does not make the full rate clear.",
     "weeklyRestTitle": "Weekly rest day",
     "weeklyRestExcerpt": "Rest days will be set according to the needs of the establishment.",
     "weeklyRestExplanation": "This term does not specify the weekly rest day or its duration. A complete document is needed to assess it."
@@ -69,6 +69,14 @@
   "theme": {
     "switchToLight": "Switch to light theme",
     "switchToDark": "Switch to dark theme"
+  },
+  "errors": {
+    "notFoundTitle": "Page not found",
+    "notFoundDescription": "The page you are looking for does not exist or has been moved.",
+    "goHome": "Go home",
+    "pageDidNotLoad": "This page did not load",
+    "tryAgainDescription": "Something went wrong. Try again or head back home.",
+    "tryAgain": "Try again"
   },
   "common": {
     "disclaimer": "এটা আইনি পরামর্শ নয় / This is not legal advice",
