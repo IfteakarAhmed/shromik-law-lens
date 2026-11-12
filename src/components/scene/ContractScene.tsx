@@ -147,6 +147,7 @@ function ContractArrangement({
   const beam = useRef<THREE.Mesh>(null);
   const brokenCitation = useRef<THREE.Group>(null);
   const firstFrameReported = useRef(false);
+  const seal = useRef<THREE.Group>(null);
 
   useFrame(({ clock, pointer }, delta) => {
     if (!firstFrameReported.current) {
@@ -186,6 +187,12 @@ function ContractArrangement({
       brokenCitation.current.position.y = 1.18 + Math.sin(clock.elapsedTime * 0.28) * 0.07;
       brokenCitation.current.rotation.z = Math.sin(clock.elapsedTime * 0.35) * 0.025;
     }
+
+    if (seal.current) {
+      const stamp = Math.max(0, 1 - Math.abs(Math.sin(clock.elapsedTime * 0.22)) * 3.5);
+      seal.current.scale.setScalar(0.88 + stamp * 0.16);
+      seal.current.position.z = 0.97 + stamp * 0.16;
+    }
   });
 
   const stopPointerEvent = (event: ThreeEvent<PointerEvent>) => event.stopPropagation();
@@ -224,7 +231,11 @@ function ContractArrangement({
       <Float speed={0.37} floatIntensity={0.12} rotationIntensity={0.03}>
         <ClauseCard position={[-1.25, -1.03, 0.54]} rotation={0.055} color={palette.uncertain} />
       </Float>
-      <VerificationSeal position={[-0.15, 0.08, 1.03]} color={palette.verified} />
+      <VerificationSeal
+        ref={seal}
+        position={[-0.15, 0.08, 1.03]}
+        color={palette.verified}
+      />
       <BrokenCitation palette={palette} groupRef={brokenCitation} />
     </group>
   );
@@ -294,10 +305,18 @@ function ClauseCard({
   );
 }
 
-function VerificationSeal({ position, color }: { position: [number, number, number]; color: string }) {
+interface VerificationSealProps {
+  position: [number, number, number];
+  color: string;
+}
+
+const VerificationSeal = React.forwardRef<THREE.Group, VerificationSealProps>(function VerificationSeal(
+  { position, color },
+  ref,
+) {
   return (
     <Float speed={0.28} floatIntensity={0.08} rotationIntensity={0.02}>
-      <group position={position}>
+      <group ref={ref} position={position}>
         <mesh castShadow>
           <cylinderGeometry args={[0.36, 0.4, 0.1, 10]} />
           <meshPhysicalMaterial
@@ -322,7 +341,7 @@ function VerificationSeal({ position, color }: { position: [number, number, numb
       </group>
     </Float>
   );
-}
+});
 
 function BrokenCitation({
   palette,
