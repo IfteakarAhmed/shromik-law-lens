@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AdminDashboard } from "@/components/AdminDashboard";
 
-import { AdminDashboard } from "@/components/AdminDashboard";
 
-export type AdminSection = "queue" | "playbooks" | "keys" | "usage" | "trace";
+import { AdminDashboard } from "@/components/AdminDashboard";
+import type { AdminSection } from "@/mocks/demo-areas";
 
 export const Route = createFileRoute("/admin")({
   validateSearch: (search: Record<string, unknown>): { section: AdminSection } => ({

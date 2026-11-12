@@ -42,8 +42,7 @@ import {
   sampleTraceStages,
   sampleUsageData,
 } from "@/mocks/demo-areas";
-
-import type { AdminSection } from "@/routes/admin";
+import type { AdminSection } from "@/mocks/demo-areas";
 
 type QueueDecision = "approved" | "rejected";
 type QueueStatus = "pending" | QueueDecision;
@@ -96,7 +95,16 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
   const selectedQueue = sampleReviewQueue.find((item) => item.id === selectedQueueId) ?? null;
   const source = selectedQueue ? getQueueSource(selectedQueue.id) : null;
   const queuedStatus: QueueStatus = selectedQueue ? decisions[selectedQueue.id] ?? "pending" : "pending";
-  const sectionLabel = (key: AdminSection) => t(`admin.${key === "queue" ? "reviewQueue" : key}`);
+  const sectionLabel = (key: AdminSection) => {
+    const labelKey: Record<AdminSection, string> = {
+      queue: "reviewQueue",
+      playbooks: "navPlaybooks",
+      keys: "apiKeys",
+      usage: "navUsage",
+      trace: "navTrace",
+    };
+    return t(`admin.${labelKey[key]}`);
+  };
 
   const changeSection = (value: string) => {
     if (value === "queue" || value === "playbooks" || value === "keys" || value === "usage" || value === "trace") {
@@ -281,10 +289,10 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
                         {keys.map((key) => (
                           <TableRow key={key.id}>
                             <TableCell className="min-w-32 font-medium">{key.name}</TableCell>
-                            <TableCell className="min-w-48 font-mono text-xs">{key.id === newKeyId && key.showOnce ? key.secret : "demo_sk_••••••••••••"}</TableCell>
+                            <TableCell className="min-w-48 font-mono text-xs">{t("admin.keys.maskedValue")}</TableCell>
                             <TableCell><Badge tone={key.status === "active" ? "verified" : "neutral"}>{key.status === "active" ? t("admin.keys.active") : t("admin.keys.revoked")}</Badge></TableCell>
                             <TableCell className="text-right">
-                              {key.status === "active" ? <Button type="button" variant="outline" size="sm" onClick={() => setKeys((current) => current.map((entry) => entry.id === key.id ? { ...entry, status: "revoked", secret: "" } : entry))} aria-label={`${t("admin.keys.revoke")} ${key.name}`}>{t("admin.keys.revoke")}</Button> : null}
+                              {key.status === "active" ? <Button type="button" variant="outline" size="sm" onClick={() => { setKeys((current) => current.map((entry) => entry.id === key.id ? { ...entry, status: "revoked", secret: "", showOnce: false } : entry)); if (newKeyId === key.id) setNewKeyId(null); }} aria-label={`${t("admin.keys.revoke")} ${key.name}`}>{t("admin.keys.revoke")}</Button> : null}
                             </TableCell>
                           </TableRow>
                         ))}
@@ -295,7 +303,7 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
                     const created = keys.find((key) => key.id === newKeyId);
                     if (!created || !created.showOnce) return null;
                     return <div className="m-4 rounded-md border border-uncertain/30 bg-uncertain/5 p-4">
-                      <div className="flex flex-wrap items-center justify-between gap-3"><div><p className="text-sm font-semibold text-uncertain">{t("admin.keys.created")}</p><p className="mt-2 break-all font-mono text-sm text-foreground">{created.secret}</p></div><div className="flex gap-2"><Button type="button" variant="outline" onClick={() => void copyDemoKey(created.secret)}><Copy aria-hidden="true" />{copiedKey ? t("admin.keys.copied") : t("admin.keys.copy")}</Button><Button type="button" variant="ghost" onClick={() => { setKeys((current) => current.map((key) => key.id === created.id ? { ...key, showOnce: false } : key)); setNewKeyId(null); }}>{t("admin.keys.dismiss")}</Button></div></div>
+                      <div className="flex flex-wrap items-center justify-between gap-3"><div><p className="text-sm font-semibold text-uncertain">{t("admin.keys.created")}</p><p className="mt-2 break-all font-mono text-sm text-foreground">{created.secret}</p></div><div className="flex gap-2"><Button type="button" variant="outline" onClick={() => void copyDemoKey(created.secret)}><Copy aria-hidden="true" />{copiedKey ? t("admin.keys.copied") : t("admin.keys.copy")}</Button><Button type="button" variant="ghost" onClick={() => { setKeys((current) => current.map((key) => key.id === created.id ? { ...key, secret: "", showOnce: false } : key)); setNewKeyId(null); }}>{t("admin.keys.dismiss")}</Button></div></div>
                     </div>;
                   })() : null}
                 </GlassCard>
@@ -323,11 +331,11 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
                         {index < sampleTraceStages.length - 1 ? <span aria-hidden="true" className="absolute bottom-0 left-[1.34rem] top-9 w-px bg-border" /> : null}
                         <span className="relative z-10 flex size-11 items-center justify-center rounded-full border border-verified/30 bg-verified/10 text-verified"><CheckCircle2 aria-hidden="true" className="size-5" /></span>
                         <div className="min-w-0"><h4 className="font-medium text-foreground">{t(stage.labelKey)}</h4><p className="text-xs text-muted-foreground">{t("admin.trace.stage")} {index + 1}</p></div>
-                        <span className="inline-flex items-center gap-1 whitespace-nowrap text-xs tabular-nums text-muted-foreground"><Clock3 aria-hidden="true" className="size-3.5" />{stage.duration} ms</span>
+                        <span className="inline-flex items-center gap-1 whitespace-nowrap text-xs tabular-nums text-muted-foreground"><Clock3 aria-hidden="true" className="size-3.5" />{t("admin.trace.milliseconds", { count: stage.duration })}</span>
                       </li>
                     ))}
                   </ol>
-                  <div className="mt-4 flex items-center justify-between border-t border-border pt-4 text-sm"><span className="font-semibold text-foreground">{t("admin.trace.total")}</span><span className="font-mono tabular-nums text-verified">{sampleTraceStages.reduce((sum, stage) => sum + stage.duration, 0)} ms</span></div>
+                  <div className="mt-4 flex items-center justify-between border-t border-border pt-4 text-sm"><span className="font-semibold text-foreground">{t("admin.trace.total")}</span><span className="font-mono tabular-nums text-verified">{t("admin.trace.milliseconds", { count: sampleTraceStages.reduce((sum, stage) => sum + stage.duration, 0) })}</span></div>
                 </GlassCard>
               </section>
             ) : null}

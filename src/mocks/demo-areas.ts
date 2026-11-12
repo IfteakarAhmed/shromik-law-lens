@@ -1,5 +1,7 @@
 import { recordedFindings, recordedLawSections } from "@/mocks/security-guard-review";
 
+export type AdminSection = "queue" | "playbooks" | "keys" | "usage" | "trace";
+
 export type PlainClaimStatus = "rejected" | "verified";
 
 export interface PlainAiClaim {
