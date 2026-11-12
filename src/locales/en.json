@@ -19,6 +19,8 @@
     "sectionTitle": "Contract review",
     "sampleDocument": "Sample employment contract",
     "sampleLabel": "Fictional document",
+    "viewReport": "View sample review",
+    "languageLabel": "Language",
     "summaryTitle": "Review summary",
     "clausesReviewed": "Clauses reviewed",
     "verifiedFindings": "Verified sources",
@@ -39,7 +41,7 @@
     "overtimeExplanation": "Section 108 sets overtime pay at double the ordinary rate. The rate stated in this term is lower.",
     "weeklyRestTitle": "Weekly rest day",
     "weeklyRestExcerpt": "Rest days will be set according to the needs of the establishment.",
-    "weeklyRestExplanation": "This term does not specify the weekly rest day or its duration. A complete document is needed to assess it.
+    "weeklyRestExplanation": "This term does not specify the weekly rest day or its duration. A complete document is needed to assess it."
   },
   "citation": {
     "labourAct": "Bangladesh Labour Act, 2006",

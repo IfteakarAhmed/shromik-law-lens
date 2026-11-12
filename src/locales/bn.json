@@ -19,6 +19,8 @@
     "sectionTitle": "চুক্তি পর্যালোচনা",
     "sampleDocument": "নমুনা কর্মচুক্তি",
     "sampleLabel": "কাল্পনিক নথি",
+    "viewReport": "নমুনা পর্যালোচনা দেখুন",
+    "languageLabel": "ভাষা",
     "summaryTitle": "পর্যালোচনার সারাংশ",
     "clausesReviewed": "পর্যালোচিত শর্ত",
     "verifiedFindings": "যাচাইকৃত সূত্র",
@@ -31,7 +33,7 @@
     "allFindings": "সব বিষয়"
   },
   "finding": {
-    "dailyTitle": "Өдөр тутмын ажлын цаг",
+    "dailyTitle": "দৈনিক কর্মঘণ্টা",
     "dailyExcerpt": "দিনে সর্বোচ্চ ১০ ঘণ্টা কাজ করতে হবে।",
     "dailyExplanation": "আইনে সাধারণ দৈনিক কর্মসময় ৮ ঘণ্টা; তবে ধারা ১০৮-এর শর্ত সাপেক্ষে ১০ ঘণ্টা পর্যন্ত হতে পারে।",
     "overtimeTitle": "অধিকাল ভাতা",
