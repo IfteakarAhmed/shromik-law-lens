@@ -181,7 +181,11 @@ function ContractArrangement({
       }
     }
 
-    if (brokenCitation.current) brokenCitation.current.rotation.z = Math.sin(clock.elapsedTime * 0.35) * 0.025;
+    if (brokenCitation.current) {
+      brokenCitation.current.position.x = 2.12 + Math.sin(clock.elapsedTime * 0.16) * 0.14;
+      brokenCitation.current.position.y = 1.18 + Math.sin(clock.elapsedTime * 0.28) * 0.07;
+      brokenCitation.current.rotation.z = Math.sin(clock.elapsedTime * 0.35) * 0.025;
+    }
   });
 
   const stopPointerEvent = (event: ThreeEvent<PointerEvent>) => event.stopPropagation();

@@ -21,6 +21,8 @@ export function ScrollReveal({
 
     if (typeof IntersectionObserver === "undefined") return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     element.dataset["reveal"] = "pending";
     const observer = new IntersectionObserver(
       (entries) => {
