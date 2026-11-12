@@ -13,7 +13,7 @@ import en from "@/locales/en.json";
 function readTranslation(dictionary: unknown, key: string): unknown {
   return key.split(".").reduce<unknown>((value, part) => {
     if (typeof value !== "object" || value === null || !(part in value)) return undefined;
-    return (value as Record<string, unknown>)[part];
+    return Reflect.get(value, part) as unknown;
   }, dictionary);
 }
 

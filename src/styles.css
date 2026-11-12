@@ -355,6 +355,10 @@
       visibility: visible !important;
     }
 
+    body .memo-print .print\:hidden {
+      display: none !important;
+    }
+
     .memo-print {
       position: absolute;
       inset: 0 auto auto 0;
