@@ -117,8 +117,18 @@ export const sampleUsageData = [
 export const sampleTraceStages = [
   { id: "read", labelKey: "mockReview.progress.stages.reading", duration: 820, offset: 0 },
   { id: "redact", labelKey: "mockReview.progress.stages.redacting", duration: 340, offset: 820 },
-  { id: "classify", labelKey: "mockReview.progress.stages.classifying", duration: 510, offset: 1160 },
-  { id: "retrieve", labelKey: "mockReview.progress.stages.searching", duration: 1240, offset: 1670 },
+  {
+    id: "classify",
+    labelKey: "mockReview.progress.stages.classifying",
+    duration: 510,
+    offset: 1160,
+  },
+  {
+    id: "retrieve",
+    labelKey: "mockReview.progress.stages.searching",
+    duration: 1240,
+    offset: 1670,
+  },
   { id: "analyze", labelKey: "mockReview.progress.stages.analyzing", duration: 960, offset: 2910 },
   { id: "verify", labelKey: "mockReview.progress.stages.verifying", duration: 680, offset: 3870 },
 ] as const;

@@ -15,9 +15,16 @@ export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
       { title: "পরিচালনা কেন্দ্র · ShromikAI" },
-      { name: "description", content: "শ্রমিকAI-র মানব পর্যালোচনা, নীতিমালা, নমুনা ব্যবহার ও বিশ্লেষণ ধাপের নমুনা পরিচালনা কেন্দ্র।" },
+      {
+        name: "description",
+        content:
+          "শ্রমিকAI-র মানব পর্যালোচনা, নীতিমালা, নমুনা ব্যবহার ও বিশ্লেষণ ধাপের নমুনা পরিচালনা কেন্দ্র।",
+      },
       { property: "og:title", content: "পরিচালনা কেন্দ্র · ShromikAI" },
-      { property: "og:description", content: "স্থির নমুনা তথ্য দিয়ে পর্যালোচনা ও বিশ্লেষণ ধাপ দেখুন।" },
+      {
+        property: "og:description",
+        content: "স্থির নমুনা তথ্য দিয়ে পর্যালোচনা ও বিশ্লেষণ ধাপ দেখুন।",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

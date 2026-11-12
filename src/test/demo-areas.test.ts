@@ -14,7 +14,10 @@ function translationAt(source: unknown, key: string): unknown {
 describe("sample citation comparison", () => {
   it("computes the citation totals from the mock claims", () => {
     expect(summarizeClaimRejections(plainAiClaims)).toEqual({ citationCount: 4, rejectedCount: 4 });
-    expect(summarizeClaimRejections(plainAiClaims.slice(0, 2))).toEqual({ citationCount: 2, rejectedCount: 2 });
+    expect(summarizeClaimRejections(plainAiClaims.slice(0, 2))).toEqual({
+      citationCount: 2,
+      rejectedCount: 2,
+    });
   });
 
   it("labels rejected mock claims with a translated verifier reason in both languages", () => {
@@ -34,8 +37,16 @@ describe("admin mock data", () => {
 
   it("provides labels for every admin section and language", () => {
     const keys = [
-      "admin.reviewQueue", "admin.navPlaybooks", "admin.apiKeys", "admin.navUsage", "admin.navTrace",
-      "admin.queue.noteRequired", "admin.playbooks.saved", "admin.keys.created", "admin.usage.chartReviews", "admin.trace.total",
+      "admin.reviewQueue",
+      "admin.navPlaybooks",
+      "admin.apiKeys",
+      "admin.navUsage",
+      "admin.navTrace",
+      "admin.queue.noteRequired",
+      "admin.playbooks.saved",
+      "admin.keys.created",
+      "admin.usage.chartReviews",
+      "admin.trace.total",
     ];
     for (const key of keys) {
       expect(translationAt(bn, key)).toEqual(expect.any(String));

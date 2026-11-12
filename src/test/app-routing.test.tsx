@@ -15,17 +15,14 @@ describe("App routing", () => {
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
 
-  it.each([
-    "/app/compare",
-    "/admin",
-    "/demo-user",
-    "/demo-hr",
-    "/demo-admin",
-  ])("matches the requested demo route %s", (path) => {
-    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+  it.each(["/app/compare", "/admin", "/demo-user", "/demo-hr", "/demo-admin"])(
+    "matches the requested demo route %s",
+    (path) => {
+      const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
 
-    const matches = router.matchRoutes(path);
+      const matches = router.matchRoutes(path);
 
-    expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
-  });
+      expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
+    },
+  );
 });
