@@ -59,6 +59,8 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
   }, []);
 
   useEffect(() => {
+    const activePanel = document.querySelector<HTMLElement>("[role='tabpanel'][data-state='active']");
+    if (!activePanel) return;
     let startX: number | null = null;
     let startY: number | null = null;
     const handleTouchStart = (event: TouchEvent) => {
@@ -79,13 +81,13 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
       startX = null;
       startY = null;
     };
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchend", handleTouchEnd, { passive: true });
+    activePanel.addEventListener("touchstart", handleTouchStart, { passive: true });
+    activePanel.addEventListener("touchend", handleTouchEnd, { passive: true });
     return () => {
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", handleTouchEnd);
+      activePanel.removeEventListener("touchstart", handleTouchStart);
+      activePanel.removeEventListener("touchend", handleTouchEnd);
     };
-  }, []);
+  }, [activeTab]);
 
   const verifiedCounts = allFindings.reduce(
     (counts, finding) => ({ ...counts, [finding.severity]: counts[finding.severity] + 1 }),
@@ -307,7 +309,7 @@ function FindingCard({
           </Badge>
         ) : null}
         <span className="ml-auto">
-          <VerificationBadge status="verified" />
+            <VerificationBadge status="verified" />
         </span>
       </div>
       <h3 className="mt-4 font-display text-xl font-semibold leading-8 text-foreground">
@@ -534,7 +536,10 @@ function MemoPanel({
           <div>
             <div className="flex items-center gap-2 text-verified">
               <FileText aria-hidden="true" className="size-5" />
-              <span className="text-xs font-semibold">ShromikAI</span>
+              <span className="text-xs font-semibold">
+                {t("app.name")}
+                {t("app.ai")}
+              </span>
             </div>
             <h2 className="mt-3 font-display text-2xl font-semibold text-foreground">
               {t("mockReview.memo.title")}

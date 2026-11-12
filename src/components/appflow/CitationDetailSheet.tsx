@@ -59,6 +59,9 @@ export function CitationDetailSheet({ sectionId, onOpenChange }: CitationDetailS
                 <p className="text-xs font-medium text-muted-foreground">
                   {t("mockReview.citation.quotedText")}
                 </p>
+                <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                  {t("mockReview.citation.languageNote")}
+                </p>
                 <blockquote className="mt-2 rounded-md border border-border bg-card/70 p-4 font-display text-base leading-8 text-foreground">
                   {renderHighlightedQuote(t(section.textKey), t(section.highlightKey))}
                 </blockquote>

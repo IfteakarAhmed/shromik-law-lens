@@ -227,17 +227,17 @@ export const clauseProposals = [
 }[];
 
 export const workerDuties = [
-  "mockReview.duties.worker.0",
-  "mockReview.duties.worker.1",
-  "mockReview.duties.worker.2",
-  "mockReview.duties.worker.3",
+  "mockReview.duties.workerItems.0",
+  "mockReview.duties.workerItems.1",
+  "mockReview.duties.workerItems.2",
+  "mockReview.duties.workerItems.3",
 ] as const;
 
 export const employerDuties = [
-  "mockReview.duties.employer.0",
-  "mockReview.duties.employer.1",
-  "mockReview.duties.employer.2",
-  "mockReview.duties.employer.3",
+  "mockReview.duties.employerItems.0",
+  "mockReview.duties.employerItems.1",
+  "mockReview.duties.employerItems.2",
+  "mockReview.duties.employerItems.3",
 ] as const;
 
 const severityOrder: Record<ReviewSeverity, number> = { critical: 0, high: 1, medium: 2 };

@@ -35,7 +35,7 @@ export function AppUploadScreen({
   const inputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
-  const canAnalyze = file !== null || text.trim().length > 0;
+  const canAnalyze = error === null && (file !== null || text.trim().length > 0);
 
   const pickFile = (candidate?: File) => {
     if (candidate) onFileSelected(candidate);
