@@ -163,7 +163,7 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
       <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as ReviewTab)}>
         <TabsList
           aria-label={t("mockReview.tabs.risks")}
-          className="sticky top-0 z-20 flex h-auto w-full justify-start gap-1 overflow-x-auto rounded-none border-y border-border bg-background/95 p-1 backdrop-blur-md sm:static sm:justify-center sm:rounded-md sm:border"
+          className="sticky top-0 z-20 flex h-auto w-full justify-start gap-1 overflow-x-auto rounded-none border-y border-border bg-background/95 p-1 backdrop-blur-md print:hidden sm:static sm:justify-center sm:rounded-md sm:border"
         >
           {tabIds.map((tab) => (
             <TabsTrigger

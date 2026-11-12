@@ -69,6 +69,12 @@ describe("security guard recorded sample", () => {
       ),
     ).toBe(true);
   });
+
+  it("uses exactly two critical, four high, and four medium verified findings", () => {
+    expect(recordedFindings.filter((finding) => finding.severity === "critical")).toHaveLength(2);
+    expect(recordedFindings.filter((finding) => finding.severity === "high")).toHaveLength(4);
+    expect(recordedFindings.filter((finding) => finding.severity === "medium")).toHaveLength(4);
+  });
 });
 
 describe("contract file validation", () => {
