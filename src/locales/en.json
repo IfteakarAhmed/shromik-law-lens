@@ -459,5 +459,122 @@
       "worker": "Worker",
       "employer": "Employer"
     }
+  },
+  "comparisonPage": {
+    "eyebrow": "Same contract · two outcomes",
+    "title": "Citation verification comparison",
+    "description": "Claims from a plain AI are checked against the same sample security-guard contract and shown alongside ShromikAI results.",
+    "sample": "Sample data (recorded)",
+    "plain": "Plain AI",
+    "verified": "ShromikAI",
+    "summary": "{{rejectedCount}} of {{citationCount}} Plain AI citations rejected",
+    "unverified": "Unverified claim · not a citation",
+    "reasonLabel": "Verifier reason",
+    "verifiedTitle": "Verified findings",
+    "sourceLabel": "Official source",
+    "tabsLabel": "Choose a comparison",
+    "noInvented": "No rejected claims in this sample.",
+    "claims": {
+      "hours": "A 12-hour shift is legal under section 999.",
+      "overtime": "Section 108 sets the same overtime allowance for every worker.",
+      "probation": "A security guard probation period cannot exceed nine months.",
+      "deduction": "Section 125 allows a monthly uniform deduction.",
+      "ref999": "Bangladesh Labour Act, section 999",
+      "ref108": "Bangladesh Labour Act, section 108",
+      "refProbation": "Bangladesh Labour Act, section 4",
+      "ref125": "Bangladesh Labour Act, section 125"
+    },
+    "reasons": {
+      "sectionMissing": "Section not found",
+      "quoteMismatch": "Quote does not match",
+      "doesNotSupport": "The section does not support this claim"
+    }
+  },
+  "admin": {
+    "eyebrow": "Internal sample environment",
+    "title": "Operations console",
+    "description": "Every row, decision, policy, key, and metric shown here is sample data; no live service is connected.",
+    "sample": "Sample data",
+    "navLabel": "Admin sections",
+    "reviewQueue": "Review queue",
+    "playbooks": {
+      "title": "HR policy playbooks",
+      "description": "Edit a sample rule and preview it on this page.",
+      "edit": "Sample rule",
+      "save": "Preview changes",
+      "saved": "Sample changes are shown on this page only; nothing is saved.",
+      "wageTitle": "Wage deductions",
+      "wageDescription": "Clarify the basis, limits, and evidence for deductions.",
+      "hoursTitle": "Working hours",
+      "hoursDescription": "Check daily and weekly hours, breaks, and overtime.",
+      "terminationTitle": "Termination",
+      "terminationDescription": "Check notice language by worker category."
+    },
+    "apiKeys": "API keys",
+    "usage": {
+      "title": "Usage & cost",
+      "description": "Static sample metrics; not actual usage data.",
+      "chartReviews": "Sample reviews",
+      "chartCost": "Sample cost index",
+      "reviews": "Reviews",
+      "cost": "Cost index",
+      "periods": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat"
+      }
+    },
+    "trace": {
+      "title": "One sample analysis trace",
+      "description": "Recorded sample analysis · not a live request.",
+      "stage": "Stage",
+      "duration": "Duration",
+      "total": "Total duration",
+      "analysis": "Sample analysis",
+      "sample": "Sample data"
+    },
+    "queue": {
+      "title": "Human review queue",
+      "description": "Review uncertain findings from the sample queue.",
+      "id": "ID",
+      "finding": "Finding",
+      "severity": "Risk",
+      "status": "Status",
+      "pending": "Pending",
+      "approved": "Approved (sample)",
+      "rejected": "Rejected (sample)",
+      "detail": "Review details",
+      "clause": "Contract clause",
+      "reason": "Review reason",
+      "source": "Related section",
+      "noteLabel": "Decision note (required)",
+      "notePlaceholder": "Enter a reason for this decision…",
+      "approve": "Approve",
+      "reject": "Reject",
+      "noteRequired": "Add a note before deciding.",
+      "reasonProbation": "Check applicability for the probation-period claim.",
+      "reasonApplicability": "Check working-hour rules for this establishment type.",
+      "reasonDeduction": "Check the wage deduction basis and circumstances.",
+      "noSelection": "Select a queue item to see its details.",
+      "saved": "This decision is shown in this sample session."
+    },
+    "keys": {
+      "title": "Demo API keys",
+      "description": "These fictional keys are display-only and do not work with any service.",
+      "create": "Create demo key",
+      "name": "Name",
+      "masked": "Demo key",
+      "status": "Status",
+      "active": "Active (sample)",
+      "revoked": "Revoked (sample)",
+      "revoke": "Revoke",
+      "created": "New sample key · shown once",
+      "dismiss": "Hide key",
+      "notice": "This key exists on this page only and disappears when refreshed."
+    },
+    "back": "Return to sample app"
   }
 }
