@@ -280,6 +280,28 @@
   transition-delay: 220ms;
 }
 
+.pipeline-line::after {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 5rem;
+  height: 5px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent, var(--verified), transparent);
+  animation: pipeline-scan 3.2s var(--ease-spring) infinite;
+  content: "";
+}
+
+@keyframes pipeline-scan {
+  from {
+    transform: translateX(-5rem);
+  }
+
+  to {
+    transform: translateX(78vw);
+  }
+}
+
 @layer base {
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -294,6 +316,10 @@
     [data-reveal="pending"] {
       opacity: 1;
       transform: none;
+    }
+
+    .pipeline-line::after {
+      animation: none;
     }
   }
 

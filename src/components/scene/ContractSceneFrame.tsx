@@ -1,5 +1,5 @@
 import { ClientOnly } from "@tanstack/react-router";
-import { Suspense, lazy, useEffect, useState } from "react";
+import { Suspense, lazy, useCallback, useEffect, useState } from "react";
 
 import { ScenePoster } from "@/components/scene/ScenePoster";
 
@@ -47,6 +47,7 @@ export function ContractSceneFrame({ alt, lowBandwidth }: ContractSceneFrameProp
 
   const isActive = !lowBandwidth && motionAllowed && webglAvailable && !sceneFailed;
   const poster = <StaticPoster alt={alt} />;
+  const handleSceneFailure = useCallback(() => setSceneFailed(true), []);
 
   return (
     <ClientOnly fallback={poster}>
@@ -56,7 +57,7 @@ export function ContractSceneFrame({ alt, lowBandwidth }: ContractSceneFrameProp
             alt={alt}
             isActive={isActive}
             onReady={() => undefined}
-            onFailure={() => setSceneFailed(true)}
+            onFailure={handleSceneFailure}
           />
         </Suspense>
       ) : (

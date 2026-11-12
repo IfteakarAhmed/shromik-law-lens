@@ -4,6 +4,7 @@ import {
   Component,
   Suspense,
   useEffect,
+  forwardRef,
   useRef,
   useState,
   type ErrorInfo,
@@ -108,7 +109,7 @@ export default function ContractScene({ alt, isActive, onReady, onFailure }: Con
         <SceneErrorBoundary onFailure={onFailure}>
           <Canvas
             dpr={[1, 1.35]}
-            camera={{ position: [0, 0, 8], fov: 40 }}
+            camera={{ position: [0, 0, 8.6], fov: 40 }}
             gl={{ alpha: true, antialias: true, powerPreference: "low-power" }}
             onCreated={({ gl }) => {
               gl.setClearColor(palette.ink, 0);
@@ -310,7 +311,7 @@ interface VerificationSealProps {
   color: string;
 }
 
-const VerificationSeal = React.forwardRef<THREE.Group, VerificationSealProps>(function VerificationSeal(
+const VerificationSeal = forwardRef<THREE.Group, VerificationSealProps>(function VerificationSeal(
   { position, color },
   ref,
 ) {
