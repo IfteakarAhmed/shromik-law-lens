@@ -272,6 +272,7 @@ function SummaryCell({
   count: number;
   tone: "critical" | "high" | "medium" | "verified" | "uncertain";
 }) {
+  const { i18n } = useTranslation();
   const color =
     tone === "verified"
       ? "text-verified"
@@ -280,7 +281,9 @@ function SummaryCell({
         : "text-rejected";
   return (
     <div className="min-w-0 bg-background/90 px-3 py-3 sm:px-4">
-      <p className="font-display text-2xl font-semibold leading-none text-foreground">{count}</p>
+      <p className="font-display text-2xl font-semibold leading-none text-foreground">
+        {new Intl.NumberFormat(i18n.resolvedLanguage ?? "bn-BD").format(count)}
+      </p>
       <p className={`mt-2 text-xs leading-5 ${color}`}>{label}</p>
     </div>
   );
@@ -624,12 +627,13 @@ function MemoPanel({
 }
 
 function MemoMetric({ label, value, count }: { label: string; value: string; count: number | "" }) {
+  const { i18n } = useTranslation();
   return (
     <div className="rounded-md border border-border bg-card/40 p-4">
       <p className="text-xs text-muted-foreground">{label}</p>
       <p className="mt-1 font-medium text-foreground">
         {value}
-        {count ? ` · ${count}` : ""}
+        {count !== "" ? ` · ${new Intl.NumberFormat(i18n.resolvedLanguage ?? "bn-BD").format(count)}` : ""}
       </p>
     </div>
   );

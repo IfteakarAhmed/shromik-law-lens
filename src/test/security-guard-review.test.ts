@@ -7,6 +7,15 @@ import {
   sortRecordedFindings,
   uncertainFinding,
 } from "@/mocks/security-guard-review";
+import bn from "@/locales/bn.json";
+import en from "@/locales/en.json";
+
+function readTranslation(dictionary: unknown, key: string): unknown {
+  return key.split(".").reduce<unknown>((value, part) => {
+    if (typeof value !== "object" || value === null || !(part in value)) return undefined;
+    return (value as Record<string, unknown>)[part];
+  }, dictionary);
+}
 
 describe("security guard recorded sample", () => {
   it("contains ten findings with legal citations and sorted severity", () => {
@@ -29,6 +38,28 @@ describe("security guard recorded sample", () => {
   it("keeps the uncertain probation-pay finding free of citations", () => {
     expect(uncertainFinding.verification).toBe("uncertain");
     expect(uncertainFinding.sectionIds).toEqual([]);
+  });
+
+  it("keeps all ten finding translations available in Bangla and English", () => {
+    for (const finding of recordedFindings) {
+      for (const dictionary of [bn, en]) {
+        expect(readTranslation(dictionary, finding.titleKey)).toEqual(expect.any(String));
+        expect(readTranslation(dictionary, finding.clauseKey)).toEqual(expect.any(String));
+        expect(readTranslation(dictionary, finding.explanationKey)).toEqual(expect.any(String));
+      }
+    }
+  });
+
+  it("highlights text contained in every complete official section excerpt", () => {
+    for (const section of Object.values(recordedLawSections)) {
+      for (const dictionary of [bn, en]) {
+        const text = readTranslation(dictionary, section.textKey);
+        const highlight = readTranslation(dictionary, section.highlightKey);
+        expect(typeof text).toBe("string");
+        expect(typeof highlight).toBe("string");
+        expect((text as string).includes(highlight as string)).toBe(true);
+      }
+    }
   });
 
   it("links every cited section to the official government law repository", () => {
