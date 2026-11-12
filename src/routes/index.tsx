@@ -105,7 +105,7 @@ function Index() {
             aria-label={t("common.verifiedOnly")}
             className="relative p-5 sm:p-6"
           >
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-hero-tint" />
+            <div aria-hidden="true" className="glass-decoration bg-hero-tint" />
             <div className="relative flex items-start justify-between gap-4">
               <span className="flex size-12 items-center justify-center rounded-xl border border-verified/20 bg-verified/10 text-verified">
                 <ShieldCheck aria-hidden="true" className="size-6" />

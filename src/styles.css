@@ -227,10 +227,17 @@
     mix-blend-mode: soft-light;
   }
 
-  & > * {
+  & > :not(.glass-decoration) {
     position: relative;
     z-index: 1;
   }
+}
+
+@utility glass-decoration {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
 }
 
 @utility glass-interactive {
