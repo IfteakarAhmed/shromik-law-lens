@@ -169,7 +169,7 @@ function FindingCard({ finding, onOpenCitation, onOpenWhy }: {
   const { t } = useTranslation();
   return <GlassCard as="article" className="p-4 sm:p-6">
     <div className="flex flex-wrap items-center gap-2">
-      <SeverityTag severity={finding.severity} />
+      <SeverityTag severity={finding.severity} showCode />
       {finding.nonObvious ? <Badge tone="neutral"><Info aria-hidden="true" className="size-3.5" />{t("mockReview.report.nonObvious")}</Badge> : null}
       <span className="ml-auto"><VerificationBadge status="verified" /></span>
     </div>
@@ -196,7 +196,7 @@ function UncertainFindingCard({ onOpenWhy }: { onOpenWhy: () => void }) {
   const { t } = useTranslation();
   return <GlassCard as="article" className="border-uncertain/30 bg-uncertain/5 p-4 sm:p-6">
     <div className="flex flex-wrap items-center gap-2">
-      <SeverityTag severity="medium" />
+      <SeverityTag severity="medium" showCode />
       <VerificationBadge status="uncertain" />
     </div>
     <h3 className="mt-4 font-display text-xl font-semibold leading-8 text-foreground">{t(uncertainFinding.titleKey)}</h3>
@@ -297,7 +297,7 @@ function MemoPanel({ side, onOpenCitation }: { side: ReviewSide; onOpenCitation:
       </div>
       <div className="mt-6 space-y-3">
         {allFindings.map((finding) => <div key={finding.id} className="border-b border-border pb-3">
-          <div className="flex flex-wrap items-center gap-2"><SeverityTag severity={finding.severity} /><h3 className="font-medium text-foreground">{t(finding.titleKey)}</h3></div>
+          <div className="flex flex-wrap items-center gap-2"><SeverityTag severity={finding.severity} showCode /><h3 className="font-medium text-foreground">{t(finding.titleKey)}</h3></div>
           <p className="mt-1 text-sm leading-6 text-muted-foreground">{t(finding.explanationKey)}</p>
         </div>)}
         <div className="rounded-md border border-uncertain/20 bg-uncertain/5 p-3">

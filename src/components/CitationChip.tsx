@@ -1,4 +1,5 @@
 import { ExternalLink, Scale } from "lucide-react";
+import type { MouseEventHandler } from "react";
 import { useTranslation } from "react-i18next";
 
 import { cn } from "@/lib/utils";
@@ -7,7 +8,7 @@ import type { LawCitation } from "@/mocks/contract-review";
 interface CitationChipProps {
   citation: LawCitation;
   className?: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export function CitationChip({ citation, className, onClick }: CitationChipProps) {
