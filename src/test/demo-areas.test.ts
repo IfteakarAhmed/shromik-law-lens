@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { plainAiClaims, sampleTraceStages, summarizeClaimRejections } from "@/mocks/demo-areas";
+import { canSubmitReviewDecision } from "@/lib/admin-demo-logic";
 import bn from "@/locales/bn.json";
 import en from "@/locales/en.json";
 
@@ -30,6 +31,12 @@ describe("sample citation comparison", () => {
 });
 
 describe("admin mock data", () => {
+  it("requires a nonblank note before a review decision", () => {
+    expect(canSubmitReviewDecision("")).toBe(false);
+    expect(canSubmitReviewDecision("   \n ")).toBe(false);
+    expect(canSubmitReviewDecision("Checked the official section.")).toBe(true);
+  });
+
   it("provides six trace stages with the displayed cumulative duration", () => {
     expect(sampleTraceStages).toHaveLength(6);
     expect(sampleTraceStages.reduce((total, stage) => total + stage.duration, 0)).toBe(4550);

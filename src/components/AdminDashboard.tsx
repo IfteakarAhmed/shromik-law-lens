@@ -33,6 +33,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
+import { canSubmitReviewDecision } from "@/lib/admin-demo-logic";
 import {
   getQueueSource,
   samplePlaybooks,
@@ -65,17 +66,15 @@ const sectionIcons = {
   trace: Activity,
 } satisfies Record<AdminSection, typeof ListChecks>;
 
-const usageChartConfig = {
-  reviews: { label: "Reviews", color: "var(--color-verified)" },
-} satisfies ChartConfig;
-
-const costChartConfig = {
-  cost: { label: "Cost index", color: "var(--color-uncertain)" },
-} satisfies ChartConfig;
-
 export function AdminDashboard({ section }: AdminDashboardProps) {
   const { t } = useTranslation();
   const navigate = useNavigate({ from: "/admin" });
+  const usageChartConfig = {
+    reviews: { label: t("admin.usage.reviews"), color: "var(--color-verified)" },
+  } satisfies ChartConfig;
+  const costChartConfig = {
+    cost: { label: t("admin.usage.cost"), color: "var(--color-uncertain)" },
+  } satisfies ChartConfig;
   const [selectedQueueId, setSelectedQueueId] = useState<string>(sampleReviewQueue[0]?.id ?? "");
   const [decisions, setDecisions] = useState<Record<string, QueueStatus>>({});
   const [notes, setNotes] = useState("");
@@ -132,7 +131,7 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
 
   const decide = (decision: QueueDecision) => {
     if (!selectedQueue) return;
-    if (notes.trim().length === 0) {
+    if (!canSubmitReviewDecision(notes)) {
       setQueueMessage(t("admin.queue.noteRequired"));
       return;
     }
