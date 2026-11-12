@@ -9,7 +9,7 @@ import {
   Printer,
   ShieldCheck,
 } from "lucide-react";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Badge } from "@/components/Badge";
@@ -45,7 +45,7 @@ interface ReviewResultsProps {
 }
 
 const allFindings = sortRecordedFindings(recordedFindings);
-const tabIds: ReviewTab[] = ["risks", "proposals", "duties", "memo"];
+const tabIds = ["risks", "proposals", "duties", "memo"] as const satisfies readonly ReviewTab[];
 
 export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
   const { t } = useTranslation();
@@ -53,10 +53,44 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
   const [selectedSectionId, setSelectedSectionId] = useState<RecordedLawSectionId | null>(null);
   const [whyFinding, setWhyFinding] = useState<WhyFinding | null>(null);
 
-  const openCitation = (sectionId: RecordedLawSectionId) => {
+  const openCitation = useCallback((sectionId: RecordedLawSectionId) => {
     setWhyFinding(null);
     setSelectedSectionId(sectionId);
-  };
+  }, []);
+
+  useEffect(() => {
+    let startX: number | null = null;
+    let startY: number | null = null;
+    const handleTouchStart = (event: TouchEvent) => {
+      const touch = event.changedTouches.item(0);
+      startX = touch?.clientX ?? null;
+      startY = touch?.clientY ?? null;
+    };
+    const handleTouchEnd = (event: TouchEvent) => {
+      const touch = event.changedTouches.item(0);
+      if (startX === null || startY === null || !touch) return;
+      const dx = touch.clientX - startX;
+      const dy = touch.clientY - startY;
+      if (Math.abs(dx) < 72 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
+      setActiveTab((current) => {
+        const index = tabIds.indexOf(current);
+        return tabIds[(index + (dx < 0 ? 1 : -1) + tabIds.length) % tabIds.length] ?? "risks";
+      });
+      startX = null;
+      startY = null;
+    };
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
+    return () => {
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, []);
+
+  const verifiedCounts = allFindings.reduce(
+    (counts, finding) => ({ ...counts, [finding.severity]: counts[finding.severity] + 1 }),
+    { critical: 0, high: 0, medium: 0 },
+  );
 
   return (
     <div className="mx-auto w-full max-w-6xl pb-28 sm:pb-14">
@@ -92,11 +126,11 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
           {t("mockReview.report.reviewScope")}
         </p>
         <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-5">
-          <SummaryCell label={t("mockReview.report.criticalCount")} count="২" tone="critical" />
-          <SummaryCell label={t("mockReview.report.highCount")} count="৪" tone="high" />
-          <SummaryCell label={t("mockReview.report.mediumCount")} count="৪" tone="medium" />
-          <SummaryCell label={t("mockReview.report.verifiedCount")} count="১০" tone="verified" />
-          <SummaryCell label={t("mockReview.report.uncertainCount")} count="১" tone="uncertain" />
+          <SummaryCell label={t("mockReview.report.criticalCount")} count={verifiedCounts.critical} tone="critical" />
+          <SummaryCell label={t("mockReview.report.highCount")} count={verifiedCounts.high} tone="high" />
+          <SummaryCell label={t("mockReview.report.mediumCount")} count={verifiedCounts.medium} tone="medium" />
+          <SummaryCell label={t("mockReview.report.verifiedCount")} count={allFindings.length} tone="verified" />
+          <SummaryCell label={t("mockReview.report.uncertainCount")} count={1} tone="uncertain" />
         </div>
       </GlassCard>
 
@@ -218,7 +252,7 @@ function SummaryCell({
   tone,
 }: {
   label: string;
-  count: string;
+  count: number;
   tone: "critical" | "high" | "medium" | "verified" | "uncertain";
 }) {
   const color =
@@ -389,8 +423,8 @@ function ProposalCard({
 
 function DutiesPanel() {
   const { t } = useTranslation();
-  const workerItems = t("mockReview.duties.workerItems", { returnObjects: true }) as string[];
-  const employerItems = t("mockReview.duties.employerItems", { returnObjects: true }) as string[];
+  const workerItems = workerDuties.map((key) => t(key));
+  const employerItems = employerDuties.map((key) => t(key));
   return (
     <section>
       <h2 className="font-display text-2xl font-semibold text-foreground">
@@ -499,7 +533,7 @@ function MemoPanel({
           <MemoMetric
             label={t("mockReview.memo.summary")}
             value={t("mockReview.report.verifiedCount")}
-            count="১০"
+            count={allFindings.length}
           />
           <MemoMetric
             label={t("mockReview.memo.preparedFor")}
@@ -572,7 +606,7 @@ function MemoPanel({
   );
 }
 
-function MemoMetric({ label, value, count }: { label: string; value: string; count: string }) {
+function MemoMetric({ label, value, count }: { label: string; value: string; count: number | "" }) {
   return (
     <div className="rounded-md border border-border bg-card/40 p-4">
       <p className="text-xs text-muted-foreground">{label}</p>
