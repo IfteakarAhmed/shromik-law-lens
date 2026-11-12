@@ -11,7 +11,6 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import {
-  recordedFindings,
   recordedLawSections,
   uncertainFinding,
   type RecordedFinding,
@@ -129,5 +128,3 @@ export function FindingWhySheet({ finding, onOpenCitation, onOpenChange }: Findi
     </Sheet>
   );
 }
-
-export { recordedFindings };
