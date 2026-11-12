@@ -51,8 +51,9 @@ export function ReviewProgress({ onComplete }: ReviewProgressProps) {
         {t("mockReview.progress.description")}
       </p>
 
-      <GlassCard as="ol" className="mt-8 overflow-hidden p-2 sm:p-4">
-        {stages.map((stage, index) => {
+      <GlassCard as="section" className="mt-8 overflow-hidden p-2 sm:p-4">
+        <ol>
+          {stages.map((stage, index) => {
           const complete = index < activeStage;
           const current = index === activeStage && activeStage < stages.length;
           const StatusIcon = complete ? Check : current ? LoaderCircle : Circle;
@@ -99,7 +100,8 @@ export function ReviewProgress({ onComplete }: ReviewProgressProps) {
               </span>
             </li>
           );
-        })}
+          })}
+        </ol>
         {activeStage >= stages.length ? (
           <li className="flex items-center gap-3 border-t border-border px-3 py-4 text-sm font-medium text-verified sm:px-5">
             <ShieldCheck aria-hidden="true" className="size-5" />
