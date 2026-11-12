@@ -87,6 +87,9 @@ function ContractReviewApp() {
           <span>{t("navigation.backHome")}</span>
         </Link>
         <div className="flex min-w-0 items-center gap-2">
+          <Link to="/app/compare" className="inline-flex min-h-11 items-center rounded-md px-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm">
+            {t("comparisonPage.open")}
+          </Link>
           <LanguageToggle />
           <ThemeToggle />
           <span className="hidden size-8 items-center justify-center rounded-md border border-verified/25 bg-verified/10 text-verified sm:flex">

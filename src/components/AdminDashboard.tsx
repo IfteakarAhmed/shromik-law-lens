@@ -244,7 +244,7 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
                         </div>
                         <div className="space-y-2">
                           <label htmlFor="decision-note" className="text-sm font-semibold text-foreground">{t("admin.queue.noteLabel")}</label>
-                          <Textarea id="decision-note" value={notes} onChange={(event) => { setNotes(event.target.value); setQueueMessage(""); }} placeholder={t("admin.queue.notePlaceholder")} className="min-h-20 resize-y" />
+                          <Textarea id="decision-note" required value={notes} onChange={(event) => { setNotes(event.target.value); setQueueMessage(""); }} placeholder={t("admin.queue.notePlaceholder")} className="min-h-20 resize-y" />
                         </div>
                         <div className="flex flex-wrap gap-2">
                           <Button type="button" onClick={() => decide("approved")} disabled={queuedStatus !== "pending"}><Check aria-hidden="true" />{t("admin.queue.approve")}</Button>
