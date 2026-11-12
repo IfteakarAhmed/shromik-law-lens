@@ -6,6 +6,11 @@
  *   src/routes/__root.tsx and name the family in a --font-* token in @theme inline below.
  */
 @import "tailwindcss" source(none);
+@import "@fontsource-variable/inter";
+@import "@fontsource/hind-siliguri/400.css";
+@import "@fontsource/hind-siliguri/500.css";
+@import "@fontsource/hind-siliguri/600.css";
+@import "@fontsource/hind-siliguri/700.css";
 @source "../src";
 @import "tw-animate-css";
 
@@ -87,8 +92,8 @@
   color-scheme: dark;
   --radius: 0.5rem;
   --gutter: clamp(1rem, 4vw, 3rem);
-  --font-sans-application: "Hind Siliguri", "Inter", "Noto Sans Bengali", sans-serif;
-  --font-display-application: "Hind Siliguri", "Inter", "Noto Sans Bengali", sans-serif;
+  --font-sans-application: "Hind Siliguri", "Inter Variable", "Noto Sans Bengali", sans-serif;
+  --font-display-application: "Hind Siliguri", "Inter Variable", "Noto Sans Bengali", sans-serif;
   --background: oklch(0.15 0.0208 264.34);
   --ink-raised: oklch(0.2013 0.0345 263.36);
   --hero-tint: oklch(0.25 0.045 163 / 22%);
@@ -190,7 +195,7 @@
   }
 
   :lang(en) {
-    font-family: "Inter", "Hind Siliguri", sans-serif;
+    font-family: "Inter Variable", "Hind Siliguri", sans-serif;
   }
 
   :focus-visible {
