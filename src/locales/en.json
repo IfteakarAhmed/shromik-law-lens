@@ -473,6 +473,7 @@
     "verifiedTitle": "Verified findings",
     "sourceLabel": "Official source",
     "tabsLabel": "Choose a comparison",
+    "open": "Compare citations",
     "noInvented": "No rejected claims in this sample.",
     "claims": {
       "hours": "A 12-hour shift is legal under section 999.",
