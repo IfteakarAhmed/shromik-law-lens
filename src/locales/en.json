@@ -488,7 +488,8 @@
       "sectionMissing": "Section not found",
       "quoteMismatch": "Quote does not match",
       "doesNotSupport": "The section does not support this claim"
-    }
+    },
+    "backToDemo": "Return to sample review"
   },
   "admin": {
     "eyebrow": "Internal sample environment",
@@ -534,7 +535,8 @@
       "duration": "Duration",
       "total": "Total duration",
       "analysis": "Sample analysis",
-      "sample": "Sample data"
+      "sample": "Sample data",
+      "milliseconds": "{{count}} ms"
     },
     "queue": {
       "title": "Human review queue",
@@ -573,8 +575,17 @@
       "revoke": "Revoke",
       "created": "New sample key · shown once",
       "dismiss": "Hide key",
-      "notice": "This key exists on this page only and disappears when refreshed."
+      "notice": "This key exists on this page only and disappears when refreshed.",
+      "newKeyName": "New sample key",
+      "reviewKey": "Review sample",
+      "reportsKey": "Reports sample",
+      "copy": "Copy",
+      "copied": "Copied",
+      "maskedValue": "demo_sk_••••••••••••"
     },
-    "back": "Return to sample app"
+    "back": "Return to sample app",
+    "navPlaybooks": "Playbooks",
+    "navUsage": "Usage & cost",
+    "navTrace": "Trace viewer"
   }
 }
