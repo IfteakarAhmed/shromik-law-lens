@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight, Check, ShieldCheck, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -11,21 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { comparisonFindings, plainAiClaims, summarizeClaimRejections } from "@/mocks/demo-areas";
 import { recordedLawSections } from "@/mocks/security-guard-review";
 
-export const Route = createFileRoute("/app_/compare")({
-  head: () => ({
-    meta: [
-      { title: "উদ্ধৃতি যাচাইয়ের তুলনা · ShromikAI" },
-      { name: "description", content: "একই নমুনা কর্মচুক্তিতে সাধারণ AI-র দাবির যাচাই এবং শ্রমিকAI-র সরকারি সূত্রসমর্থিত ফল তুলনা করুন।" },
-      { property: "og:title", content: "উদ্ধৃতি যাচাইয়ের তুলনা · ShromikAI" },
-      { property: "og:description", content: "নমুনা চুক্তির দাবিগুলোকে সরকারি আইনের সঙ্গে যাচাই করে পাশাপাশি দেখুন।" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: ComparePage,
-});
-
-function ComparePage() {
+export function ComparePage() {
   const { t } = useTranslation();
   const [side, setSide] = useState("plain");
   const summary = useMemo(() => summarizeClaimRejections(plainAiClaims), []);
