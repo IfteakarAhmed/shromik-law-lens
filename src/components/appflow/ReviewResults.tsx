@@ -101,7 +101,7 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
               <span className="size-1.5 rounded-full bg-verified" aria-hidden="true" />
               {t("mockReview.topline")}
             </Badge>
-          <Badge tone="neutral">{t("mockReview.memo.generated")}</Badge>
+            <Badge tone="neutral">{t("mockReview.memo.generated")}</Badge>
             <span className="text-xs text-muted-foreground">{t("mockReview.report.eyebrow")}</span>
           </div>
           <h1 className="font-display text-3xl font-semibold leading-[1.35] text-foreground sm:text-4xl">
@@ -127,10 +127,26 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
           {t("mockReview.report.reviewScope")}
         </p>
         <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-5">
-          <SummaryCell label={t("mockReview.report.criticalCount")} count={verifiedCounts.critical} tone="critical" />
-          <SummaryCell label={t("mockReview.report.highCount")} count={verifiedCounts.high} tone="high" />
-          <SummaryCell label={t("mockReview.report.mediumCount")} count={verifiedCounts.medium} tone="medium" />
-          <SummaryCell label={t("mockReview.report.verifiedCount")} count={allFindings.length} tone="verified" />
+          <SummaryCell
+            label={t("mockReview.report.criticalCount")}
+            count={verifiedCounts.critical}
+            tone="critical"
+          />
+          <SummaryCell
+            label={t("mockReview.report.highCount")}
+            count={verifiedCounts.high}
+            tone="high"
+          />
+          <SummaryCell
+            label={t("mockReview.report.mediumCount")}
+            count={verifiedCounts.medium}
+            tone="medium"
+          />
+          <SummaryCell
+            label={t("mockReview.report.verifiedCount")}
+            count={allFindings.length}
+            tone="verified"
+          />
           <SummaryCell label={t("mockReview.report.uncertainCount")} count={1} tone="uncertain" />
         </div>
       </GlassCard>
@@ -311,10 +327,10 @@ function FindingCard({
               key={sectionId}
               citation={{
                 section: section.section,
-              titleKey: section.titleKey,
+                titleKey: section.titleKey,
                 href: section.href,
               }}
-            onClick={() => onOpenCitation(sectionId)}
+              onClick={() => onOpenCitation(sectionId)}
             />
           );
         })}

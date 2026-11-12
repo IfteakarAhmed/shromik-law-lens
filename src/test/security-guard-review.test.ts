@@ -13,7 +13,16 @@ describe("security guard recorded sample", () => {
     expect(recordedFindings).toHaveLength(10);
     expect(recordedFindings.every((finding) => finding.sectionIds.length > 0)).toBe(true);
     expect(sortRecordedFindings(recordedFindings).map((finding) => finding.severity)).toEqual([
-      "critical", "critical", "high", "high", "high", "high", "medium", "medium", "medium", "medium",
+      "critical",
+      "critical",
+      "high",
+      "high",
+      "high",
+      "high",
+      "medium",
+      "medium",
+      "medium",
+      "medium",
     ]);
   });
 
@@ -23,22 +32,44 @@ describe("security guard recorded sample", () => {
   });
 
   it("links every cited section to the official government law repository", () => {
-    expect(Object.values(recordedLawSections).every((section) => new URL(section.href).hostname === "bdlaws.minlaw.gov.bd")).toBe(true);
+    expect(
+      Object.values(recordedLawSections).every(
+        (section) => new URL(section.href).hostname === "bdlaws.minlaw.gov.bd",
+      ),
+    ).toBe(true);
   });
 });
 
 describe("contract file validation", () => {
   it("accepts PDF, image and text formats at the 10 MB limit", () => {
-    expect(validateContractFile({ name: "contract.pdf", type: "application/pdf", size: MAX_CONTRACT_FILE_BYTES })).toBeNull();
-    expect(validateContractFile({ name: "contract.jpg", type: "image/jpeg", size: 128 })).toBeNull();
-    expect(validateContractFile({ name: "contract.txt", type: "text/plain", size: 128 })).toBeNull();
+    expect(
+      validateContractFile({
+        name: "contract.pdf",
+        type: "application/pdf",
+        size: MAX_CONTRACT_FILE_BYTES,
+      }),
+    ).toBeNull();
+    expect(
+      validateContractFile({ name: "contract.jpg", type: "image/jpeg", size: 128 }),
+    ).toBeNull();
+    expect(
+      validateContractFile({ name: "contract.txt", type: "text/plain", size: 128 }),
+    ).toBeNull();
   });
 
   it("rejects files above 10 MB", () => {
-    expect(validateContractFile({ name: "contract.pdf", type: "application/pdf", size: MAX_CONTRACT_FILE_BYTES + 1 })).toBe("tooLarge");
+    expect(
+      validateContractFile({
+        name: "contract.pdf",
+        type: "application/pdf",
+        size: MAX_CONTRACT_FILE_BYTES + 1,
+      }),
+    ).toBe("tooLarge");
   });
 
   it("rejects unsupported file types", () => {
-    expect(validateContractFile({ name: "contract.exe", type: "application/octet-stream", size: 128 })).toBe("unsupportedType");
+    expect(
+      validateContractFile({ name: "contract.exe", type: "application/octet-stream", size: 128 }),
+    ).toBe("unsupportedType");
   });
 });
