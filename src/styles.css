@@ -263,6 +263,23 @@
   pointer-events: none;
 }
 
+[data-reveal="pending"] {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+[data-reveal-delay="1"] {
+  transition-delay: 80ms;
+}
+
+[data-reveal-delay="2"] {
+  transition-delay: 150ms;
+}
+
+[data-reveal-delay="3"] {
+  transition-delay: 220ms;
+}
+
 @layer base {
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -272,6 +289,11 @@
       animation-iteration-count: 1 !important;
       scroll-behavior: auto !important;
       transition-duration: 0.01ms !important;
+    }
+
+    [data-reveal="pending"] {
+      opacity: 1;
+      transform: none;
     }
   }
 

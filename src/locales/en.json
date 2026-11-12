@@ -51,6 +51,11 @@
     "sourceLabel": "Official laws of Bangladesh · section 108",
     "verifiedStatus": "Verified against an official source"
   },
+  "roles": {
+    "worker": "Worker",
+    "hr": "HR",
+    "admin": "Admin"
+  },
   "audience": {
     "eyebrow": "Who ShromikAI is for",
     "title": "For everyone in the employment relationship.",
@@ -75,6 +80,9 @@
     "docs": "Documentation",
     "app": "Sample review",
     "copyright": "ShromikAI · for workers in Bangladesh"
+  },
+  "navigation": {
+    "backHome": "Back to home"
   },
   "docs": {
     "title": "How verification works",

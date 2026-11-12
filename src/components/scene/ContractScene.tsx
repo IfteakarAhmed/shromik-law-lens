@@ -41,15 +41,15 @@ interface SceneErrorBoundaryState {
 class SceneErrorBoundary extends Component<SceneErrorBoundaryProps, SceneErrorBoundaryState> {
   state: SceneErrorBoundaryState = { hasError: false };
 
-  static getDerivedStateFromError(): SceneErrorBoundaryState {
+  static override getDerivedStateFromError(): SceneErrorBoundaryState {
     return { hasError: true };
   }
 
-  componentDidCatch(_error: Error, _errorInfo: ErrorInfo) {
+  override componentDidCatch(_error: Error, _errorInfo: ErrorInfo) {
     this.props.onFailure();
   }
 
-  render() {
+  override render() {
     return this.state.hasError ? null : this.props.children;
   }
 }
