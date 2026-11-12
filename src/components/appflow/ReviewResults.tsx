@@ -126,28 +126,37 @@ export function ReviewResults({ side, onBackToUpload }: ReviewResultsProps) {
         <p className="text-sm leading-7 text-muted-foreground">
           {t("mockReview.report.reviewScope")}
         </p>
-        <div className="mt-4 grid grid-cols-3 gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-5">
+        <div className="mt-4 grid grid-cols-6 gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-5">
           <SummaryCell
             label={t("mockReview.report.criticalCount")}
             count={verifiedCounts.critical}
             tone="critical"
+            className="col-span-2 sm:col-span-1"
           />
           <SummaryCell
             label={t("mockReview.report.highCount")}
             count={verifiedCounts.high}
             tone="high"
+            className="col-span-2 sm:col-span-1"
           />
           <SummaryCell
             label={t("mockReview.report.mediumCount")}
             count={verifiedCounts.medium}
             tone="medium"
+            className="col-span-2 sm:col-span-1"
           />
           <SummaryCell
             label={t("mockReview.report.verifiedCount")}
             count={allFindings.length}
             tone="verified"
+            className="col-span-3 sm:col-span-1"
           />
-          <SummaryCell label={t("mockReview.report.uncertainCount")} count={1} tone="uncertain" />
+          <SummaryCell
+            label={t("mockReview.report.uncertainCount")}
+            count={1}
+            tone="uncertain"
+            className="col-span-3 sm:col-span-1"
+          />
         </div>
       </GlassCard>
 
@@ -267,10 +276,12 @@ function SummaryCell({
   label,
   count,
   tone,
+  className,
 }: {
   label: string;
   count: number;
   tone: "critical" | "high" | "medium" | "verified" | "uncertain";
+  className: string;
 }) {
   const { i18n } = useTranslation();
   const color =
@@ -280,7 +291,7 @@ function SummaryCell({
         ? "text-uncertain"
         : "text-rejected";
   return (
-    <div className="min-w-0 bg-background/90 px-3 py-3 sm:px-4">
+    <div className={`min-w-0 bg-background/90 px-3 py-3 sm:px-4 ${className}`}>
       <p className="font-display text-2xl font-semibold leading-none text-foreground">
         {new Intl.NumberFormat(i18n.resolvedLanguage ?? "bn-BD").format(count)}
       </p>
