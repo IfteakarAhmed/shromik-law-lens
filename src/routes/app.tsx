@@ -1,14 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ShieldCheck } from "lucide-react";
+import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { AppUploadScreen, type ReviewSide } from "@/components/appflow/AppUploadScreen";
+import { ReviewProgress } from "@/components/appflow/ReviewProgress";
+import { ReviewResults } from "@/components/appflow/ReviewResults";
 import { Badge } from "@/components/Badge";
-import { CitationChip } from "@/components/CitationChip";
-import { Disclaimer } from "@/components/Disclaimer";
-import { GlassCard } from "@/components/GlassCard";
-import { VerificationBadge } from "@/components/VerificationBadge";
+import { validateContractFile, type ContractFileError } from "@/lib/contract-file-validation";
 
 type DemoRole = "worker" | "hr" | "admin";
+type Screen = "upload" | "progress" | "results";
 
 export const Route = createFileRoute("/app")({
   validateSearch: (search: Record<string, unknown>): { role: DemoRole } => ({
@@ -20,104 +22,112 @@ export const Route = createFileRoute("/app")({
       {
         name: "description",
         content:
-          "কাল্পনিক কর্মচুক্তির ধারা, বাংলাদেশের শ্রম আইনের সরকারি সূত্রের সঙ্গে যাচাই করা নমুনা পর্যালোচনা।",
+          "বাংলাদেশের শ্রম আইনের সরকারি সূত্রসহ স্থির নমুনা কর্মচুক্তি পর্যালোচনা। আপনার ফাইল বা লেখা সার্ভারে পাঠানো হয় না।",
       },
       { property: "og:title", content: "নমুনা চুক্তি পর্যালোচনা · ShromikAI" },
       {
         property: "og:description",
-        content:
-          "কাল্পনিক কর্মচুক্তির ধারা, বাংলাদেশের শ্রম আইনের সরকারি সূত্রের সঙ্গে যাচাই করা নমুনা পর্যালোচনা।",
+        content: "বাংলাদেশের শ্রম আইনের সরকারি সূত্রসহ স্থির নমুনা কর্মচুক্তি পর্যালোচনা।",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: DemoReview,
+  component: ContractReviewApp,
 });
 
-function DemoReview() {
+function ContractReviewApp() {
   const { t } = useTranslation();
   const { role } = Route.useSearch();
+  const [screen, setScreen] = useState<Screen>("upload");
+  const [file, setFile] = useState<File | null>(null);
+  const [text, setText] = useState("");
+  const [side, setSide] = useState<ReviewSide>(role === "worker" ? "worker" : "employer");
+  const [error, setError] = useState<ContractFileError | "invalidText" | null>(null);
+
+  const handleFileSelected = (nextFile: File | null) => {
+    setError(null);
+    if (nextFile) {
+      const validationError = validateContractFile(nextFile);
+      if (validationError) {
+        setFile(null);
+        setError(validationError);
+        return;
+      }
+    }
+    setFile(nextFile);
+  };
+
+  const startReview = () => {
+    if (!file && text.trim().length === 0) {
+      setError("invalidText");
+      return;
+    }
+    // The selected document is never parsed, transmitted, or persisted in this recorded demo.
+    // Clear the local form as the flow starts; the fixed sample findings are separate mock data.
+    setFile(null);
+    setText("");
+    setError(null);
+    setScreen("progress");
+  };
+
+  const finishProgress = useCallback(() => setScreen("results"), []);
 
   return (
     <div className="relative min-h-screen overflow-hidden">
       <div aria-hidden="true" className="texture-grid absolute inset-x-0 top-0 -z-10 h-[34rem]" />
-      <header className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-gutter py-5">
+      <header className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-gutter py-4 sm:py-6">
         <Link
           to="/"
-          className="inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+          className="inline-flex min-h-11 min-w-0 items-center gap-2 rounded-md text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <ArrowLeft aria-hidden="true" className="size-4" />
-          {t("navigation.backHome")}
+          <ArrowLeft aria-hidden="true" className="size-4 shrink-0" />
+          <span>{t("navigation.backHome")}</span>
         </Link>
-        <Badge tone="neutral">
-          {t(`roles.${role}`)} · {t("demo.eyebrow")}
-        </Badge>
+        <div className="flex min-w-0 items-center gap-2">
+          <span className="hidden size-8 items-center justify-center rounded-md border border-verified/25 bg-verified/10 text-verified sm:flex">
+            <ShieldCheck aria-hidden="true" className="size-4" />
+          </span>
+          <span className="hidden font-display text-sm font-bold text-foreground sm:inline">
+            {t("app.name")}
+            <span className="text-verified">{t("app.ai")}</span>
+          </span>
+          <Badge
+            tone="neutral"
+            className="max-w-[9rem] truncate text-[10px] sm:max-w-none sm:text-xs"
+          >
+            {t(`roles.${role}`)}
+          </Badge>
+        </div>
       </header>
 
-      <main className="mx-auto max-w-5xl px-gutter pb-14 pt-8 sm:pb-20 sm:pt-12">
-        <div className="max-w-3xl">
-          <p className="text-sm font-medium text-verified">{t("demo.eyebrow")}</p>
-          <h1 className="mt-2 font-display text-4xl font-semibold leading-[1.3] text-foreground sm:text-5xl">
-            {t("demo.title")}
-          </h1>
-          <p className="mt-4 text-base leading-8 text-muted-foreground">{t("demo.description")}</p>
-        </div>
-
-        <GlassCard as="article" className="mt-8 p-5 sm:p-8">
-          <div className="flex flex-col gap-4 border-b border-border/70 pb-5 sm:flex-row sm:items-start sm:justify-between">
-            <div>
-              <p className="text-sm text-muted-foreground">{t("review.sampleDocument")}</p>
-              <h2 className="mt-1 font-display text-2xl font-semibold text-foreground">
-                {t("demo.findingTitle")}
-              </h2>
-            </div>
-            <VerificationBadge status="rejected" />
-          </div>
-
-          <div className="grid gap-6 pt-6 lg:grid-cols-2">
-            <div>
-              <p className="text-sm font-semibold text-muted-foreground">
-                {t("review.clauseLabel")}
-              </p>
-              <blockquote className="mt-3 rounded-lg border border-border bg-background/60 p-4 font-display text-base leading-8 text-foreground">
-                {t("demo.clause")}
-              </blockquote>
-              <Badge tone="rejected" className="mt-4">
-                {t("review.findingsTitle")}
-              </Badge>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-muted-foreground">
-                {t("review.analysisLabel")}
-              </p>
-              <p className="mt-3 text-sm leading-8 text-foreground">{t("demo.explanation")}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <CitationChip
-                  citation={{
-                    section: "১০৮",
-                    titleKey: "citation.labourAct",
-                    href: "https://bdlaws.minlaw.gov.bd/act-952/section-29435.html",
-                  }}
-                />
-                <a
-                  href="https://bdlaws.minlaw.gov.bd/act-952/section-29435.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center gap-1 rounded-md px-3 text-sm text-muted-foreground hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  {t("citation.officialSource")}
-                  <ArrowUpRight aria-hidden="true" className="size-3.5" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </GlassCard>
-
-        <div className="mt-6">
-          <Disclaimer />
-        </div>
-        <p className="mt-4 text-center text-xs text-muted-foreground">{t("demo.sampleLabel")}</p>
+      <main className="mx-auto max-w-7xl px-gutter pb-14 pt-7 sm:pb-20 sm:pt-10">
+        {screen === "upload" ? (
+          <AppUploadScreen
+            file={file}
+            error={error}
+            side={side}
+            text={text}
+            onFileSelected={handleFileSelected}
+            onSideChange={setSide}
+            onTextChange={(nextText) => {
+              setText(nextText);
+              setError(null);
+            }}
+            onAnalyze={startReview}
+          />
+        ) : null}
+        {screen === "progress" ? <ReviewProgress onComplete={finishProgress} /> : null}
+        {screen === "results" ? (
+          <ReviewResults
+            side={side}
+            onBackToUpload={() => {
+              setScreen("upload");
+              setFile(null);
+              setText("");
+            }}
+          />
+        ) : null}
       </main>
     </div>
   );

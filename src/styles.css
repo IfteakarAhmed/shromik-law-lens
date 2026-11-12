@@ -119,11 +119,9 @@
   --uncertain: oklch(0.8245 0.1486 73.35);
   --rejected: oklch(0.6912 0.1997 18.51);
   --shadow-glass:
-    0 24px 70px -32px oklch(0.04 0.02 260 / 76%),
-    0 1px 0 oklch(0.9585 0.0098 87.47 / 7%) inset;
+    0 24px 70px -32px oklch(0.04 0.02 260 / 76%), 0 1px 0 oklch(0.9585 0.0098 87.47 / 7%) inset;
   --shadow-card-hover:
-    0 26px 72px -34px oklch(0.04 0.02 260 / 84%),
-    0 1px 0 oklch(0.9585 0.0098 87.47 / 10%) inset;
+    0 26px 72px -34px oklch(0.04 0.02 260 / 84%), 0 1px 0 oklch(0.9585 0.0098 87.47 / 10%) inset;
   --ease-spring: cubic-bezier(0.2, 0.8, 0.2, 1);
   --motion-smooth: 280ms var(--ease-spring);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -168,7 +166,8 @@
   --uncertain: oklch(0.48 0.12 72);
   --rejected: oklch(0.54 0.16 18.51);
   --shadow-glass: 0 22px 64px -34px oklch(0.25 0.04 258 / 22%), 0 1px 0 oklch(1 0 0 / 90%) inset;
-  --shadow-card-hover: 0 28px 68px -34px oklch(0.25 0.04 258 / 28%), 0 1px 0 oklch(1 0 0 / 90%) inset;
+  --shadow-card-hover:
+    0 28px 68px -34px oklch(0.25 0.04 258 / 28%), 0 1px 0 oklch(1 0 0 / 90%) inset;
   --sidebar: oklch(0.96 0.008 88);
   --sidebar-foreground: oklch(0.2501 0.0407 257.77);
   --sidebar-primary: oklch(0.48 0.13 163.38);
@@ -257,7 +256,11 @@
 @utility texture-grid {
   background-image:
     linear-gradient(color-mix(in oklab, var(--foreground) 2.5%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in oklab, var(--foreground) 2.5%, transparent) 1px, transparent 1px);
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--foreground) 2.5%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 48px 48px;
   mask-image: linear-gradient(to bottom, black, transparent 82%);
   pointer-events: none;
@@ -326,6 +329,56 @@
   @media (hover: none) {
     .glass-interactive:hover {
       transform: none;
+    }
+  }
+
+  @media print {
+    @page {
+      margin: 14mm;
+    }
+
+    html,
+    body {
+      color-scheme: light;
+      background: white !important;
+      color: black !important;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    body * {
+      visibility: hidden !important;
+    }
+
+    .memo-print,
+    .memo-print * {
+      visibility: visible !important;
+    }
+
+    .memo-print {
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      border: 0 !important;
+      background: white !important;
+      color: black !important;
+      box-shadow: none !important;
+    }
+
+    .memo-print * {
+      break-inside: avoid;
+      color: black !important;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .memo-print mark {
+      background: transparent !important;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .memo-print .hidden.print\:block {
+      display: block !important;
     }
   }
 }

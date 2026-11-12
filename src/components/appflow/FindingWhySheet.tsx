@@ -11,7 +11,6 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import {
-  recordedFindings,
   recordedLawSections,
   uncertainFinding,
   type RecordedFinding,
@@ -37,7 +36,10 @@ export function FindingWhySheet({ finding, onOpenCitation, onOpenChange }: Findi
 
   return (
     <Sheet open={finding !== null} onOpenChange={onOpenChange}>
-      <SheetContent side="right" className="inset-y-0 right-0 h-full w-full overflow-y-auto border-l border-border bg-background p-0 sm:max-w-xl">
+      <SheetContent
+        side="right"
+        className="inset-y-0 right-0 h-full w-full overflow-y-auto border-l border-border bg-background p-0 sm:max-w-xl"
+      >
         {finding ? (
           <div className="p-5 pb-8 sm:p-8">
             <SheetHeader className="pr-10 text-left">
@@ -45,12 +47,16 @@ export function FindingWhySheet({ finding, onOpenCitation, onOpenChange }: Findi
                 <FileSearch aria-hidden="true" className="size-3.5" />
                 {t("mockReview.why.title")}
               </Badge>
-              <SheetTitle className="pt-3 font-display text-2xl leading-8">{t(finding.titleKey)}</SheetTitle>
+              <SheetTitle className="pt-3 font-display text-2xl leading-8">
+                {t(finding.titleKey)}
+              </SheetTitle>
               <SheetDescription>{t("mockReview.why.description")}</SheetDescription>
             </SheetHeader>
 
             <section className="mt-7">
-              <h3 className="text-sm font-semibold text-foreground">{t("mockReview.why.retrieved")}</h3>
+              <h3 className="text-sm font-semibold text-foreground">
+                {t("mockReview.why.retrieved")}
+              </h3>
               {finding.sectionIds.length ? (
                 <ul className="mt-3 divide-y divide-border border-y border-border">
                   {finding.sectionIds.map((sectionId: RecordedLawSectionId) => {
@@ -67,9 +73,13 @@ export function FindingWhySheet({ finding, onOpenCitation, onOpenChange }: Findi
                             <span className="block text-xs text-muted-foreground">
                               {t("mockReview.citation.section", { number: section.section })}
                             </span>
-                            <span className="mt-1 block text-sm font-medium text-foreground">{t(section.titleKey)}</span>
+                            <span className="mt-1 block text-sm font-medium text-foreground">
+                              {t(section.titleKey)}
+                            </span>
                           </span>
-                          <span aria-hidden="true" className="text-verified">↗</span>
+                          <span aria-hidden="true" className="text-verified">
+                            ↗
+                          </span>
                         </Button>
                       </li>
                     );
@@ -83,11 +93,20 @@ export function FindingWhySheet({ finding, onOpenCitation, onOpenChange }: Findi
             </section>
 
             <section className="mt-7">
-              <h3 className="text-sm font-semibold text-foreground">{t("mockReview.why.checks")}</h3>
+              <h3 className="text-sm font-semibold text-foreground">
+                {t("mockReview.why.checks")}
+              </h3>
               <ul className="mt-3 space-y-2">
                 {checkedItems.map((item) => (
-                  <li key={item} className={`flex min-h-11 items-center gap-3 rounded-md border px-3 text-sm ${isUncertain ? "border-border text-muted-foreground" : "border-verified/20 bg-verified/5 text-foreground"}`}>
-                    {isUncertain ? <X aria-hidden="true" className="size-4 text-uncertain" /> : <Check aria-hidden="true" className="size-4 text-verified" />}
+                  <li
+                    key={item}
+                    className={`flex min-h-11 items-center gap-3 rounded-md border px-3 text-sm ${isUncertain ? "border-border text-muted-foreground" : "border-verified/20 bg-verified/5 text-foreground"}`}
+                  >
+                    {isUncertain ? (
+                      <X aria-hidden="true" className="size-4 text-uncertain" />
+                    ) : (
+                      <Check aria-hidden="true" className="size-4 text-verified" />
+                    )}
                     {item}
                   </li>
                 ))}
@@ -95,9 +114,13 @@ export function FindingWhySheet({ finding, onOpenCitation, onOpenChange }: Findi
             </section>
 
             <section className="mt-7 border-t border-border pt-5">
-              <h3 className="text-xs font-medium text-muted-foreground">{t("mockReview.why.model")}</h3>
+              <h3 className="text-xs font-medium text-muted-foreground">
+                {t("mockReview.why.model")}
+              </h3>
               <p className="mt-2 font-medium text-foreground">{t(finding.modelKey)}</p>
-              <p className="mt-2 text-xs leading-5 text-muted-foreground">{t("mockReview.why.recorded")}</p>
+              <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                {t("mockReview.why.recorded")}
+              </p>
             </section>
           </div>
         ) : null}
@@ -105,5 +128,3 @@ export function FindingWhySheet({ finding, onOpenCitation, onOpenChange }: Findi
     </Sheet>
   );
 }
-
-export { recordedFindings };

@@ -1,11 +1,4 @@
-import {
-  Camera,
-  FileText,
-  FileUp,
-  LockKeyhole,
-  ShieldCheck,
-  Trash2,
-} from "lucide-react";
+import { Camera, FileText, FileUp, LockKeyhole, ShieldCheck, Trash2 } from "lucide-react";
 import { useRef, useState, type DragEvent } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -13,6 +6,7 @@ import { Badge } from "@/components/Badge";
 import { Button } from "@/components/Button";
 import { GlassCard } from "@/components/GlassCard";
 import { Textarea } from "@/components/ui/textarea";
+import { recordedSampleContract } from "@/mocks/security-guard-review";
 
 export type ReviewSide = "worker" | "employer";
 
@@ -27,9 +21,6 @@ interface AppUploadScreenProps {
   onAnalyze: () => void;
 }
 
-export const securityGuardSampleText =
-  "সিকিউরিটি গার্ড নিয়োগ: সপ্তাহে ছয় দিন, প্রতিদিন ১২ ঘণ্টা শিফট। অতিরিক্ত সময়ের জন্য আলাদা ভাতা নেই। ইউনিফর্মের খরচ মজুরি থেকে কাটা হবে। প্রথম নয় মাস শিক্ষানবিশকাল এবং মূল বেতনের ৭০% প্রদান করা হবে। মালিক কোনো নোটিশ ছাড়াই চাকরি শেষ করতে পারবেন।";
-
 export function AppUploadScreen({
   file,
   error,
@@ -42,8 +33,9 @@ export function AppUploadScreen({
 }: AppUploadScreenProps) {
   const { t } = useTranslation();
   const inputRef = useRef<HTMLInputElement>(null);
+  const cameraInputRef = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
-  const canAnalyze = file !== null || text.trim().length > 0;
+  const canAnalyze = error === null && (file !== null || text.trim().length > 0);
 
   const pickFile = (candidate?: File) => {
     if (candidate) onFileSelected(candidate);
@@ -63,6 +55,7 @@ export function AppUploadScreen({
             <span className="size-1.5 rounded-full bg-verified" aria-hidden="true" />
             {t("mockReview.upload.eyebrow")}
           </Badge>
+          <Badge tone="neutral">{t("mockReview.memo.generated")}</Badge>
           <span className="text-xs text-muted-foreground">{t("mockReview.topline")}</span>
         </div>
         <h1 className="font-display text-3xl font-semibold leading-[1.35] text-foreground sm:text-4xl">
@@ -93,15 +86,22 @@ export function AppUploadScreen({
               type="file"
               accept="application/pdf,image/*,text/plain,.md,.markdown"
               aria-label={t("mockReview.upload.browse")}
-              onChange={(event) => pickFile(event.currentTarget.files?.item(0) ?? undefined)}
+              onChange={(event) => {
+                pickFile(event.currentTarget.files?.item(0) ?? undefined);
+                event.currentTarget.value = "";
+              }}
             />
             <input
+              ref={cameraInputRef}
               className="sr-only"
               type="file"
               accept="image/*"
               capture="environment"
               aria-label={t("mockReview.upload.camera")}
-              onChange={(event) => pickFile(event.currentTarget.files?.item(0) ?? undefined)}
+              onChange={(event) => {
+                pickFile(event.currentTarget.files?.item(0) ?? undefined);
+                event.currentTarget.value = "";
+              }}
             />
             {file ? (
               <div className="flex flex-wrap items-center gap-4">
@@ -109,7 +109,9 @@ export function AppUploadScreen({
                   <FileText aria-hidden="true" className="size-5" />
                 </span>
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs text-muted-foreground">{t("mockReview.upload.fileSelected")}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {t("mockReview.upload.fileSelected")}
+                  </p>
                   <p className="mt-1 break-all font-medium text-foreground">{file.name}</p>
                   <p className="text-xs text-muted-foreground">
                     {(file.size / (1024 * 1024)).toFixed(2)} MB
@@ -148,12 +150,7 @@ export function AppUploadScreen({
                   <Button
                     type="button"
                     variant="outline"
-                    onClick={() => {
-                      const camera = document.querySelector<HTMLInputElement>(
-                        'input[aria-label="' + t("mockReview.upload.camera") + '"]',
-                      );
-                      camera?.click();
-                    }}
+                    onClick={() => cameraInputRef.current?.click()}
                   >
                     <Camera aria-hidden="true" />
                     {t("mockReview.upload.camera")}
@@ -170,7 +167,10 @@ export function AppUploadScreen({
           </div>
 
           <div>
-            <label htmlFor="contract-text" className="mb-2 block text-sm font-medium text-foreground">
+            <label
+              htmlFor="contract-text"
+              className="mb-2 block text-sm font-medium text-foreground"
+            >
               {t("mockReview.upload.pasteLabel")}
             </label>
             <Textarea
@@ -184,21 +184,30 @@ export function AppUploadScreen({
               type="button"
               variant="ghost"
               className="mt-2 px-2 text-sm text-muted-foreground"
-              onClick={() => onTextChange(securityGuardSampleText)}
+              onClick={() => onTextChange(recordedSampleContract)}
             >
               {t("mockReview.upload.useSample")}
             </Button>
           </div>
 
           {error ? (
-            <p role="alert" className="rounded-md border border-rejected/25 bg-rejected/5 px-4 py-3 text-sm text-rejected">
+            <p
+              role="alert"
+              className="rounded-md border border-rejected/25 bg-rejected/5 px-4 py-3 text-sm text-rejected"
+            >
               {t(`mockReview.upload.${error}`)}
             </p>
           ) : null}
 
           <div>
-            <p className="mb-2 text-sm font-medium text-foreground">{t("mockReview.upload.sideLabel")}</p>
-            <div className="grid grid-cols-2 rounded-lg border border-border bg-card/50 p-1" role="group" aria-label={t("mockReview.upload.sideLabel")}>
+            <p className="mb-2 text-sm font-medium text-foreground">
+              {t("mockReview.upload.sideLabel")}
+            </p>
+            <div
+              className="grid grid-cols-2 rounded-lg border border-border bg-card/50 p-1"
+              role="group"
+              aria-label={t("mockReview.upload.sideLabel")}
+            >
               {(["worker", "employer"] as const).map((option) => (
                 <Button
                   key={option}
@@ -214,7 +223,13 @@ export function AppUploadScreen({
             </div>
           </div>
 
-          <Button type="button" size="lg" disabled={!canAnalyze} onClick={onAnalyze} className="w-full sm:w-auto">
+          <Button
+            type="button"
+            size="lg"
+            disabled={!canAnalyze}
+            onClick={onAnalyze}
+            className="w-full sm:w-auto"
+          >
             <ShieldCheck aria-hidden="true" />
             {t("mockReview.upload.analyze")}
           </Button>

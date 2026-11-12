@@ -5,6 +5,7 @@ import type { FindingSeverity } from "@/mocks/contract-review";
 
 interface SeverityTagProps {
   severity: FindingSeverity;
+  showCode?: boolean;
 }
 
 const severityTone = {
@@ -14,11 +15,12 @@ const severityTone = {
   low: "neutral",
 } as const;
 
-export function SeverityTag({ severity }: SeverityTagProps) {
+export function SeverityTag({ severity, showCode = false }: SeverityTagProps) {
   const { t } = useTranslation();
 
   return (
     <Badge tone={severityTone[severity]}>
+      {showCode ? <span className="font-sans uppercase">{severity}</span> : null}
       <span>{t(`severity.${severity}`)}</span>
     </Badge>
   );

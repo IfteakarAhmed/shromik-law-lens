@@ -81,103 +81,103 @@ export interface RecordedFinding {
 export const recordedFindings = [
   {
     id: "weekly-hours",
-    titleKey: "mockReview.findings.weeklyHours.title",
-    clauseKey: "mockReview.findings.weeklyHours.clause",
-    explanationKey: "mockReview.findings.weeklyHours.explanation",
+    titleKey: "mockReview.finding.weeklyHours.title",
+    clauseKey: "mockReview.finding.weeklyHours.clause",
+    explanationKey: "mockReview.finding.weeklyHours.explanation",
     severity: "critical",
     nonObvious: true,
     sectionIds: ["section102"],
-    modelKey: "mockReview.findings.weeklyHours.model",
+    modelKey: "mockReview.finding.weeklyHours.model",
   },
   {
     id: "unpaid-overtime",
-    titleKey: "mockReview.findings.unpaidOvertime.title",
-    clauseKey: "mockReview.findings.unpaidOvertime.clause",
-    explanationKey: "mockReview.findings.unpaidOvertime.explanation",
+    titleKey: "mockReview.finding.unpaidOvertime.title",
+    clauseKey: "mockReview.finding.unpaidOvertime.clause",
+    explanationKey: "mockReview.finding.unpaidOvertime.explanation",
     severity: "critical",
     nonObvious: true,
     sectionIds: ["section108"],
-    modelKey: "mockReview.findings.unpaidOvertime.model",
+    modelKey: "mockReview.finding.unpaidOvertime.model",
   },
   {
     id: "daily-hours",
-    titleKey: "mockReview.findings.dailyHours.title",
-    clauseKey: "mockReview.findings.dailyHours.clause",
-    explanationKey: "mockReview.findings.dailyHours.explanation",
+    titleKey: "mockReview.finding.dailyHours.title",
+    clauseKey: "mockReview.finding.dailyHours.clause",
+    explanationKey: "mockReview.finding.dailyHours.explanation",
     severity: "high",
     nonObvious: true,
     sectionIds: ["section100"],
-    modelKey: "mockReview.findings.dailyHours.model",
+    modelKey: "mockReview.finding.dailyHours.model",
   },
   {
     id: "uniform-deduction",
-    titleKey: "mockReview.findings.uniformDeduction.title",
-    clauseKey: "mockReview.findings.uniformDeduction.clause",
-    explanationKey: "mockReview.findings.uniformDeduction.explanation",
+    titleKey: "mockReview.finding.uniformDeduction.title",
+    clauseKey: "mockReview.finding.uniformDeduction.clause",
+    explanationKey: "mockReview.finding.uniformDeduction.explanation",
     severity: "high",
     nonObvious: false,
     sectionIds: ["section125"],
-    modelKey: "mockReview.findings.uniformDeduction.model",
+    modelKey: "mockReview.finding.uniformDeduction.model",
   },
   {
     id: "probation-duration",
-    titleKey: "mockReview.findings.probationDuration.title",
-    clauseKey: "mockReview.findings.probationDuration.clause",
-    explanationKey: "mockReview.findings.probationDuration.explanation",
+    titleKey: "mockReview.finding.probationDuration.title",
+    clauseKey: "mockReview.finding.probationDuration.clause",
+    explanationKey: "mockReview.finding.probationDuration.explanation",
     severity: "high",
     nonObvious: true,
     sectionIds: ["section4"],
-    modelKey: "mockReview.findings.probationDuration.model",
+    modelKey: "mockReview.finding.probationDuration.model",
   },
   {
     id: "termination-notice",
-    titleKey: "mockReview.findings.terminationNotice.title",
-    clauseKey: "mockReview.findings.terminationNotice.clause",
-    explanationKey: "mockReview.findings.terminationNotice.explanation",
+    titleKey: "mockReview.finding.terminationNotice.title",
+    clauseKey: "mockReview.finding.terminationNotice.clause",
+    explanationKey: "mockReview.finding.terminationNotice.explanation",
     severity: "high",
     nonObvious: true,
     sectionIds: ["section26"],
-    modelKey: "mockReview.findings.terminationNotice.model",
+    modelKey: "mockReview.finding.terminationNotice.model",
   },
   {
     id: "missing-break",
-    titleKey: "mockReview.findings.missingBreak.title",
-    clauseKey: "mockReview.findings.missingBreak.clause",
-    explanationKey: "mockReview.findings.missingBreak.explanation",
+    titleKey: "mockReview.finding.missingBreak.title",
+    clauseKey: "mockReview.finding.missingBreak.clause",
+    explanationKey: "mockReview.finding.missingBreak.explanation",
     severity: "medium",
     nonObvious: false,
     sectionIds: ["section101"],
-    modelKey: "mockReview.findings.missingBreak.model",
+    modelKey: "mockReview.finding.missingBreak.model",
   },
   {
     id: "no-weekly-rest",
-    titleKey: "mockReview.findings.noWeeklyRest.title",
-    clauseKey: "mockReview.findings.noWeeklyRest.clause",
-    explanationKey: "mockReview.findings.noWeeklyRest.explanation",
+    titleKey: "mockReview.finding.noWeeklyRest.title",
+    clauseKey: "mockReview.finding.noWeeklyRest.clause",
+    explanationKey: "mockReview.finding.noWeeklyRest.explanation",
     severity: "medium",
     nonObvious: true,
     sectionIds: ["section103"],
-    modelKey: "mockReview.findings.noWeeklyRest.model",
+    modelKey: "mockReview.finding.noWeeklyRest.model",
   },
   {
     id: "missing-appointment-letter",
-    titleKey: "mockReview.findings.missingAppointmentLetter.title",
-    clauseKey: "mockReview.findings.missingAppointmentLetter.clause",
-    explanationKey: "mockReview.findings.missingAppointmentLetter.explanation",
+    titleKey: "mockReview.finding.missingAppointmentLetter.title",
+    clauseKey: "mockReview.finding.missingAppointmentLetter.clause",
+    explanationKey: "mockReview.finding.missingAppointmentLetter.explanation",
     severity: "medium",
     nonObvious: false,
     sectionIds: ["section5"],
-    modelKey: "mockReview.findings.missingAppointmentLetter.model",
+    modelKey: "mockReview.finding.missingAppointmentLetter.model",
   },
   {
     id: "unconditional-loss-deduction",
-    titleKey: "mockReview.findings.unconditionalLossDeduction.title",
-    clauseKey: "mockReview.findings.unconditionalLossDeduction.clause",
-    explanationKey: "mockReview.findings.unconditionalLossDeduction.explanation",
+    titleKey: "mockReview.finding.unconditionalLossDeduction.title",
+    clauseKey: "mockReview.finding.unconditionalLossDeduction.clause",
+    explanationKey: "mockReview.finding.unconditionalLossDeduction.explanation",
     severity: "medium",
     nonObvious: true,
     sectionIds: ["section125"],
-    modelKey: "mockReview.findings.unconditionalLossDeduction.model",
+    modelKey: "mockReview.finding.unconditionalLossDeduction.model",
   },
 ] as const satisfies readonly RecordedFinding[];
 
@@ -193,10 +193,31 @@ export const uncertainFinding = {
   verification: "uncertain",
 } as const;
 
+export const recordedSampleContract =
+  "সিকিউরিটি গার্ড নিয়োগের শর্ত: কর্মী সপ্তাহে ছয় দিন, প্রতিদিন ১২ ঘণ্টা কাজ করবেন। ১২ ঘণ্টার শিফটে কোনো নির্ধারিত বিশ্রামের বিরতি থাকবে না। সপ্তাহের ছুটি কাজের প্রয়োজনে বাতিল করা যেতে পারে। অতিরিক্ত সময়ের জন্য আলাদা ভাতা দেওয়া হবে না। প্রতি মাসে ইউনিফর্মের নির্দিষ্ট মূল্য মজুরি থেকে কাটা হবে; ইউনিফর্ম হারালে, ক্ষতিগ্রস্ত হলে বা স্বাভাবিক ব্যবহারে বদলাতে হলে পুরো মূল্য কাটা হবে। প্রথম নয় মাস শিক্ষানবিশকাল; এই সময়ে মূল বেতনের ৭০% দেওয়া হবে। নিয়োগপত্র বা ছবিসহ পরিচয়পত্র দেওয়া হবে না। মালিক কোনো নোটিশ ছাড়াই চাকরি শেষ করতে পারবেন।";
+
 export const clauseProposals = [
-  { id: "overtime", titleKey: "mockReview.proposals.overtime.title", oldKey: "mockReview.proposals.overtime.old", newKey: "mockReview.proposals.overtime.new", sectionId: "section108" },
-  { id: "uniform", titleKey: "mockReview.proposals.uniform.title", oldKey: "mockReview.proposals.uniform.old", newKey: "mockReview.proposals.uniform.new", sectionId: "section125" },
-  { id: "termination", titleKey: "mockReview.proposals.termination.title", oldKey: "mockReview.proposals.termination.old", newKey: "mockReview.proposals.termination.new", sectionId: "section26" },
+  {
+    id: "overtime",
+    titleKey: "mockReview.proposals.overtime.title",
+    oldKey: "mockReview.proposals.overtime.old",
+    newKey: "mockReview.proposals.overtime.new",
+    sectionId: "section108",
+  },
+  {
+    id: "uniform",
+    titleKey: "mockReview.proposals.uniform.title",
+    oldKey: "mockReview.proposals.uniform.old",
+    newKey: "mockReview.proposals.uniform.new",
+    sectionId: "section125",
+  },
+  {
+    id: "termination",
+    titleKey: "mockReview.proposals.termination.title",
+    oldKey: "mockReview.proposals.termination.old",
+    newKey: "mockReview.proposals.termination.new",
+    sectionId: "section26",
+  },
 ] as const satisfies readonly {
   readonly id: string;
   readonly titleKey: string;
@@ -206,21 +227,23 @@ export const clauseProposals = [
 }[];
 
 export const workerDuties = [
-  "mockReview.duties.worker.0",
-  "mockReview.duties.worker.1",
-  "mockReview.duties.worker.2",
-  "mockReview.duties.worker.3",
+  "mockReview.duties.workerItems.0",
+  "mockReview.duties.workerItems.1",
+  "mockReview.duties.workerItems.2",
+  "mockReview.duties.workerItems.3",
 ] as const;
 
 export const employerDuties = [
-  "mockReview.duties.employer.0",
-  "mockReview.duties.employer.1",
-  "mockReview.duties.employer.2",
-  "mockReview.duties.employer.3",
+  "mockReview.duties.employerItems.0",
+  "mockReview.duties.employerItems.1",
+  "mockReview.duties.employerItems.2",
+  "mockReview.duties.employerItems.3",
 ] as const;
 
 const severityOrder: Record<ReviewSeverity, number> = { critical: 0, high: 1, medium: 2 };
 
 export function sortRecordedFindings(findings: readonly RecordedFinding[]): RecordedFinding[] {
-  return [...findings].sort((first, second) => severityOrder[first.severity] - severityOrder[second.severity]);
+  return [...findings].sort(
+    (first, second) => severityOrder[first.severity] - severityOrder[second.severity],
+  );
 }
