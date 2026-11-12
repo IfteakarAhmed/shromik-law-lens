@@ -117,7 +117,7 @@ function ContractReviewApp() {
             onAnalyze={startReview}
           />
         ) : null}
-          {screen === "progress" ? <ReviewProgress onComplete={finishProgress} /> : null}
+        {screen === "progress" ? <ReviewProgress onComplete={finishProgress} /> : null}
         {screen === "results" ? (
           <ReviewResults
             side={side}

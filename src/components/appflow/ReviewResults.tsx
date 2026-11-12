@@ -644,7 +644,9 @@ function MemoMetric({ label, value, count }: { label: string; value: string; cou
       <p className="text-xs text-muted-foreground">{label}</p>
       <p className="mt-1 font-medium text-foreground">
         {value}
-        {count !== "" ? ` · ${new Intl.NumberFormat(i18n.resolvedLanguage ?? "bn-BD").format(count)}` : ""}
+        {count !== ""
+          ? ` · ${new Intl.NumberFormat(i18n.resolvedLanguage ?? "bn-BD").format(count)}`
+          : ""}
       </p>
     </div>
   );
