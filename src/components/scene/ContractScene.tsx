@@ -14,7 +14,7 @@ import * as THREE from "three";
 
 import { ScenePoster } from "@/components/scene/ScenePoster";
 
-interface ContractSceneProps {
+export interface ContractSceneProps {
   alt: string;
   isActive: boolean;
   onReady: () => void;
@@ -81,7 +81,7 @@ function readScenePalette(): ScenePalette {
   };
 }
 
-export function ContractScene({ alt, isActive, onReady, onFailure }: ContractSceneProps) {
+export default function ContractScene({ alt, isActive, onReady, onFailure }: ContractSceneProps) {
   const [palette, setPalette] = useState<ScenePalette | null>(null);
   const [sceneReady, setSceneReady] = useState(false);
 
