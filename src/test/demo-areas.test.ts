@@ -19,6 +19,10 @@ describe("sample citation comparison", () => {
       citationCount: 2,
       rejectedCount: 2,
     });
+    const mixedClaims = plainAiClaims.map((claim, index) =>
+      index === 0 ? { ...claim, status: "verified" as const } : claim,
+    );
+    expect(summarizeClaimRejections(mixedClaims)).toEqual({ citationCount: 4, rejectedCount: 3 });
   });
 
   it("labels rejected mock claims with a translated verifier reason in both languages", () => {

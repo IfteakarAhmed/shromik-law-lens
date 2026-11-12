@@ -120,6 +120,7 @@ export function ComparePage() {
             <Badge tone="neutral">{t("comparisonPage.sample")}</Badge>
           </div>
           <p className="max-w-2xl text-muted-foreground">{t("comparisonPage.description")}</p>
+          <p className="text-xs text-muted-foreground">{t("comparisonPage.prototypeNote")}</p>
         </div>
 
         <GlassCard className="mb-6 flex flex-wrap items-center gap-3 border-rejected/25 p-4 sm:p-5">

@@ -4,4 +4,4 @@
 - [x] Verify uploads, progress, all tabs/sheets, print behavior, mobile layout, tests, typecheck, lint, and production build.
 - [x] Add a bilingual `/app/compare` view that computes rejected-claim totals from clearly labelled sample data and adapts to mobile tabs.
 - [x] Add a bilingual `/admin` sample dashboard with local-only review, playbook, demo-key, usage-chart, and trace interactions.
-- [ ] Add `/demo-user`, `/demo-hr`, and `/demo-admin` navigation routes, focused tests, and verify the new screens.
+- [x] Add `/demo-user`, `/demo-hr`, and `/demo-admin` navigation routes, focused tests, and verify the new screens.

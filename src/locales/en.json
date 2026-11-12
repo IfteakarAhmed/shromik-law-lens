@@ -464,6 +464,7 @@
     "eyebrow": "Same contract · two outcomes",
     "title": "Citation verification comparison",
     "description": "Claims from a plain AI are checked against the same sample security-guard contract and shown alongside ShromikAI results.",
+    "prototypeNote": "Both columns are fixed sample examples; no live AI is running here.",
     "sample": "Sample data (recorded)",
     "plain": "Plain AI",
     "verified": "ShromikAI",
