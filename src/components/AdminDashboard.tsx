@@ -134,6 +134,7 @@ export function AdminDashboard({ section }: AdminDashboardProps) {
         );
         setNewKeyId(null);
       }
+      if (value !== "playbooks") setSavedPlaybookId(null);
       void navigate({ search: { section: value } });
     }
   };
