@@ -7,6 +7,8 @@ import { AppUploadScreen, type ReviewSide } from "@/components/appflow/AppUpload
 import { ReviewProgress } from "@/components/appflow/ReviewProgress";
 import { ReviewResults } from "@/components/appflow/ReviewResults";
 import { Badge } from "@/components/Badge";
+import { LanguageToggle } from "@/components/LanguageToggle";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { validateContractFile, type ContractFileError } from "@/lib/contract-file-validation";
 
 type DemoRole = "worker" | "hr" | "admin";
@@ -85,6 +87,8 @@ function ContractReviewApp() {
           <span>{t("navigation.backHome")}</span>
         </Link>
         <div className="flex min-w-0 items-center gap-2">
+          <LanguageToggle />
+          <ThemeToggle />
           <span className="hidden size-8 items-center justify-center rounded-md border border-verified/25 bg-verified/10 text-verified sm:flex">
             <ShieldCheck aria-hidden="true" className="size-4" />
           </span>
