@@ -1,4 +1,4 @@
-- [ ] Rework the home-page hero to match the uploaded Bangla landing-page copy and procedural 3D contract scene.
-- [ ] Add the React-state low-bandwidth toggle, static poster fallback, and accessible reduced-motion/WebGL handling.
-- [ ] Build the four requested sections, trust strip, links, and responsive motion.
-- [ ] Verify scene and fallback states in the browser; rerun tests, typecheck, lint, and preview build checks.
+- [x] Rework the home-page hero to match the uploaded Bangla landing-page copy and procedural 3D contract scene.
+- [x] Add the React-state low-bandwidth toggle, static poster fallback, and accessible reduced-motion/WebGL handling.
+- [x] Build the four requested sections, trust strip, links, and responsive motion.
+- [x] Verify scene and fallback states in the browser; rerun tests, typecheck, lint, and preview build checks.
