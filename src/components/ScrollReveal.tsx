@@ -6,12 +6,7 @@ interface ScrollRevealProps extends HTMLAttributes<HTMLDivElement> {
   delay?: 0 | 1 | 2 | 3;
 }
 
-export function ScrollReveal({
-  children,
-  className,
-  delay = 0,
-  ...props
-}: ScrollRevealProps) {
+export function ScrollReveal({ children, className, delay = 0, ...props }: ScrollRevealProps) {
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -41,7 +36,10 @@ export function ScrollReveal({
   return (
     <div
       ref={elementRef}
-      className={cn("motion-safe:transition-[opacity,transform] motion-safe:duration-500 motion-safe:ease-out", className)}
+      className={cn(
+        "motion-safe:transition-[opacity,transform] motion-safe:duration-500 motion-safe:ease-out",
+        className,
+      )}
       data-reveal-delay={delay}
       {...props}
     >

@@ -68,7 +68,11 @@ function cssTokenToHex(tokenName: string): string {
   context.fillRect(0, 0, 1, 1);
   const pixel = context.getImageData(0, 0, 1, 1).data;
   return `#${[pixel[0], pixel[1], pixel[2]]
-    .map((channel) => Math.round(channel ?? 255).toString(16).padStart(2, "0"))
+    .map((channel) =>
+      Math.round(channel ?? 255)
+        .toString(16)
+        .padStart(2, "0"),
+    )
     .join("")}`;
 }
 
@@ -122,8 +126,18 @@ export default function ContractScene({ alt, isActive, onReady, onFailure }: Con
               <color attach="background" args={[palette.ink]} />
               <ambientLight intensity={1.6} />
               <directionalLight position={[-4, 5, 6]} intensity={2.5} color={palette.paper} />
-              <pointLight position={[3, 1, 2]} intensity={8} distance={9} color={palette.verified} />
-              <pointLight position={[-3, -3, 1]} intensity={3} distance={7} color={palette.uncertain} />
+              <pointLight
+                position={[3, 1, 2]}
+                intensity={8}
+                distance={9}
+                color={palette.verified}
+              />
+              <pointLight
+                position={[-3, -3, 1]}
+                intensity={3}
+                distance={7}
+                color={palette.uncertain}
+              />
               <ContractArrangement palette={palette} onFirstFrame={markReady} />
             </Suspense>
           </Canvas>
@@ -232,11 +246,7 @@ function ContractArrangement({
       <Float speed={0.37} floatIntensity={0.12} rotationIntensity={0.03}>
         <ClauseCard position={[-1.25, -1.03, 0.54]} rotation={0.055} color={palette.uncertain} />
       </Float>
-      <VerificationSeal
-        ref={seal}
-        position={[-0.15, 0.08, 1.03]}
-        color={palette.verified}
-      />
+      <VerificationSeal ref={seal} position={[-0.15, 0.08, 1.03]} color={palette.verified} />
       <BrokenCitation palette={palette} groupRef={brokenCitation} />
     </group>
   );
@@ -355,7 +365,12 @@ function BrokenCitation({
     <group ref={groupRef} position={[2.12, 1.18, 0.36]} rotation={[0, -0.06, 0.09]}>
       <mesh position={[0, 0.1, -0.025]}>
         <boxGeometry args={[1.22, 0.63, 0.034]} />
-        <meshPhysicalMaterial color={palette.rejected} transparent opacity={0.17} roughness={0.22} />
+        <meshPhysicalMaterial
+          color={palette.rejected}
+          transparent
+          opacity={0.17}
+          roughness={0.22}
+        />
       </mesh>
       <mesh position={[0, 0.18, 0.004]} rotation={[0, 0, 0.12]}>
         <boxGeometry args={[0.73, 0.028, 0.012]} />

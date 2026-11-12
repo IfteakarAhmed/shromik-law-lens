@@ -17,9 +17,17 @@ export const Route = createFileRoute("/app")({
   head: () => ({
     meta: [
       { title: "নমুনা চুক্তি পর্যালোচনা · ShromikAI" },
-      { name: "description", content: "কাল্পনিক কর্মচুক্তির ধারা, বাংলাদেশের শ্রম আইনের সরকারি সূত্রের সঙ্গে যাচাই করা নমুনা পর্যালোচনা।" },
+      {
+        name: "description",
+        content:
+          "কাল্পনিক কর্মচুক্তির ধারা, বাংলাদেশের শ্রম আইনের সরকারি সূত্রের সঙ্গে যাচাই করা নমুনা পর্যালোচনা।",
+      },
       { property: "og:title", content: "নমুনা চুক্তি পর্যালোচনা · ShromikAI" },
-      { property: "og:description", content: "কাল্পনিক কর্মচুক্তির ধারা, বাংলাদেশের শ্রম আইনের সরকারি সূত্রের সঙ্গে যাচাই করা নমুনা পর্যালোচনা।" },
+      {
+        property: "og:description",
+        content:
+          "কাল্পনিক কর্মচুক্তির ধারা, বাংলাদেশের শ্রম আইনের সরকারি সূত্রের সঙ্গে যাচাই করা নমুনা পর্যালোচনা।",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -35,11 +43,16 @@ function DemoReview() {
     <div className="relative min-h-screen overflow-hidden">
       <div aria-hidden="true" className="texture-grid absolute inset-x-0 top-0 -z-10 h-[34rem]" />
       <header className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-gutter py-5">
-        <Link to="/" className="inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring">
+        <Link
+          to="/"
+          className="inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+        >
           <ArrowLeft aria-hidden="true" className="size-4" />
           {t("navigation.backHome")}
         </Link>
-        <Badge tone="neutral">{t(`roles.${role}`)} · {t("demo.eyebrow")}</Badge>
+        <Badge tone="neutral">
+          {t(`roles.${role}`)} · {t("demo.eyebrow")}
+        </Badge>
       </header>
 
       <main className="mx-auto max-w-5xl px-gutter pb-14 pt-8 sm:pb-20 sm:pt-12">
@@ -55,21 +68,29 @@ function DemoReview() {
           <div className="flex flex-col gap-4 border-b border-border/70 pb-5 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <p className="text-sm text-muted-foreground">{t("review.sampleDocument")}</p>
-              <h2 className="mt-1 font-display text-2xl font-semibold text-foreground">{t("demo.findingTitle")}</h2>
+              <h2 className="mt-1 font-display text-2xl font-semibold text-foreground">
+                {t("demo.findingTitle")}
+              </h2>
             </div>
             <VerificationBadge status="rejected" />
           </div>
 
           <div className="grid gap-6 pt-6 lg:grid-cols-2">
             <div>
-              <p className="text-sm font-semibold text-muted-foreground">{t("review.clauseLabel")}</p>
+              <p className="text-sm font-semibold text-muted-foreground">
+                {t("review.clauseLabel")}
+              </p>
               <blockquote className="mt-3 rounded-lg border border-border bg-background/60 p-4 font-display text-base leading-8 text-foreground">
                 {t("demo.clause")}
               </blockquote>
-              <Badge tone="rejected" className="mt-4">{t("review.findingsTitle")}</Badge>
+              <Badge tone="rejected" className="mt-4">
+                {t("review.findingsTitle")}
+              </Badge>
             </div>
             <div>
-              <p className="text-sm font-semibold text-muted-foreground">{t("review.analysisLabel")}</p>
+              <p className="text-sm font-semibold text-muted-foreground">
+                {t("review.analysisLabel")}
+              </p>
               <p className="mt-3 text-sm leading-8 text-foreground">{t("demo.explanation")}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <CitationChip

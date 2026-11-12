@@ -1,5 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowLeft, ArrowUpRight, Check, FileCheck2, FileUp, LockKeyhole, Search, ShieldCheck, UsersRound, X } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowLeft,
+  ArrowUpRight,
+  Check,
+  FileCheck2,
+  FileUp,
+  LockKeyhole,
+  Search,
+  ShieldCheck,
+  UsersRound,
+  X,
+} from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -64,11 +76,14 @@ function Index() {
           aria-label={`${t("app.name")} ${t("app.ai")}`}
         >
           <span className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-verified/25 bg-verified/10 text-verified shadow-glass-panel transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
-            <span className="font-display text-xl font-bold" lang="bn">শ</span>
+            <span className="font-display text-xl font-bold" lang="bn">
+              শ
+            </span>
           </span>
           <span className="flex min-w-0 flex-col leading-tight">
             <span className="font-display text-lg font-bold text-foreground">
-              {t("app.name")}<span className="text-verified">{t("app.ai")}</span>
+              {t("app.name")}
+              <span className="text-verified">{t("app.ai")}</span>
             </span>
             <span className="truncate text-xs text-muted-foreground">{t("app.tagline")}</span>
           </span>
@@ -89,7 +104,10 @@ function Index() {
 
       <main>
         <div id="top" className="mx-auto max-w-7xl px-gutter pb-12 pt-5 sm:pb-16 sm:pt-10 lg:pb-20">
-          <section aria-labelledby="page-title" className="grid items-center gap-9 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
+          <section
+            aria-labelledby="page-title"
+            className="grid items-center gap-9 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12"
+          >
             <div className="max-w-2xl">
               <div className="mb-5 inline-flex min-h-8 items-center gap-2 rounded-full border border-verified/20 bg-verified/5 px-3 text-sm font-medium text-verified">
                 <span className="size-1.5 rounded-full bg-verified" aria-hidden="true" />
@@ -106,7 +124,11 @@ function Index() {
               </p>
 
               <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-                <Button asChild size="lg" className="group w-full rounded-lg px-5 font-semibold sm:w-auto">
+                <Button
+                  asChild
+                  size="lg"
+                  className="group w-full rounded-lg px-5 font-semibold sm:w-auto"
+                >
                   <Link to="/app" search={{ role: "worker" }}>
                     {t("hero.sampleButton")}
                     <ArrowDown
@@ -132,7 +154,9 @@ function Index() {
                 >
                   {t("hero.hrDemo")}
                 </Link>
-                <span aria-hidden="true" className="my-auto text-muted-foreground/60">·</span>
+                <span aria-hidden="true" className="my-auto text-muted-foreground/60">
+                  ·
+                </span>
                 <Link
                   to="/app"
                   search={{ role: "admin" }}
@@ -151,28 +175,47 @@ function Index() {
                     <span className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-verified/20 bg-verified/10 text-verified">
                       <ShieldCheck aria-hidden="true" className="size-4" />
                     </span>
-                    <span className="truncate text-sm font-medium text-foreground">{t("comparison.verifiedStatus")}</span>
+                    <span className="truncate text-sm font-medium text-foreground">
+                      {t("comparison.verifiedStatus")}
+                    </span>
                   </div>
-                  <Badge tone="verified" className="shrink-0">{t("comparison.sectionChip")}</Badge>
+                  <Badge tone="verified" className="shrink-0">
+                    {t("comparison.sectionChip")}
+                  </Badge>
                 </div>
               </div>
             </div>
           </section>
 
-          <section aria-label={t("trust.noInventedLaw")} className="mt-14 grid gap-3 border-y border-border/70 py-4 sm:mt-20 sm:grid-cols-3 sm:gap-5 sm:py-5">
+          <section
+            aria-label={t("trust.noInventedLaw")}
+            className="mt-14 grid gap-3 border-y border-border/70 py-4 sm:mt-20 sm:grid-cols-3 sm:gap-5 sm:py-5"
+          >
             <TrustItem icon={X} tone="rejected" text={t("trust.noInventedLaw")} />
             <TrustItem icon={LockKeyhole} tone="verified" text={t("trust.privateOnDevice")} />
             <TrustItem icon={ArrowUpRight} tone="verified" text={t("trust.officialLink")} />
           </section>
         </div>
 
-        <section id="how-it-works" aria-labelledby="steps-title" className="border-y border-border/70 bg-ink-raised/45">
+        <section
+          id="how-it-works"
+          aria-labelledby="steps-title"
+          className="border-y border-border/70 bg-ink-raised/45"
+        >
           <div className="mx-auto max-w-7xl px-gutter py-16 sm:py-20 lg:py-24">
             <ScrollReveal>
-              <SectionHeading eyebrow={t("howItWorks.eyebrow")} title={t("howItWorks.title")} description={t("howItWorks.description")} id="steps-title" />
+              <SectionHeading
+                eyebrow={t("howItWorks.eyebrow")}
+                title={t("howItWorks.title")}
+                description={t("howItWorks.description")}
+                id="steps-title"
+              />
             </ScrollReveal>
             <div className="relative mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
-              <div aria-hidden="true" className="pipeline-line absolute left-[12%] right-[12%] top-8 hidden h-px bg-border lg:block" />
+              <div
+                aria-hidden="true"
+                className="pipeline-line absolute left-[12%] right-[12%] top-8 hidden h-px bg-border lg:block"
+              />
               {workSteps.map((step, index) => {
                 const Icon = step.icon;
                 return (
@@ -195,7 +238,11 @@ function Index() {
           </div>
         </section>
 
-        <section id="verified-citations" aria-labelledby="comparison-title" className="mx-auto max-w-7xl px-gutter py-16 sm:py-20 lg:py-24">
+        <section
+          id="verified-citations"
+          aria-labelledby="comparison-title"
+          className="mx-auto max-w-7xl px-gutter py-16 sm:py-20 lg:py-24"
+        >
           <ScrollReveal>
             <SectionHeading
               eyebrow={t("comparison.eyebrow")}
@@ -208,11 +255,18 @@ function Index() {
             <ScrollReveal delay={1}>
               <GlassCard className="h-full border-rejected/25 p-5 sm:p-6">
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-display text-lg font-semibold text-foreground">{t("comparison.plainAi")}</h3>
-                  <Badge tone="rejected"><X aria-hidden="true" className="size-3.5" />{t("comparison.notFound")}</Badge>
+                  <h3 className="font-display text-lg font-semibold text-foreground">
+                    {t("comparison.plainAi")}
+                  </h3>
+                  <Badge tone="rejected">
+                    <X aria-hidden="true" className="size-3.5" />
+                    {t("comparison.notFound")}
+                  </Badge>
                 </div>
                 <div className="mt-5 rounded-lg border border-rejected/25 bg-rejected/5 p-4">
-                  <p className="text-xs font-medium text-muted-foreground">{t("review.analysisLabel")}</p>
+                  <p className="text-xs font-medium text-muted-foreground">
+                    {t("review.analysisLabel")}
+                  </p>
                   <p className="mt-2 font-display text-lg font-semibold text-rejected line-through decoration-2">
                     {t("comparison.plainCitation")}
                   </p>
@@ -227,14 +281,21 @@ function Index() {
             <ScrollReveal delay={2}>
               <GlassCard className="h-full border-verified/25 p-5 sm:p-6">
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-display text-lg font-semibold text-foreground">{t("comparison.shromikAi")}</h3>
-                  <Badge tone="verified"><Check aria-hidden="true" className="size-3.5" />{t("comparison.verifiedStatus")}</Badge>
+                  <h3 className="font-display text-lg font-semibold text-foreground">
+                    {t("comparison.shromikAi")}
+                  </h3>
+                  <Badge tone="verified">
+                    <Check aria-hidden="true" className="size-3.5" />
+                    {t("comparison.verifiedStatus")}
+                  </Badge>
                 </div>
                 <blockquote className="mt-5 rounded-lg border border-verified/20 bg-verified/5 p-4 font-display text-sm leading-8 text-foreground sm:text-base">
                   {t("comparison.verifiedQuote")}
                 </blockquote>
                 <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                  <span className="text-xs text-muted-foreground">{t("comparison.translationLabel")}</span>
+                  <span className="text-xs text-muted-foreground">
+                    {t("comparison.translationLabel")}
+                  </span>
                   <CitationChip
                     citation={{
                       section: "১০৮",
@@ -248,15 +309,28 @@ function Index() {
           </div>
         </section>
 
-        <section id="for-whom" aria-labelledby="audience-title" className="border-y border-border/70 bg-ink-raised/45">
+        <section
+          id="for-whom"
+          aria-labelledby="audience-title"
+          className="border-y border-border/70 bg-ink-raised/45"
+        >
           <div className="mx-auto max-w-7xl px-gutter py-16 sm:py-20 lg:py-24">
             <ScrollReveal>
-              <SectionHeading eyebrow={t("audience.eyebrow")} title={t("audience.title")} id="audience-title" />
+              <SectionHeading
+                eyebrow={t("audience.eyebrow")}
+                title={t("audience.title")}
+                id="audience-title"
+              />
             </ScrollReveal>
             <div className="mt-9 grid gap-4 md:grid-cols-3">
               {audiences.map((audience, index) => {
                 const Icon = audience.icon;
-                const demoKey = audience.role === "worker" ? "workerCta" : audience.role === "hr" ? "hrCta" : "adminCta";
+                const demoKey =
+                  audience.role === "worker"
+                    ? "workerCta"
+                    : audience.role === "hr"
+                      ? "hrCta"
+                      : "adminCta";
 
                 return (
                   <ScrollReveal key={audience.key} delay={(index % 4) as 0 | 1 | 2 | 3}>
@@ -264,8 +338,12 @@ function Index() {
                       <span className="flex size-12 items-center justify-center rounded-xl border border-verified/20 bg-verified/10 text-verified">
                         <Icon aria-hidden="true" className="size-5" />
                       </span>
-                      <h3 className="mt-5 font-display text-xl font-semibold text-foreground">{t(`audience.${audience.key}`)}</h3>
-                      <p className="mt-2 flex-1 text-sm leading-7 text-muted-foreground">{t(`audience.${audience.key}Description`)}</p>
+                      <h3 className="mt-5 font-display text-xl font-semibold text-foreground">
+                        {t(`audience.${audience.key}`)}
+                      </h3>
+                      <p className="mt-2 flex-1 text-sm leading-7 text-muted-foreground">
+                        {t(`audience.${audience.key}Description`)}
+                      </p>
                       <Button asChild variant="outline" className="mt-5 w-full rounded-lg">
                         <Link to="/app" search={{ role: audience.role }}>
                           {t(`audience.${demoKey}`)}
@@ -280,19 +358,28 @@ function Index() {
           </div>
         </section>
 
-        <section id="limits" aria-labelledby="limits-title" className="mx-auto max-w-7xl px-gutter py-16 sm:py-20 lg:py-24">
+        <section
+          id="limits"
+          aria-labelledby="limits-title"
+          className="mx-auto max-w-7xl px-gutter py-16 sm:py-20 lg:py-24"
+        >
           <ScrollReveal>
             <GlassCard className="grid gap-7 p-5 sm:p-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-12 lg:p-10">
               <div>
                 <p className="text-sm font-medium text-uncertain">{t("limits.eyebrow")}</p>
-                <h2 id="limits-title" className="mt-2 font-display text-2xl font-semibold text-foreground sm:text-3xl">
+                <h2
+                  id="limits-title"
+                  className="mt-2 font-display text-2xl font-semibold text-foreground sm:text-3xl"
+                >
                   {t("limits.title")}
                 </h2>
               </div>
               <div className="space-y-4">
                 <Disclaimer />
                 <div className="flex items-start gap-3 rounded-lg border border-uncertain/20 bg-uncertain/5 px-4 py-3">
-                  <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-uncertain/30 text-sm font-semibold text-uncertain">?</span>
+                  <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-uncertain/30 text-sm font-semibold text-uncertain">
+                    ?
+                  </span>
                   <p className="font-medium text-foreground">{t("limits.uncertain")}</p>
                 </div>
                 <p className="text-sm leading-7 text-muted-foreground">{t("limits.description")}</p>
@@ -304,14 +391,38 @@ function Index() {
 
       <footer className="border-t border-border/70">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-gutter py-6 sm:flex-row sm:items-center sm:justify-between">
-          <a href="#top" className="inline-flex min-h-11 items-center gap-2 font-display font-semibold text-foreground">
-            {t("app.name")}<span className="text-verified">{t("app.ai")}</span>
+          <a
+            href="#top"
+            className="inline-flex min-h-11 items-center gap-2 font-display font-semibold text-foreground"
+          >
+            {t("app.name")}
+            <span className="text-verified">{t("app.ai")}</span>
           </a>
-          <nav aria-label={t("footer.docs")} className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
-            <Link to="/docs" className="inline-flex min-h-11 items-center transition-colors hover:text-foreground">{t("footer.docs")}</Link>
-            <Link to="/app" search={{ role: "worker" }} className="inline-flex min-h-11 items-center transition-colors hover:text-foreground">{t("footer.app")}</Link>
-            <a href="https://bdlaws.minlaw.gov.bd/act-952.html" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 transition-colors hover:text-foreground">
-              {t("citation.officialSource")}<ArrowUpRight aria-hidden="true" className="size-3.5" />
+          <nav
+            aria-label={t("footer.docs")}
+            className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground"
+          >
+            <Link
+              to="/docs"
+              className="inline-flex min-h-11 items-center transition-colors hover:text-foreground"
+            >
+              {t("footer.docs")}
+            </Link>
+            <Link
+              to="/app"
+              search={{ role: "worker" }}
+              className="inline-flex min-h-11 items-center transition-colors hover:text-foreground"
+            >
+              {t("footer.app")}
+            </Link>
+            <a
+              href="https://bdlaws.minlaw.gov.bd/act-952.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center gap-1 transition-colors hover:text-foreground"
+            >
+              {t("citation.officialSource")}
+              <ArrowUpRight aria-hidden="true" className="size-3.5" />
             </a>
           </nav>
           <span className="text-xs text-muted-foreground">{t("footer.copyright")}</span>
@@ -332,7 +443,9 @@ function TrustItem({
 }) {
   return (
     <div className="flex min-h-11 items-center gap-2.5 text-sm font-medium text-foreground">
-      <span className={`flex size-8 shrink-0 items-center justify-center rounded-full border ${tone === "verified" ? "border-verified/25 bg-verified/10 text-verified" : "border-rejected/25 bg-rejected/10 text-rejected"}`}>
+      <span
+        className={`flex size-8 shrink-0 items-center justify-center rounded-full border ${tone === "verified" ? "border-verified/25 bg-verified/10 text-verified" : "border-rejected/25 bg-rejected/10 text-rejected"}`}
+      >
         <Icon aria-hidden="true" className="size-4" />
       </span>
       <span>{text}</span>
@@ -354,10 +467,15 @@ function SectionHeading({
   return (
     <div className="max-w-2xl">
       <p className="text-sm font-medium text-verified">{eyebrow}</p>
-      <h2 id={id} className="mt-2 font-display text-3xl font-semibold leading-[1.35] text-foreground sm:text-4xl">
+      <h2
+        id={id}
+        className="mt-2 font-display text-3xl font-semibold leading-[1.35] text-foreground sm:text-4xl"
+      >
         {title}
       </h2>
-      {description && <p className="mt-3 text-sm leading-7 text-muted-foreground sm:text-base">{description}</p>}
+      {description && (
+        <p className="mt-3 text-sm leading-7 text-muted-foreground sm:text-base">{description}</p>
+      )}
     </div>
   );
 }
