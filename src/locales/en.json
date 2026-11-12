@@ -182,56 +182,282 @@
   "mockReview": {
     "topline": "Sample data (recorded)",
     "prototypeNote": "This is a fixed sample review; results are not generated from your file or text. Nothing is uploaded or saved.",
-    "tabs": { "risks": "Risks", "proposals": "Suggested clauses", "duties": "Action list", "memo": "Memo" },
+    "tabs": {
+      "risks": "Risks",
+      "proposals": "Suggested clauses",
+      "duties": "Action list",
+      "memo": "Memo"
+    },
     "upload": {
-      "eyebrow": "Private sample review", "title": "Understand your contract terms", "description": "Choose a PDF, image, or text file, or paste an excerpt. The sample results are from a separate security-guard contract.",
-      "dropTitle": "Drop a file here", "dropHint": "PDF, JPG, PNG, or TXT · up to 10 MB", "browse": "Choose file", "camera": "Use camera", "fileSelected": "Selected file", "removeFile": "Remove file",
-      "pasteLabel": "Paste contract text", "pastePlaceholder": "Type or paste a clause from your contract…", "useSample": "Use security-guard sample", "sideLabel": "I am the", "worker": "Worker", "employer": "Employer", "analyze": "Analyze", "analyzing": "Running sample review…",
-      "privacyTitle": "Personal information protection", "privacyNote": "Names, NIDs, and phone numbers are removed on your device", "privacyDetail": "This is only a sample flow: no file or text is sent to a server, read, or stored.",
-      "errorTooLarge": "This file is over 10 MB. Choose a smaller file.", "errorUnsupported": "This file type is not supported. Choose a PDF, image, or TXT file.", "errorRead": "We could not read this file. Please choose it again.", "invalidText": "Paste some contract text or choose a file."
+      "eyebrow": "Private sample review",
+      "title": "Understand your contract terms",
+      "description": "Choose a PDF, image, or text file, or paste an excerpt. The sample results are from a separate security-guard contract.",
+      "dropTitle": "Drop a file here",
+      "dropHint": "PDF, JPG, PNG, or TXT · up to 10 MB",
+      "browse": "Choose file",
+      "camera": "Use camera",
+      "fileSelected": "Selected file",
+      "removeFile": "Remove file",
+      "pasteLabel": "Paste contract text",
+      "pastePlaceholder": "Type or paste a clause from your contract…",
+      "useSample": "Use security-guard sample",
+      "sideLabel": "I am the",
+      "worker": "Worker",
+      "employer": "Employer",
+      "analyze": "Analyze",
+      "analyzing": "Running sample review…",
+      "privacyTitle": "Personal information protection",
+      "privacyNote": "Names, NIDs, and phone numbers are removed on your device",
+      "privacyDetail": "This is only a sample flow: no file or text is sent to a server, read, or stored.",
+      "errorTooLarge": "This file is over 10 MB. Choose a smaller file.",
+      "errorUnsupported": "This file type is not supported. Choose a PDF, image, or TXT file.",
+      "errorRead": "We could not read this file. Please choose it again.",
+      "invalidText": "Paste some contract text or choose a file."
     },
     "progress": {
-      "eyebrow": "Sample review", "title": "Checking contract terms", "description": "This is sample progress; the text you added is not being analyzed.", "stages": ["Read", "Remove personal details", "Classify clauses", "Find law", "Analyze risks", "Verify"], "statuses": ["Opening sample document", "Masking identity details", "Separating contract terms", "Looking up official law", "Comparing risk language", "Checking sources and quotations"], "stageDone": "Done", "stageCurrent": "In progress", "stageWaiting": "Waiting"
+      "eyebrow": "Sample review",
+      "title": "Checking contract terms",
+      "description": "This is sample progress; the text you added is not being analyzed.",
+      "stages": [
+        "Read",
+        "Remove personal details",
+        "Classify clauses",
+        "Find law",
+        "Analyze risks",
+        "Verify"
+      ],
+      "statuses": [
+        "Opening sample document",
+        "Masking identity details",
+        "Separating contract terms",
+        "Looking up official law",
+        "Comparing risk language",
+        "Checking sources and quotations"
+      ],
+      "stageDone": "Done",
+      "stageCurrent": "In progress",
+      "stageWaiting": "Waiting"
     },
     "report": {
-      "eyebrow": "Security guard contract", "title": "Sample review results", "summary": "Review terms matched to verified sources and items held for human review.", "criticalCount": "Critical", "highCount": "High", "mediumCount": "Review", "verifiedCount": "Verified", "uncertainCount": "Uncertain", "nonObvious": "Easy to miss", "why": "Why?", "noCitation": "Sent for human review", "modelLabel": "Check method", "recordedModel": "Sample rules matcher & citation checker · recorded", "backToUpload": "Start a new sample", "reviewScope": "The sample contract states six 12-hour shifts per week. These results are not based on text you provided."
+      "eyebrow": "Security guard contract",
+      "title": "Sample review results",
+      "summary": "Review terms matched to verified sources and items held for human review.",
+      "criticalCount": "Critical",
+      "highCount": "High",
+      "mediumCount": "Review",
+      "verifiedCount": "Verified",
+      "uncertainCount": "Uncertain",
+      "nonObvious": "Easy to miss",
+      "why": "Why?",
+      "noCitation": "Sent for human review",
+      "modelLabel": "Check method",
+      "recordedModel": "Sample rules matcher & citation checker · recorded",
+      "backToUpload": "Start a new sample",
+      "reviewScope": "The sample contract states six 12-hour shifts per week. These results are not based on text you provided."
     },
     "finding": {
-      "weeklyHours": { "title": "Weekly working hours may exceed the limit", "clause": "Six days a week, 12 hours per shift.", "explanation": "This schedule totals 72 hours a week. The usual statutory limit is 48 hours; even with conditional overtime, weekly work must not exceed 60 hours.", "model": "Schedule rule checker" },
-      "dailyHours": { "title": "12-hour daily shift", "clause": "Each daily shift is 12 hours.", "explanation": "The usual daily limit is eight hours, with work up to ten hours allowed subject to conditions. The stated 12-hour shift does not explain the basis for the remaining time.", "model": "Working-hours rule checker" },
-      "unpaidOvertime": { "title": "No additional overtime allowance", "clause": "No separate allowance applies to additional hours.", "explanation": "Section 108 sets the applicable overtime allowance at twice the ordinary rate. This clause says that allowance will not be paid.", "model": "Wage clause checker" },
-      "uniformDeposit": { "title": "Uniform cost deducted from wages", "clause": "A fixed amount for uniforms is deducted from wages each month.", "explanation": "Section 125 limits wage deductions to specified authorized grounds. This term gives no basis for an automatic monthly uniform deduction.", "model": "Wage deduction rule checker" },
-      "uniformDamage": { "title": "Uniform cost deducted without proof of loss", "clause": "The full listed price is deducted if a uniform is not returned or is damaged.", "explanation": "For a loss deduction, the law requires direct responsibility through the worker’s neglect or default. A full deduction without checking cause or responsibility is overly broad.", "model": "Deduction terms checker" },
-      "probationDuration": { "title": "Nine-month probation period", "clause": "The first nine months after hiring count as a probation period.", "explanation": "The usual period is six months for clerical work and three months for other work; a skilled worker may receive a specific three-month extension. The basis for nine months is not stated.", "model": "Employment terms rule checker" },
-      "terminationNotice": { "title": "Employment may end without notice", "clause": "The employer may end employment at any time without notice.", "explanation": "For termination covered by section 26, written notice or wages in lieu apply according to worker category. This term states no limits or exceptions.", "model": "Termination rule checker" },
-      "missingBreak": { "title": "No break stated for a long shift", "clause": "No scheduled break is provided during a 12-hour shift.", "explanation": "Section 101 provides rest or meal breaks based on hours worked. A 12-hour shift with no break does not match that provision.", "model": "Break rule checker" },
-      "noWeeklyRest": { "title": "Weekly rest day may be cancelled", "clause": "Weekly rest may be cancelled when work requires it.", "explanation": "Section 103 provides weekly holidays according to establishment type. An unrestricted cancellation term does not clearly preserve that entitlement.", "model": "Leave clause checker" },
-      "missingAppointmentLetter": { "title": "No separate appointment or identity card", "clause": "These duty terms are final; no separate appointment letter or identity card will be provided.", "explanation": "Section 5 says a worker may not be employed without an appointment letter and must receive a photo identity card. This clause directly denies both.", "model": "Hiring documents rule checker" },
-      "unconditionalUniformReplacement": { "title": "Worker pays for every uniform replacement", "clause": "The cost of a new uniform is deducted from wages when it wears out or is replaced.", "explanation": "Wage deductions may only be made on grounds authorized by law. Section 125 does not authorize charging the worker the full cost of replacement for ordinary wear.", "model": "Deduction clause checker" }
+      "weeklyHours": {
+        "title": "Weekly working hours may exceed the limit",
+        "clause": "Six days a week, 12 hours per shift.",
+        "explanation": "This schedule totals 72 hours a week. The usual statutory limit is 48 hours; even with conditional overtime, weekly work must not exceed 60 hours.",
+        "model": "Schedule rule checker"
+      },
+      "dailyHours": {
+        "title": "12-hour daily shift",
+        "clause": "Each daily shift is 12 hours.",
+        "explanation": "The usual daily limit is eight hours, with work up to ten hours allowed subject to conditions. The stated 12-hour shift does not explain the basis for the remaining time.",
+        "model": "Working-hours rule checker"
+      },
+      "unpaidOvertime": {
+        "title": "No additional overtime allowance",
+        "clause": "No separate allowance applies to additional hours.",
+        "explanation": "Section 108 sets the applicable overtime allowance at twice the ordinary rate. This clause says that allowance will not be paid.",
+        "model": "Wage clause checker"
+      },
+      "uniformDeposit": {
+        "title": "Uniform cost deducted from wages",
+        "clause": "A fixed amount for uniforms is deducted from wages each month.",
+        "explanation": "Section 125 limits wage deductions to specified authorized grounds. This term gives no basis for an automatic monthly uniform deduction.",
+        "model": "Wage deduction rule checker"
+      },
+      "uniformDamage": {
+        "title": "Uniform cost deducted without proof of loss",
+        "clause": "The full listed price is deducted if a uniform is not returned or is damaged.",
+        "explanation": "For a loss deduction, the law requires direct responsibility through the worker’s neglect or default. A full deduction without checking cause or responsibility is overly broad.",
+        "model": "Deduction terms checker"
+      },
+      "probationDuration": {
+        "title": "Nine-month probation period",
+        "clause": "The first nine months after hiring count as a probation period.",
+        "explanation": "The usual period is six months for clerical work and three months for other work; a skilled worker may receive a specific three-month extension. The basis for nine months is not stated.",
+        "model": "Employment terms rule checker"
+      },
+      "terminationNotice": {
+        "title": "Employment may end without notice",
+        "clause": "The employer may end employment at any time without notice.",
+        "explanation": "For termination covered by section 26, written notice or wages in lieu apply according to worker category. This term states no limits or exceptions.",
+        "model": "Termination rule checker"
+      },
+      "missingBreak": {
+        "title": "No break stated for a long shift",
+        "clause": "No scheduled break is provided during a 12-hour shift.",
+        "explanation": "Section 101 provides rest or meal breaks based on hours worked. A 12-hour shift with no break does not match that provision.",
+        "model": "Break rule checker"
+      },
+      "noWeeklyRest": {
+        "title": "Weekly rest day may be cancelled",
+        "clause": "Weekly rest may be cancelled when work requires it.",
+        "explanation": "Section 103 provides weekly holidays according to establishment type. An unrestricted cancellation term does not clearly preserve that entitlement.",
+        "model": "Leave clause checker"
+      },
+      "missingAppointmentLetter": {
+        "title": "No separate appointment or identity card",
+        "clause": "These duty terms are final; no separate appointment letter or identity card will be provided.",
+        "explanation": "Section 5 says a worker may not be employed without an appointment letter and must receive a photo identity card. This clause directly denies both.",
+        "model": "Hiring documents rule checker"
+      },
+      "unconditionalUniformReplacement": {
+        "title": "Worker pays for every uniform replacement",
+        "clause": "The cost of a new uniform is deducted from wages when it wears out or is replaced.",
+        "explanation": "Wage deductions may only be made on grounds authorized by law. Section 125 does not authorize charging the worker the full cost of replacement for ordinary wear.",
+        "model": "Deduction clause checker"
+      }
     },
-    "uncertain": { "title": "70% pay during probation", "clause": "During the nine-month probation period, 70% of the basic wage will be paid.", "explanation": "Applicable minimum wages can depend on industry, role, and wage structure. This sample does not provide enough information to assess the rate; no legal conclusion is given.", "model": "Sample information sufficiency checker" },
+    "uncertain": {
+      "title": "70% pay during probation",
+      "clause": "During the nine-month probation period, 70% of the basic wage will be paid.",
+      "explanation": "Applicable minimum wages can depend on industry, role, and wage structure. This sample does not provide enough information to assess the rate; no legal conclusion is given.",
+      "model": "Sample information sufficiency checker"
+    },
     "law": {
-      "act": "Bangladesh Labour Act, 2006", "version": "Text shown in the official law repository · Act No. 42 of 2006", "sourceLink": "View official source", "openInNewTab": "Opens in a new tab",
-      "section4": { "title": "Worker categories and probation period", "text": "The probation period for a worker employed in clerical work shall be six months and for other workers shall be three months: Provided that, in the case of a skilled worker, the probation period may be extended by a further three months if, for any reason, it is not possible to assess the quality of the worker’s work within the first three months.", "highlight": "for other workers shall be three months" },
-      "section5": { "title": "Appointment letter and identity card", "text": "No employer shall engage any worker without giving such worker an appointment letter, and every employed worker shall be given a photo identity card.", "highlight": "without giving such worker an appointment letter" },
-      "section26": { "title": "Termination of employment by employer otherwise than dismissal", "text": "For a permanent worker employed on a monthly basis, written notice of 120 days, and for any other permanent worker, written notice of 60 days may be given. Employment may be ended by paying wages in lieu of the notice period.", "highlight": "written notice" },
-      "section100": { "title": "Daily working hours", "text": "An adult worker shall not ordinarily work, or be required to work, in an establishment for more than eight hours in any day: Provided that, subject to section 108, such worker may work up to ten hours in any day.", "highlight": "for more than eight hours in any day" },
-      "section101": { "title": "Intervals for rest or meals", "text": "A worker in an establishment shall not be required to work for more than six hours in any day unless the worker is given an interval of one hour for rest or meals on that day.", "highlight": "an interval of one hour for rest or meals" },
-      "section102": { "title": "Weekly working hours", "text": "An adult worker shall not ordinarily work, or be required to work, in an establishment for more than 48 hours in any week. Subject to section 108, total working hours must not exceed 60 hours in a week.", "highlight": "more than 48 hours in any week" },
-      "section103": { "title": "Weekly holiday", "text": "A worker in a factory or industry shall receive one day of holiday per week; a worker in a shop or establishment shall receive one and a half days per week.", "highlight": "one day ... one and a half days per week" },
-      "section108": { "title": "Extra allowance for overtime work", "text": "Where a worker works beyond the fixed hours under this Act, the worker is entitled to an allowance for overtime at twice the ordinary rate of basic wages, dearness allowance, and any ad hoc or interim wages, if any.", "highlight": "at twice the ordinary rate" },
-      "section125": { "title": "Deductions which may be made from wages", "text": "No deduction shall be made from the wages of a worker except those authorized by this Act. Deductions may only be made in accordance with this Act and within specified authorized categories.", "highlight": "except those authorized by this Act" }
+      "act": "Bangladesh Labour Act, 2006",
+      "version": "Text shown in the official law repository · Act No. 42 of 2006",
+      "sourceLink": "View official source",
+      "openInNewTab": "Opens in a new tab",
+      "section4": {
+        "title": "Worker categories and probation period",
+        "text": "The probation period for a worker employed in clerical work shall be six months and for other workers shall be three months: Provided that, in the case of a skilled worker, the probation period may be extended by a further three months if, for any reason, it is not possible to assess the quality of the worker’s work within the first three months.",
+        "highlight": "for other workers shall be three months"
+      },
+      "section5": {
+        "title": "Appointment letter and identity card",
+        "text": "No employer shall engage any worker without giving such worker an appointment letter, and every employed worker shall be given a photo identity card.",
+        "highlight": "without giving such worker an appointment letter"
+      },
+      "section26": {
+        "title": "Termination of employment by employer otherwise than dismissal",
+        "text": "For a permanent worker employed on a monthly basis, written notice of 120 days, and for any other permanent worker, written notice of 60 days may be given. Employment may be ended by paying wages in lieu of the notice period.",
+        "highlight": "written notice"
+      },
+      "section100": {
+        "title": "Daily working hours",
+        "text": "An adult worker shall not ordinarily work, or be required to work, in an establishment for more than eight hours in any day: Provided that, subject to section 108, such worker may work up to ten hours in any day.",
+        "highlight": "for more than eight hours in any day"
+      },
+      "section101": {
+        "title": "Intervals for rest or meals",
+        "text": "A worker in an establishment shall not be required to work for more than six hours in any day unless the worker is given an interval of one hour for rest or meals on that day.",
+        "highlight": "an interval of one hour for rest or meals"
+      },
+      "section102": {
+        "title": "Weekly working hours",
+        "text": "An adult worker shall not ordinarily work, or be required to work, in an establishment for more than 48 hours in any week. Subject to section 108, total working hours must not exceed 60 hours in a week.",
+        "highlight": "more than 48 hours in any week"
+      },
+      "section103": {
+        "title": "Weekly holiday",
+        "text": "A worker in a factory or industry shall receive one day of holiday per week; a worker in a shop or establishment shall receive one and a half days per week.",
+        "highlight": "one day ... one and a half days per week"
+      },
+      "section108": {
+        "title": "Extra allowance for overtime work",
+        "text": "Where a worker works beyond the fixed hours under this Act, the worker is entitled to an allowance for overtime at twice the ordinary rate of basic wages, dearness allowance, and any ad hoc or interim wages, if any.",
+        "highlight": "at twice the ordinary rate"
+      },
+      "section125": {
+        "title": "Deductions which may be made from wages",
+        "text": "No deduction shall be made from the wages of a worker except those authorized by this Act. Deductions may only be made in accordance with this Act and within specified authorized categories.",
+        "highlight": "except those authorized by this Act"
+      }
     },
-    "why": { "title": "Sources behind this result", "description": "Official sections matched with this sample explanation.", "retrieved": "Sections checked", "checks": "Three verification checks", "lawExists": "Section exists", "quoteMatches": "Quotation matches", "supports": "Supports the clause finding", "model": "Model that checked", "recorded": "Sample verification · no live model run", "close": "Close" },
-    "citation": { "title": "Official legal citation", "act": "Act name", "section": "Section {{number}}", "version": "Text details", "quotedText": "Text of the official section", "close": "Close" },
+    "why": {
+      "title": "Sources behind this result",
+      "description": "Official sections matched with this sample explanation.",
+      "retrieved": "Sections checked",
+      "checks": "Three verification checks",
+      "lawExists": "Section exists",
+      "quoteMatches": "Quotation matches",
+      "supports": "Supports the clause finding",
+      "model": "Model that checked",
+      "recorded": "Sample verification · no live model run",
+      "close": "Close"
+    },
+    "citation": {
+      "title": "Official legal citation",
+      "act": "Act name",
+      "section": "Section {{number}}",
+      "version": "Text details",
+      "quotedText": "Text of the official section",
+      "close": "Close"
+    },
     "proposals": {
-      "eyebrow": "Draft edits", "title": "Suggested clause wording", "description": "These are discussion drafts, not final wording without legal review.", "old": "Current wording", "new": "Suggested wording", "source": "Source", "accept": "Add to discussion list", "selected": "Added to discussion list",
-      "overtime": { "title": "Overtime allowance", "old": "No separate allowance applies to additional hours.", "new": "For work beyond the limits set by law, overtime allowance will be paid in accordance with applicable law." },
-      "uniform": { "title": "Uniform deductions", "old": "A fixed amount for uniforms is deducted from wages each month.", "new": "Any deduction from wages will be made only where authorized by law and after meeting the applicable conditions." },
-      "termination": { "title": "Notice of termination", "old": "The employer may end employment at any time without notice.", "new": "Employment will end with written notice, or payment of wages in lieu, as required by applicable law." }
+      "eyebrow": "Draft edits",
+      "title": "Suggested clause wording",
+      "description": "These are discussion drafts, not final wording without legal review.",
+      "old": "Current wording",
+      "new": "Suggested wording",
+      "source": "Source",
+      "accept": "Add to discussion list",
+      "selected": "Added to discussion list",
+      "overtime": {
+        "title": "Overtime allowance",
+        "old": "No separate allowance applies to additional hours.",
+        "new": "For work beyond the limits set by law, overtime allowance will be paid in accordance with applicable law."
+      },
+      "uniform": {
+        "title": "Uniform deductions",
+        "old": "A fixed amount for uniforms is deducted from wages each month.",
+        "new": "Any deduction from wages will be made only where authorized by law and after meeting the applicable conditions."
+      },
+      "termination": {
+        "title": "Notice of termination",
+        "old": "The employer may end employment at any time without notice.",
+        "new": "Employment will end with written notice, or payment of wages in lieu, as required by applicable law."
+      }
     },
-    "duties": { "title": "Next steps for both parties", "description": "Mark responsibilities to discuss or review.", "worker": "Worker", "employer": "Employer", "workerItems": ["Request a written shift schedule and break policy", "Ask for a written breakdown of wages and deductions", "Collect an appointment letter and photo ID", "Keep a copy of the revised draft"], "employerItems": ["Clarify working hours and weekly rest", "Set out overtime pay and wage calculations", "Provide the lawful basis and evidence for uniform deductions", "Issue an appointment letter and photo identity card"] },
-    "memo": { "title": "Contract review memo", "description": "Recorded sample review of a security-guard contract", "generated": "Sample data (recorded)", "download": "Download PDF", "printHint": "Save as PDF in the print window", "summary": "Summary", "verified": "Verified findings", "uncertain": "Needs human review", "sourceList": "Official sources", "preparedFor": "Side", "worker": "Worker", "employer": "Employer", "notReal": "This is a fixed sample, not an individual contract or legal advice." },
+    "duties": {
+      "title": "Next steps for both parties",
+      "description": "Mark responsibilities to discuss or review.",
+      "worker": "Worker",
+      "employer": "Employer",
+      "workerItems": [
+        "Request a written shift schedule and break policy",
+        "Ask for a written breakdown of wages and deductions",
+        "Collect an appointment letter and photo ID",
+        "Keep a copy of the revised draft"
+      ],
+      "employerItems": [
+        "Clarify working hours and weekly rest",
+        "Set out overtime pay and wage calculations",
+        "Provide the lawful basis and evidence for uniform deductions",
+        "Issue an appointment letter and photo identity card"
+      ]
+    },
+    "memo": {
+      "title": "Contract review memo",
+      "description": "Recorded sample review of a security-guard contract",
+      "generated": "Sample data (recorded)",
+      "download": "Download PDF",
+      "printHint": "Save as PDF in the print window",
+      "summary": "Summary",
+      "verified": "Verified findings",
+      "uncertain": "Needs human review",
+      "sourceList": "Official sources",
+      "preparedFor": "Side",
+      "worker": "Worker",
+      "employer": "Employer",
+      "notReal": "This is a fixed sample, not an individual contract or legal advice."
+    },
     "side": { "worker": "Worker", "employer": "Employer" }
   }
 }

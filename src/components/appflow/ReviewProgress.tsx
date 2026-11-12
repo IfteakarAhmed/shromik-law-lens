@@ -35,7 +35,11 @@ export function ReviewProgress({ onComplete }: ReviewProgressProps) {
   }, [onComplete, stages.length]);
 
   return (
-    <section className="mx-auto w-full max-w-3xl" aria-live="polite" aria-busy={activeStage < stages.length}>
+    <section
+      className="mx-auto w-full max-w-3xl"
+      aria-live="polite"
+      aria-busy={activeStage < stages.length}
+    >
       <div className="mb-7 flex flex-wrap items-center gap-3">
         <Badge tone="verified">{t("mockReview.progress.eyebrow")}</Badge>
         <span className="text-xs text-muted-foreground">{t("mockReview.topline")}</span>
@@ -58,18 +62,41 @@ export function ReviewProgress({ onComplete }: ReviewProgressProps) {
               ? t("mockReview.progress.stageCurrent")
               : t("mockReview.progress.stageWaiting");
           return (
-            <li key={stage} className="relative grid min-h-20 grid-cols-[3rem_minmax(0,1fr)_auto] items-center gap-3 px-3 sm:min-h-24 sm:px-5">
+            <li
+              key={stage}
+              className="relative grid min-h-20 grid-cols-[3rem_minmax(0,1fr)_auto] items-center gap-3 px-3 sm:min-h-24 sm:px-5"
+            >
               {index < stages.length - 1 ? (
-                <span className="absolute bottom-0 left-[2.25rem] top-[3.8rem] w-px bg-border sm:left-[2.7rem]" aria-hidden="true" />
+                <span
+                  className="absolute bottom-0 left-[2.25rem] top-[3.8rem] w-px bg-border sm:left-[2.7rem]"
+                  aria-hidden="true"
+                />
               ) : null}
-              <span className={`relative z-10 flex size-10 items-center justify-center rounded-full border transition-colors ${complete ? "border-verified/40 bg-verified/10 text-verified" : current ? "border-primary/50 bg-primary/10 text-primary" : "border-border bg-background text-muted-foreground"}`}>
-                <StatusIcon aria-hidden="true" className={`size-4 ${current ? "animate-spin" : ""}`} />
+              <span
+                className={`relative z-10 flex size-10 items-center justify-center rounded-full border transition-colors ${complete ? "border-verified/40 bg-verified/10 text-verified" : current ? "border-primary/50 bg-primary/10 text-primary" : "border-border bg-background text-muted-foreground"}`}
+              >
+                <StatusIcon
+                  aria-hidden="true"
+                  className={`size-4 ${current ? "animate-spin" : ""}`}
+                />
               </span>
               <span className="min-w-0 py-4">
-                <span className={`block font-medium ${current || complete ? "text-foreground" : "text-muted-foreground"}`}>{stage}</span>
-                {current ? <span className="mt-1 block text-sm text-muted-foreground">{statuses[index]}</span> : null}
+                <span
+                  className={`block font-medium ${current || complete ? "text-foreground" : "text-muted-foreground"}`}
+                >
+                  {stage}
+                </span>
+                {current ? (
+                  <span className="mt-1 block text-sm text-muted-foreground">
+                    {statuses[index]}
+                  </span>
+                ) : null}
               </span>
-              <span className={`shrink-0 text-xs ${complete ? "text-verified" : current ? "text-primary" : "text-muted-foreground"}`}>{status}</span>
+              <span
+                className={`shrink-0 text-xs ${complete ? "text-verified" : current ? "text-primary" : "text-muted-foreground"}`}
+              >
+                {status}
+              </span>
             </li>
           );
         })}

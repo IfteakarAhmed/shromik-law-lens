@@ -1,11 +1,4 @@
-import {
-  Camera,
-  FileText,
-  FileUp,
-  LockKeyhole,
-  ShieldCheck,
-  Trash2,
-} from "lucide-react";
+import { Camera, FileText, FileUp, LockKeyhole, ShieldCheck, Trash2 } from "lucide-react";
 import { useRef, useState, type DragEvent } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -115,7 +108,9 @@ export function AppUploadScreen({
                   <FileText aria-hidden="true" className="size-5" />
                 </span>
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs text-muted-foreground">{t("mockReview.upload.fileSelected")}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {t("mockReview.upload.fileSelected")}
+                  </p>
                   <p className="mt-1 break-all font-medium text-foreground">{file.name}</p>
                   <p className="text-xs text-muted-foreground">
                     {(file.size / (1024 * 1024)).toFixed(2)} MB
@@ -154,7 +149,7 @@ export function AppUploadScreen({
                   <Button
                     type="button"
                     variant="outline"
-                  onClick={() => cameraInputRef.current?.click()}
+                    onClick={() => cameraInputRef.current?.click()}
                   >
                     <Camera aria-hidden="true" />
                     {t("mockReview.upload.camera")}
@@ -171,7 +166,10 @@ export function AppUploadScreen({
           </div>
 
           <div>
-            <label htmlFor="contract-text" className="mb-2 block text-sm font-medium text-foreground">
+            <label
+              htmlFor="contract-text"
+              className="mb-2 block text-sm font-medium text-foreground"
+            >
               {t("mockReview.upload.pasteLabel")}
             </label>
             <Textarea
@@ -192,14 +190,23 @@ export function AppUploadScreen({
           </div>
 
           {error ? (
-            <p role="alert" className="rounded-md border border-rejected/25 bg-rejected/5 px-4 py-3 text-sm text-rejected">
+            <p
+              role="alert"
+              className="rounded-md border border-rejected/25 bg-rejected/5 px-4 py-3 text-sm text-rejected"
+            >
               {t(`mockReview.upload.${error}`)}
             </p>
           ) : null}
 
           <div>
-            <p className="mb-2 text-sm font-medium text-foreground">{t("mockReview.upload.sideLabel")}</p>
-            <div className="grid grid-cols-2 rounded-lg border border-border bg-card/50 p-1" role="group" aria-label={t("mockReview.upload.sideLabel")}>
+            <p className="mb-2 text-sm font-medium text-foreground">
+              {t("mockReview.upload.sideLabel")}
+            </p>
+            <div
+              className="grid grid-cols-2 rounded-lg border border-border bg-card/50 p-1"
+              role="group"
+              aria-label={t("mockReview.upload.sideLabel")}
+            >
               {(["worker", "employer"] as const).map((option) => (
                 <Button
                   key={option}
@@ -215,7 +222,13 @@ export function AppUploadScreen({
             </div>
           </div>
 
-          <Button type="button" size="lg" disabled={!canAnalyze} onClick={onAnalyze} className="w-full sm:w-auto">
+          <Button
+            type="button"
+            size="lg"
+            disabled={!canAnalyze}
+            onClick={onAnalyze}
+            className="w-full sm:w-auto"
+          >
             <ShieldCheck aria-hidden="true" />
             {t("mockReview.upload.analyze")}
           </Button>

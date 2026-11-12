@@ -197,9 +197,27 @@ export const recordedSampleContract =
   "সিকিউরিটি গার্ড নিয়োগের শর্ত: কর্মী সপ্তাহে ছয় দিন, প্রতিদিন ১২ ঘণ্টা কাজ করবেন। ১২ ঘণ্টার শিফটে কোনো নির্ধারিত বিশ্রামের বিরতি থাকবে না। সপ্তাহের ছুটি কাজের প্রয়োজনে বাতিল করা যেতে পারে। অতিরিক্ত সময়ের জন্য আলাদা ভাতা দেওয়া হবে না। প্রতি মাসে ইউনিফর্মের নির্দিষ্ট মূল্য মজুরি থেকে কাটা হবে; ইউনিফর্ম হারালে, ক্ষতিগ্রস্ত হলে বা স্বাভাবিক ব্যবহারে বদলাতে হলে পুরো মূল্য কাটা হবে। প্রথম নয় মাস শিক্ষানবিশকাল; এই সময়ে মূল বেতনের ৭০% দেওয়া হবে। নিয়োগপত্র বা ছবিসহ পরিচয়পত্র দেওয়া হবে না। মালিক কোনো নোটিশ ছাড়াই চাকরি শেষ করতে পারবেন।";
 
 export const clauseProposals = [
-  { id: "overtime", titleKey: "mockReview.proposals.overtime.title", oldKey: "mockReview.proposals.overtime.old", newKey: "mockReview.proposals.overtime.new", sectionId: "section108" },
-  { id: "uniform", titleKey: "mockReview.proposals.uniform.title", oldKey: "mockReview.proposals.uniform.old", newKey: "mockReview.proposals.uniform.new", sectionId: "section125" },
-  { id: "termination", titleKey: "mockReview.proposals.termination.title", oldKey: "mockReview.proposals.termination.old", newKey: "mockReview.proposals.termination.new", sectionId: "section26" },
+  {
+    id: "overtime",
+    titleKey: "mockReview.proposals.overtime.title",
+    oldKey: "mockReview.proposals.overtime.old",
+    newKey: "mockReview.proposals.overtime.new",
+    sectionId: "section108",
+  },
+  {
+    id: "uniform",
+    titleKey: "mockReview.proposals.uniform.title",
+    oldKey: "mockReview.proposals.uniform.old",
+    newKey: "mockReview.proposals.uniform.new",
+    sectionId: "section125",
+  },
+  {
+    id: "termination",
+    titleKey: "mockReview.proposals.termination.title",
+    oldKey: "mockReview.proposals.termination.old",
+    newKey: "mockReview.proposals.termination.new",
+    sectionId: "section26",
+  },
 ] as const satisfies readonly {
   readonly id: string;
   readonly titleKey: string;
@@ -225,5 +243,7 @@ export const employerDuties = [
 const severityOrder: Record<ReviewSeverity, number> = { critical: 0, high: 1, medium: 2 };
 
 export function sortRecordedFindings(findings: readonly RecordedFinding[]): RecordedFinding[] {
-  return [...findings].sort((first, second) => severityOrder[first.severity] - severityOrder[second.severity]);
+  return [...findings].sort(
+    (first, second) => severityOrder[first.severity] - severityOrder[second.severity],
+  );
 }

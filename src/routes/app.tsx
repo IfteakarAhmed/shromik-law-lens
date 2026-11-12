@@ -89,16 +89,20 @@ function ContractReviewApp() {
             <ShieldCheck aria-hidden="true" className="size-4" />
           </span>
           <span className="hidden font-display text-sm font-bold text-foreground sm:inline">
-            {t("app.name")}<span className="text-verified">{t("app.ai")}</span>
+            {t("app.name")}
+            <span className="text-verified">{t("app.ai")}</span>
           </span>
-          <Badge tone="neutral" className="max-w-[9rem] truncate text-[10px] sm:max-w-none sm:text-xs">
+          <Badge
+            tone="neutral"
+            className="max-w-[9rem] truncate text-[10px] sm:max-w-none sm:text-xs"
+          >
             {t(`roles.${role}`)}
           </Badge>
         </div>
       </header>
 
       <main className="mx-auto max-w-7xl px-gutter pb-14 pt-7 sm:pb-20 sm:pt-10">
-          {screen === "upload" ? (
+        {screen === "upload" ? (
           <AppUploadScreen
             file={file}
             error={error}
@@ -106,7 +110,10 @@ function ContractReviewApp() {
             text={text}
             onFileSelected={handleFileSelected}
             onSideChange={setSide}
-            onTextChange={(nextText) => { setText(nextText); setError(null); }}
+            onTextChange={(nextText) => {
+              setText(nextText);
+              setError(null);
+            }}
             onAnalyze={startReview}
           />
         ) : null}

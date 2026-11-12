@@ -10,10 +10,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import {
-  recordedLawSections,
-  type RecordedLawSectionId,
-} from "@/mocks/security-guard-review";
+import { recordedLawSections, type RecordedLawSectionId } from "@/mocks/security-guard-review";
 
 interface CitationDetailSheetProps {
   sectionId: RecordedLawSectionId | null;
@@ -45,15 +42,23 @@ export function CitationDetailSheet({ sectionId, onOpenChange }: CitationDetailS
 
             <div className="mt-7 space-y-4">
               <div className="border-y border-border py-4">
-                <p className="text-xs font-medium text-muted-foreground">{t("mockReview.citation.act")}</p>
+                <p className="text-xs font-medium text-muted-foreground">
+                  {t("mockReview.citation.act")}
+                </p>
                 <p className="mt-1 font-medium text-foreground">{t("mockReview.law.act")}</p>
               </div>
               <div>
-                <p className="text-xs font-medium text-muted-foreground">{t("mockReview.citation.version")}</p>
-                <p className="mt-1 text-sm leading-6 text-foreground">{t("mockReview.law.version")}</p>
+                <p className="text-xs font-medium text-muted-foreground">
+                  {t("mockReview.citation.version")}
+                </p>
+                <p className="mt-1 text-sm leading-6 text-foreground">
+                  {t("mockReview.law.version")}
+                </p>
               </div>
               <div>
-                <p className="text-xs font-medium text-muted-foreground">{t("mockReview.citation.quotedText")}</p>
+                <p className="text-xs font-medium text-muted-foreground">
+                  {t("mockReview.citation.quotedText")}
+                </p>
                 <blockquote className="mt-2 rounded-md border border-border bg-card/70 p-4 font-display text-base leading-8 text-foreground">
                   {renderHighlightedQuote(t(section.textKey), t(section.highlightKey))}
                 </blockquote>
