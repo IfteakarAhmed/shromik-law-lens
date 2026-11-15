@@ -14,23 +14,4 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
-
-  it.each([
-    "/app/compare",
-    "/admin",
-    "/demo-user",
-    "/demo-hr",
-    "/demo-admin",
-    "/demo-user?role=ignored",
-    "/demo-hr?role=ignored",
-  ])(
-    "matches the requested demo route %s",
-    (path) => {
-      const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
-
-      const matches = router.matchRoutes(path);
-
-      expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
-    },
-  );
 });

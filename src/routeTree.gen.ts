@@ -10,22 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AppRouteImport } from './routes/app'
-import { Route as DemoAdminRouteImport } from './routes/demo-admin'
-import { Route as DemoHrRouteImport } from './routes/demo-hr'
-import { Route as DemoUserRouteImport } from './routes/demo-user'
 import { Route as DocsRouteImport } from './routes/docs'
-import { Route as AppCompareRouteImport } from './routes/app_.compare'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppRoute = AppRouteImport.update({
@@ -33,105 +23,40 @@ const AppRoute = AppRouteImport.update({
   path: '/app',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemoAdminRoute = DemoAdminRouteImport.update({
-  id: '/demo-admin',
-  path: '/demo-admin',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoHrRoute = DemoHrRouteImport.update({
-  id: '/demo-hr',
-  path: '/demo-hr',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoUserRoute = DemoUserRouteImport.update({
-  id: '/demo-user',
-  path: '/demo-user',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const DocsRoute = DocsRouteImport.update({
   id: '/docs',
   path: '/docs',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AppCompareRoute = AppCompareRouteImport.update({
-  id: '/app_/compare',
-  path: '/app/compare',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
   '/app': typeof AppRoute
-  '/demo-admin': typeof DemoAdminRoute
-  '/demo-hr': typeof DemoHrRoute
-  '/demo-user': typeof DemoUserRoute
   '/docs': typeof DocsRoute
-  '/app/compare': typeof AppCompareRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
   '/app': typeof AppRoute
-  '/demo-admin': typeof DemoAdminRoute
-  '/demo-hr': typeof DemoHrRoute
-  '/demo-user': typeof DemoUserRoute
   '/docs': typeof DocsRoute
-  '/app/compare': typeof AppCompareRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
   '/app': typeof AppRoute
-  '/demo-admin': typeof DemoAdminRoute
-  '/demo-hr': typeof DemoHrRoute
-  '/demo-user': typeof DemoUserRoute
   '/docs': typeof DocsRoute
-  '/app_/compare': typeof AppCompareRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/admin'
-    | '/app'
-    | '/demo-admin'
-    | '/demo-hr'
-    | '/demo-user'
-    | '/docs'
-    | '/app/compare'
+  fullPaths: '/' | '/app' | '/docs'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/admin'
-    | '/app'
-    | '/demo-admin'
-    | '/demo-hr'
-    | '/demo-user'
-    | '/docs'
-    | '/app/compare'
-  id:
-    | '__root__'
-    | '/'
-    | '/admin'
-    | '/app'
-    | '/demo-admin'
-    | '/demo-hr'
-    | '/demo-user'
-    | '/docs'
-    | '/app_/compare'
+  to: '/' | '/app' | '/docs'
+  id: '__root__' | '/' | '/app' | '/docs'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AdminRoute: typeof AdminRoute
   AppRoute: typeof AppRoute
-  DemoAdminRoute: typeof DemoAdminRoute
-  DemoHrRoute: typeof DemoHrRoute
-  DemoUserRoute: typeof DemoUserRoute
   DocsRoute: typeof DocsRoute
-  AppCompareRoute: typeof AppCompareRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -143,39 +68,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/app': {
       id: '/app'
       path: '/app'
       fullPath: '/app'
       preLoaderRoute: typeof AppRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo-admin': {
-      id: '/demo-admin'
-      path: '/demo-admin'
-      fullPath: '/demo-admin'
-      preLoaderRoute: typeof DemoAdminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo-hr': {
-      id: '/demo-hr'
-      path: '/demo-hr'
-      fullPath: '/demo-hr'
-      preLoaderRoute: typeof DemoHrRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo-user': {
-      id: '/demo-user'
-      path: '/demo-user'
-      fullPath: '/demo-user'
-      preLoaderRoute: typeof DemoUserRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/docs': {
@@ -185,25 +82,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/app_/compare': {
-      id: '/app_/compare'
-      path: '/app/compare'
-      fullPath: '/app/compare'
-      preLoaderRoute: typeof AppCompareRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AdminRoute: AdminRoute,
   AppRoute: AppRoute,
-  DemoAdminRoute: DemoAdminRoute,
-  DemoHrRoute: DemoHrRoute,
-  DemoUserRoute: DemoUserRoute,
   DocsRoute: DocsRoute,
-  AppCompareRoute: AppCompareRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -138,7 +138,8 @@ function Index() {
                   </Link>
                 </Button>
                 <Link
-                  to="/demo-user"
+                  to="/app"
+                  search={{ role: "worker" }}
                   className="inline-flex min-h-11 items-center gap-2 rounded-lg px-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {t("hero.workerDemo")}
@@ -147,7 +148,8 @@ function Index() {
               </div>
               <div className="mt-2 flex flex-wrap gap-2">
                 <Link
-                  to="/demo-hr"
+                  to="/app"
+                  search={{ role: "hr" }}
                   className="inline-flex min-h-11 items-center rounded-lg px-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {t("hero.hrDemo")}
@@ -156,7 +158,8 @@ function Index() {
                   ·
                 </span>
                 <Link
-                  to="/demo-admin"
+                  to="/app"
+                  search={{ role: "admin" }}
                   className="inline-flex min-h-11 items-center rounded-lg px-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {t("hero.adminDemo")}
@@ -322,12 +325,6 @@ function Index() {
             <div className="mt-9 grid gap-4 md:grid-cols-3">
               {audiences.map((audience, index) => {
                 const Icon = audience.icon;
-                const demoPath =
-                  audience.role === "worker"
-                    ? "/demo-user"
-                    : audience.role === "hr"
-                      ? "/demo-hr"
-                      : "/demo-admin";
                 const demoKey =
                   audience.role === "worker"
                     ? "workerCta"
@@ -348,7 +345,7 @@ function Index() {
                         {t(`audience.${audience.key}Description`)}
                       </p>
                       <Button asChild variant="outline" className="mt-5 w-full rounded-lg">
-                        <Link to={demoPath}>
+                        <Link to="/app" search={{ role: audience.role }}>
                           {t(`audience.${demoKey}`)}
                           <ArrowUpRight aria-hidden="true" />
                         </Link>
